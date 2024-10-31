@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:profix_new/CabinetInstallation.dart';
+import 'package:profix_new/CustomFurniture.dart';
+import 'package:profix_new/FurnitureRepair.dart';
 
 void main() => runApp(const CarpenterPageApp());
 
@@ -24,57 +27,76 @@ class CarpenterPage extends StatelessWidget {
         title: const Text('Carpenter Services'),
         backgroundColor: const Color.fromARGB(255, 213, 237, 249),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
+              const Text(
                 'Available Services',
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 122, 165, 160)),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ServiceTile(
                 icon: Icons.build,
                 service: 'Furniture Repair',
                 description: 'Repair and restoration of furniture',
                 price: 'Rs. 1000/hr',
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FurniturerepairPage()));
+                },
               ),
               ServiceTile(
                 icon: Icons.chair,
                 service: 'Custom Furniture',
                 description: 'Design and build custom furniture',
                 price: 'Rs. 2000/hr',
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CustomFurniturePage()));
+                },
               ),
               ServiceTile(
                 icon: Icons.home,
                 service: 'Cabinet Installation',
                 description: 'Install kitchen and bathroom cabinets',
                 price: 'Rs. 1500/hr',
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const CabinetInstallationPage()));
+                },
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Top Carpenters',
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 122, 165, 160)),
               ),
-              ProfessionalProfileTile(
+              const ProfessionalProfileTile(
                 name: 'Deepak Kumar',
                 experience: '12 years of experience',
                 rating: 4.9,
               ),
-              ProfessionalProfileTile(
+              const ProfessionalProfileTile(
                 name: 'Mina Sharma',
                 experience: '8 years of experience',
                 rating: 4.8,
               ),
-              ProfessionalProfileTile(
+              const ProfessionalProfileTile(
                 name: 'Ravi Patel',
                 experience: '10 years of experience',
                 rating: 4.7,
@@ -92,12 +114,15 @@ class ServiceTile extends StatelessWidget {
   final String service;
   final String description;
   final String price;
+  final VoidCallback onTap;
 
-  const ServiceTile({super.key, 
+  const ServiceTile({
+    super.key,
     required this.icon,
     required this.service,
     required this.description,
     required this.price,
+    required this.onTap,
   });
 
   @override
@@ -115,6 +140,7 @@ class ServiceTile extends StatelessWidget {
         ),
         subtitle: Text(description),
         trailing: Text(price),
+        onTap: onTap,
       ),
     );
   }
@@ -126,7 +152,8 @@ class ProfessionalProfileTile extends StatelessWidget {
   final double rating;
   //final String imagePath;
 
-  const ProfessionalProfileTile({super.key, 
+  const ProfessionalProfileTile({
+    super.key,
     required this.name,
     required this.experience,
     required this.rating,

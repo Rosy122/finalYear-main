@@ -59,58 +59,60 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: const Text('Privacy Policy', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),),
+              title: const Text(
+                'Privacy Policy',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              ),
               onTap: () {
                 Navigator.pop(context);
-                 Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                   PrivacyPolicyPage()));
-              },
-            ),
-            ListTile(
-              title: const Text('Terms of Use', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),),
-              onTap: () {
-                // Navigator.pop(context);
                 Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  TermsOfUsePage()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PrivacyPolicyPage()));
               },
             ),
             ListTile(
-              title: const Text('About', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),),
+              title: const Text(
+                'Terms of Use',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              ),
               onTap: () {
                 // Navigator.pop(context);
-                Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  AboutPage()));
-              },
-            ),
-             ListTile(
-              title: const Text('Contact Us', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),),
-              onTap: () {
-                // Navigator.pop(context);
-                 Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ContactUsPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TermsOfUsePage()));
               },
             ),
             ListTile(
-              title: const Text('Logout', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),),
+              title: const Text(
+                'About',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              ),
               onTap: () {
                 // Navigator.pop(context);
-                 Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  LogoutPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AboutPage()));
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Contact Us',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              ),
+              onTap: () {
+                // Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ContactUsPage()));
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Logout',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+              ),
+              onTap: () {
+                // Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LogoutPage()));
               },
             ),
           ],

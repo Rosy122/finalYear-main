@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profix_new/ACInstallationPage.dart';
+import 'package:profix_new/ACService.dart';
 import 'package:profix_new/DeepakACrepair.dart';
 import 'package:profix_new/RajACrepair.dart';
 import 'package:profix_new/SumanACrepair.dart';
@@ -54,19 +55,24 @@ class ACRepairPage extends StatelessWidget {
                           builder: (context) => const ACInstallationPage()));
                 },
               ),
-              ServiceTile(
-                icon: Icons.air,
-                service: 'AC Repair',
-                description: 'Repair and maintenance of AC units',
-                price: 'Rs. 1500/hr',
-                onTap: () {},
-              ),
+              // ServiceTile(
+              //   icon: Icons.air,
+              //   service: 'AC Repair',
+              //   description: 'Repair and maintenance of AC units',
+              //   price: 'Rs. 1500/hr',
+              //   onTap: () {},
+              // ),
               ServiceTile(
                 icon: Icons.filter_alt,
                 service: 'AC Servicing',
                 description: 'Regular servicing and cleaning',
                 price: 'Rs. 1000/hr',
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ACServicingPage()));
+                },
               ),
               const SizedBox(height: 20),
               const Text(

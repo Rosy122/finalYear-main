@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SaboPlanting extends StatefulWidget {
+class PranishaACService extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
@@ -9,7 +9,7 @@ class SaboPlanting extends StatefulWidget {
   final List<Map<String, String>> reviews;
   final String imagePath;
 
-  const SaboPlanting({
+  const PranishaACService({
     super.key,
     required this.name,
     required this.experience,
@@ -21,12 +21,13 @@ class SaboPlanting extends StatefulWidget {
   });
 
   @override
-  _SaboPlantingState createState() => _SaboPlantingState();
+  _PranishaACRepairState createState() => _PranishaACRepairState();
 }
 
-class _SaboPlantingState extends State<SaboPlanting> {
+class _PranishaACRepairState extends State<PranishaACService> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
+  double _userRating = 0.0;
 
   @override
   void initState() {
@@ -44,6 +45,12 @@ class _SaboPlantingState extends State<SaboPlanting> {
 
       _reviewTextController.clear();
     }
+  }
+
+  void _rateService(double rating) {
+    setState(() {
+      _userRating = rating;
+    });
   }
 
   @override
@@ -132,6 +139,8 @@ class _SaboPlantingState extends State<SaboPlanting> {
               const SizedBox(height: 10),
               ...reviews.map((review) => DetailedReviewTile(review: review)),
               const SizedBox(height: 20),
+              _buildRatingSection(),
+              const SizedBox(height: 20),
               _buildReviewForm(),
               const SizedBox(height: 20),
               Center(
@@ -157,6 +166,34 @@ class _SaboPlantingState extends State<SaboPlanting> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildRatingSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Rate the Service',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 122, 165, 160),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          children: List.generate(5, (index) {
+            return IconButton(
+              icon: Icon(
+                index < _userRating ? Icons.star : Icons.star_border,
+                color: Colors.yellow[700],
+              ),
+              onPressed: () => _rateService(index + 1),
+            );
+          }),
+        ),
+      ],
     );
   }
 
@@ -237,41 +274,41 @@ class DetailedReviewTile extends StatelessWidget {
   }
 }
 
-class SaboPlantingPage extends StatelessWidget {
-  const SaboPlantingPage({super.key});
+class PranishaACRepairPage extends StatelessWidget {
+  const PranishaACRepairPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SaboPlanting(
-      name: 'Sabo Shrestha',
-      experience: '5 years of experience in planting.',
-      rating: 4.7,
+    return const PranishaACService(
+      name: 'Pranisha Thapa',
+      experience: '10 years of experience in AC servicing.',
+      rating: 4.9,
       bio:
-          'Sabo Shrestha has been providing excellent planting services for the past 5 years. Known for his attention to detail and dedication, he ensures that every plant is placed perfectly for optimal growth.',
+          'Pranisha Khadka is a dedicated AC servicing expert with 5 years of experience, known for her professionalism and quality service.',
       services: [
-        'Garden Design',
-        'Planting Trees and Shrubs',
-        'Flower Bed Installation',
-        'Landscape Maintenance',
+        'AC Repair',
+        'AC Cleaning',
+        'AC Installation',
+        'AC Maintenance',
       ],
       reviews: [
         {
-          'reviewerName': 'Ravi Sharma',
+          'reviewerName': 'Meera Joshi',
           'reviewText':
-              'Sabo did an amazing job with our garden. Highly recommend his planting services!',
+              'Pranisha did a fantastic job. My AC is working perfectly now!',
         },
         {
-          'reviewerName': 'Nisha Gupta',
+          'reviewerName': 'Amit Singh',
           'reviewText':
-              'Very pleased with the work done by Sabo. He transformed our garden beautifully.',
+              'Very professional and thorough. Highly recommend her services.',
         },
         {
-          'reviewerName': 'Manish Kumar',
+          'reviewerName': 'Nina Patel',
           'reviewText':
-              'Sabo is very skilled in planting and landscaping. We are extremely satisfied with his work.',
+              'Great experience! Pranisha is knowledgeable and friendly.',
         },
       ],
-      imagePath: 'assets/SaboPlanting.PNG',
+      imagePath: 'assets/Pranisha.PNG',
     );
   }
 }

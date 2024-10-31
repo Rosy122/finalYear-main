@@ -9,7 +9,7 @@ class SunilElectrician extends StatelessWidget {
   final List<Map<String, String>> reviews;
   final String imagePath;
 
-  const SunilElectrician({super.key, 
+  const SunilElectrician({super.key,
     required this.name,
     required this.experience,
     required this.rating,
