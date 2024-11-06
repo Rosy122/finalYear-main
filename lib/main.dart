@@ -2,8 +2,8 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:profix_new/HomePage.dart';
-import 'package:profix_new/SignInPage.dart';
+import 'package:profix_new/Home/HomePage.dart';
+import 'package:profix_new/SignIn/SignInPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const SignInPage(),
       routes: {
-        '/signin': (context) =>  SignInPage(),
+        '/signin': (context) => SignInPage(),
         '/Home': (context) => HomePage(),
       },
     );
@@ -153,7 +153,7 @@ class _ProHomeState extends State<ProHome> {
             ),
           ),
         ],
-     ),
-);
-}
+      ),
+    );
+  }
 }
