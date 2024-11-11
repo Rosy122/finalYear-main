@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class RajeshPlumberProfile extends StatefulWidget {
   final String name;
@@ -9,7 +9,7 @@ class RajeshPlumberProfile extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
-  final String providerId; // Add providerId for Firestore document ID
+  final String providerId; // Firestore document ID
 
   const RajeshPlumberProfile({
     super.key,
@@ -31,11 +31,27 @@ class _RajeshPlumberProfileState extends State<RajeshPlumberProfile> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
   bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  Future<void> _fetchLikes() async {
+    // Fetch the likes count from Firestore
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
@@ -56,14 +72,15 @@ class _RajeshPlumberProfileState extends State<RajeshPlumberProfile> {
     });
 
     if (_isLiked) {
-      // Increment the likes count in Firestore
       FirebaseFirestore.instance
-          .collection('service Provider') // Ensure this matches your Firestore collection name
-          .doc(widget.providerId) // Use providerId to update the correct document
-          .update({
-            'likes': FieldValue.increment(1), // Increment the 'likes' field by 1
-          }).catchError((error) {
-            print("Failed to increment likes: $error"); // Catch any errors
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
           });
     }
   }
@@ -117,16 +134,23 @@ class _RajeshPlumberProfileState extends State<RajeshPlumberProfile> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
+                          ],
+                        ),
                       ],
                     ),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      _isLiked ? Icons.favorite : Icons.favorite_border,
-                      color: Colors.red,
-                    ),
-                    onPressed: _toggleLike,
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -170,7 +194,8 @@ class _RajeshPlumberProfileState extends State<RajeshPlumberProfile> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 122, 165, 160),
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -207,8 +232,8 @@ class _RajeshPlumberProfileState extends State<RajeshPlumberProfile> {
             labelText: 'Your Review',
             border: OutlineInputBorder(),
           ),
-          maxLines: 2, // Reduced size for the review box
-          minLines: 1, // Maintain a single line as minimum
+          maxLines: 2,
+          minLines: 1,
         ),
         const SizedBox(height: 10),
         ElevatedButton(
@@ -226,14 +251,13 @@ class _RajeshPlumberProfileState extends State<RajeshPlumberProfile> {
 class ServiceListTile extends StatelessWidget {
   final String service;
 
-  const ServiceListTile({super.key, 
-    required this.service,
-  });
+  const ServiceListTile({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
+      leading:
+          const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
       title: Text(service, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
@@ -242,9 +266,7 @@ class ServiceListTile extends StatelessWidget {
 class DetailedReviewTile extends StatelessWidget {
   final Map<String, String> review;
 
-  const DetailedReviewTile({super.key, 
-    required this.review,
-  });
+  const DetailedReviewTile({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -255,7 +277,8 @@ class DetailedReviewTile extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 122, 165, 160),
         child: Icon(Icons.person, color: Colors.white),
       ),
-      title: Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
+      title:
+          Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(reviewText),
     );
   }
@@ -295,8 +318,8 @@ class MyHomePage extends StatelessWidget {
               'Very professional and knowledgeable. Solved our plumbing issue with ease.',
         },
       ],
-      imagePath: 'assets/RajeshKumarPlumber.PNG', // Specify the path to the image asset
-      providerId: 'your_provider_id_here', // Replace with actual Firestore document ID
+      imagePath: 'assets/RajeshKumarPlumber.PNG',
+      providerId: 'your_provider_id_here', // Replace with Firestore document ID
     );
   }
 }

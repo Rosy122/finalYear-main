@@ -6,18 +6,19 @@ import 'package:profix_new/Electrician/ElectricianPage.dart';
 import 'package:profix_new/EventPlanner/EventPlannerPage.dart';
 import 'package:profix_new/Gardener/GardenerPage.dart';
 import 'package:profix_new/Home/NotificationPage.dart';
+import 'package:profix_new/Home/ProfilePage.dart';
+import 'package:profix_new/Home/SeeAllPage.dart';
+import 'package:profix_new/Home/SeeAllPage1.dart';
+import 'package:profix_new/Home/SeeAllPage2.dart';
 import 'package:profix_new/Home/ThreeLine/About.dart';
 import 'package:profix_new/Home/ThreeLine/Logout.dart';
 import 'package:profix_new/Home/ThreeLine/PrivacyPolicy.dart';
 import 'package:profix_new/Home/ThreeLine/TermsOfUse.dart';
 import 'package:profix_new/Home/ThreeLine/contactUs.dart';
+import 'package:profix_new/Home/ViewRecommendationPage.dart';
 import 'package:profix_new/Painter/PainterPage.dart';
 import 'package:profix_new/Photographer/PhotographerPage.dart';
 import 'package:profix_new/Plumber/PlumberPage.dart';
-import 'package:profix_new/Home/SeeAllPage.dart';
-import 'package:profix_new/Home/SeeAllPage1.dart';
-import 'package:profix_new/Home/SeeAllPage2.dart';
-import 'package:profix_new/Home/ViewRecommendationPage.dart';
 
 class HomePage extends StatelessWidget {
   final String username; // Add this parameter to receive the username
@@ -336,23 +337,36 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home',
             ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.photo),
-            label: 'Profile',
-          ),
-        ],
-      ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.business,
+              ),
+              label: 'Business',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.photo),
+              label: 'Profile',
+            ),
+          ],
+          onTap: (index) {
+            print("BottomNavigationBar tapped, index: $index");
+            if (index == 2) {
+              print("Navigating to ProfilePage"); // Debug print
+              // Navigate to ProfilePage when the "Profile" icon is tapped
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfilePage()),
+              );
+            }
+            // Add any additional navigation or state change logic for other tabs if needed
+          }),
     );
   }
 }

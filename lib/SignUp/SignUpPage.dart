@@ -176,49 +176,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      const Row(
-                        children: [
-                          Expanded(child: Divider()),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text(
-                              'Sign Up with',
-                              style: TextStyle(
-                                color: Color(0xFF4A4B4B),
-                              ),
-                            ),
-                          ),
-                          Expanded(child: Divider()),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const SizedBox(height: 20),
-                          const SizedBox(height: 10),
-                          // Google Logo
-                          SizedBox(
-                            width: 25, // Adjust the width as needed
-                            height: 25, // Adjust the height as needed
-                            child: Image.asset(
-                              'assets/Google.png',
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          // Facebook Logo
-                          SizedBox(
-                            width: 20, // Adjust the width as needed
-                            height: 20, // Adjust the height as needed
-                            child: Image.asset(
-                              'assets/Facebook.PNG',
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
@@ -254,17 +211,25 @@ class _SignUpPageState extends State<SignUpPage> {
     }
 
     try {
+      // Create the user with email and password
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
 
+      // Set the display name to the user's full name
       if (userCredential.user != null) {
-        // Navigate to SignInPage on successful registration
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => SignInPage()));
+        await userCredential.user!.updateDisplayName(_nameController.text);
+        await userCredential.user!
+            .reload(); // Reload to apply changes immediately
       }
+
+      // Navigate to SignInPage on successful registration
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => SignInPage()),
+      );
     } on FirebaseAuthException catch (e) {
       setState(() {
         if (e.code == 'email-already-in-use') {
@@ -302,5 +267,5 @@ class MyClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
-}
+  }
 }

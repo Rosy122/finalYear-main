@@ -41,6 +41,9 @@ dependencies:
   google_sign_in: ^6.2.1
   shared_preferences: ^2.3.2
   firebase_analytics: ^11.3.3
+  image_picker: ^1.1.2
+  firebase_storage: ^12.3.5
+
 
 dev_dependencies:
   flutter_test:
@@ -178,3 +181,4 @@ flutter:
     - assets/Sunisa.PNG
     - assets/Manoj.PNG
     - assets/Anjana.PNG
+    - assets/Placeholder.png
