@@ -231,7 +231,7 @@ class PlumberPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SudipPlumberProfile(
+                          builder: (context) => const SudipBathroomInstallation(
                                 name: 'Sudip Shrestha',
                                 experience:
                                     '5 years of experience in professional plumbing services.',
@@ -239,8 +239,7 @@ class PlumberPage extends StatelessWidget {
                                 bio:
                                     'Sudip Shrestha has 5 years of experience in providing top-notch plumbing services, specializing in both residential and commercial plumbing solutions. He is committed to delivering high-quality work with attention to detail and customer satisfaction.',
                                 services: [
-                                  'PEycgwuhmxRpCIFEfqSr'
-                                      'Leak Repair',
+                                  'Leak Repair',
                                   'Pipe Installation',
                                   'Bathroom and Kitchen Plumbing',
                                   'Emergency Plumbing Services'

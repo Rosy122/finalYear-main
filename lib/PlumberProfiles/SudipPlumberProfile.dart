@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SudipPlumberProfile extends StatefulWidget {
+class SudipBathroomInstallation extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
@@ -9,7 +9,7 @@ class SudipPlumberProfile extends StatefulWidget {
   final List<Map<String, String>> reviews;
   final String imagePath;
 
-  const SudipPlumberProfile({
+  const SudipBathroomInstallation({
     super.key,
     required this.name,
     required this.experience,
@@ -21,10 +21,12 @@ class SudipPlumberProfile extends StatefulWidget {
   });
 
   @override
-  _SudipPlumberProfileState createState() => _SudipPlumberProfileState();
+  _SudipBathroomInstallationProfileState createState() =>
+      _SudipBathroomInstallationProfileState();
 }
 
-class _SudipPlumberProfileState extends State<SudipPlumberProfile> {
+class _SudipBathroomInstallationProfileState
+    extends State<SudipBathroomInstallation> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
 
@@ -179,8 +181,8 @@ class _SudipPlumberProfileState extends State<SudipPlumberProfile> {
             labelText: 'Your Review',
             border: OutlineInputBorder(),
           ),
-          maxLines: 2,
-          minLines: 1,
+          maxLines: 2, // Reduced size for the review box
+          minLines: 1, // Maintain a single line as minimum
         ),
         const SizedBox(height: 10),
         ElevatedButton(
@@ -237,38 +239,39 @@ class DetailedReviewTile extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class SudipBathroomInstallationPage extends StatelessWidget {
+  const SudipBathroomInstallationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SudipPlumberProfile(
+    return const SudipBathroomInstallation(
       name: 'Sudip Shrestha',
-      experience: '5 years of experience in professional plumbing services.',
-      rating: 4.8,
+      experience: '12 years of experience in bathroom installation services.',
+      rating: 4.9,
       bio:
-          'Sudip Shrestha has 5 years of experience in providing top-notch plumbing services, specializing in both residential and commercial plumbing solutions. He is committed to delivering high-quality work with attention to detail and customer satisfaction.',
+          'Sudip Shrestha has been delivering high-quality bathroom installation services for 12 years. With a commitment to excellence and customer satisfaction, Sudip ensures that every project is completed to the highest standards.',
       services: [
-        'Leak Repair',
-        'Pipe Installation',
-        'Bathroom and Kitchen Plumbing',
-        'Emergency Plumbing Services'
+        'Full Bathroom Installation',
+        'Shower Installation',
+        'Bathtub Installation',
+        'Bathroom Renovation',
+        'Toilet Installation',
       ],
       reviews: [
         {
-          'reviewerName': 'Kamal Rai',
+          'reviewerName': 'Ramesh Adhikari',
           'reviewText':
-              'Sudip was very thorough and professional. I am extremely satisfied with his work!',
+              'Sudip did an amazing job with our bathroom renovation. Highly recommended!',
         },
         {
-          'reviewerName': 'Nisha Bhattarai',
+          'reviewerName': 'Puja Sharma',
           'reviewText':
-              'Quick and efficient service. Sudip is very knowledgeable and reliable.',
+              'Very professional and detail-oriented. Sudip exceeded our expectations!',
         },
         {
-          'reviewerName': 'Sita Gurung',
+          'reviewerName': 'Mina Kharel',
           'reviewText':
-              'Excellent service! Sudip fixed our plumbing issues in no time.',
+              'Great experience working with Sudip. Our new bathroom looks fantastic!',
         },
       ],
       imagePath:
