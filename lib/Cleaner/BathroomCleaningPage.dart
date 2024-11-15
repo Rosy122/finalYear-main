@@ -146,6 +146,7 @@ class BathroomCleaningPage extends StatelessWidget {
                                   },
                                 ],
                                 imagePath: 'assets/MayaBathroomCleaner.PNG',
+                                providerId: 'Maya Thapa(Bathroom Cleaning)',
                               )));
                 },
               ),
@@ -189,6 +190,7 @@ class BathroomCleaningPage extends StatelessWidget {
                                   },
                                 ],
                                 imagePath: 'assets/SureshBathroomCleaner.PNG',
+                                providerId: 'Suresh Khadka(Bathroom Cleaning)',
                               )));
                 },
               ),
@@ -202,37 +204,38 @@ class BathroomCleaningPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const PriyankaBathroomCleaning(
-                                name: 'Priyanka Joshi',
-                                experience:
-                                    '6 years of experience in professional bathroom cleaning.',
-                                rating: 4.8,
-                                bio:
-                                    'With 6 years of experience, I specialize in bathroom cleaning with a focus on thoroughness and efficiency. My services ensure your bathroom is hygienic and spotless.',
-                                services: [
-                                  'Complete Bathroom Cleaning',
-                                  'Tile and Grout Scrubbing',
-                                  'Mirror and Glass Cleaning',
-                                  'Toilet and Sink Sanitization'
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Anjana Rai',
-                                    'reviewText':
-                                        'Priyanka was fantastic! My bathroom looks brand new. Highly recommend!',
-                                  },
-                                  {
-                                    'reviewerName': 'Rajendra Sharma',
-                                    'reviewText':
-                                        'Professional and punctual. Very satisfied with the service.',
-                                  },
-                                  {
-                                    'reviewerName': 'Kriti Gautam',
-                                    'reviewText':
-                                        'Excellent service. Priyanka pays great attention to detail.',
-                                  },
-                                ],
-                                imagePath: 'assets/PriyankaBathroomCleaner.PNG',
-                              )));
+                              name: 'Priyanka Joshi',
+                              experience:
+                                  '6 years of experience in professional bathroom cleaning.',
+                              rating: 4.8,
+                              bio:
+                                  'With 6 years of experience, I specialize in bathroom cleaning with a focus on thoroughness and efficiency. My services ensure your bathroom is hygienic and spotless.',
+                              services: [
+                                'Complete Bathroom Cleaning',
+                                'Tile and Grout Scrubbing',
+                                'Mirror and Glass Cleaning',
+                                'Toilet and Sink Sanitization'
+                              ],
+                              reviews: [
+                                {
+                                  'reviewerName': 'Anjana Rai',
+                                  'reviewText':
+                                      'Priyanka was fantastic! My bathroom looks brand new. Highly recommend!',
+                                },
+                                {
+                                  'reviewerName': 'Rajendra Sharma',
+                                  'reviewText':
+                                      'Professional and punctual. Very satisfied with the service.',
+                                },
+                                {
+                                  'reviewerName': 'Kriti Gautam',
+                                  'reviewText':
+                                      'Excellent service. Priyanka pays great attention to detail.',
+                                },
+                              ],
+                              imagePath: 'assets/PriyankaBathroomCleaner.PNG',
+                              providerId:
+                                  'Priyanka Joshi(Bathroom Cleaning)')));
                 },
               ),
             ],

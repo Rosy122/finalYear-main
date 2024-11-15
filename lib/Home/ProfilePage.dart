@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:profix_new/SignIn/SignInPage.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -19,6 +20,12 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     _loadUserData();
     _checkAndPromptForDisplayName();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _loadUserData(); // Reload user data when returning to this page
   }
 
   Future<void> _loadUserData() async {
@@ -107,18 +114,68 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  // void _enableTwoFactorAuth() {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => TwoFactorAuthenticationPage()),
-  //   );
-  // }
-
   void _openLanguageRegionSettings() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => openLanguageRegionSettings()),
     );
+  }
+
+  void _manageSessions() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SessionManagementPage()),
+    );
+  }
+
+  Future<void> _deleteAccount() async {
+    final shouldDelete = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Delete Account"),
+          content: Text(
+              "Are you sure you want to delete your account? This action is irreversible."),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: Text("Delete"),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (shouldDelete == true) {
+      try {
+        await user?.delete();
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => SignInPage()),
+          (Route<dynamic> route) => false,
+        );
+        print("Account deleted successfully.");
+      } catch (e) {
+        print("Failed to delete account: $e");
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text("Error"),
+            content: Text(
+                "Failed to delete account. Please re-authenticate and try again."),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text("OK"),
+              ),
+            ],
+          ),
+        );
+      }
+    }
   }
 
   @override
@@ -202,48 +259,24 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               SizedBox(height: 30),
-
-              // Account Settings Section
               _buildSectionTitle('Account Settings'),
               _buildListTile(Icons.lock, 'Change Password', _changePassword),
-              // _buildListTile(Icons.phone, 'Two-Factor Authentication',
-              //     _enableTwoFactorAuth),
-              // _buildListTile(
-              //     Icons.account_circle, 'Linked Accounts', _linkAccounts),
-
               SizedBox(height: 20),
-
-              // Preferences Section
               _buildSectionTitle('Preferences'),
-              // _buildListTile(Icons.notifications, 'Notification Settings',
-              //     _openNotificationSettings),
               _buildListTile(Icons.language, 'Language & Region',
                   _openLanguageRegionSettings),
-              _buildListTile(Icons.brightness_6, 'Theme', _changeTheme),
-
               SizedBox(height: 20),
-
-              // Payment Section
               _buildSectionTitle('Payment Methods'),
               _buildListTile(
                   Icons.credit_card, 'Saved Cards', _manageSavedCards),
               _buildListTile(
                   Icons.account_balance, 'Bank Account', _manageBankAccount),
-
               SizedBox(height: 20),
-
-              // Security Section
               _buildSectionTitle('Security'),
               _buildListTile(
                   Icons.security, 'Session Management', _manageSessions),
               _buildListTile(Icons.delete, 'Delete Account', _deleteAccount),
-
               SizedBox(height: 20),
-
-              // Support Section
-              _buildSectionTitle('Support'),
-              _buildListTile(Icons.help, 'Help Center', _openHelpCenter),
-              _buildListTile(Icons.feedback, 'Send Feedback', _sendFeedback),
             ],
           ),
         ),
@@ -275,13 +308,10 @@ class _ProfilePageState extends State<ProfilePage> {
   void _changeTheme() => print("Theme tapped");
   void _manageSavedCards() => print("Saved Cards tapped");
   void _manageBankAccount() => print("Bank Account tapped");
-  void _manageSessions() => print("Session Management tapped");
-  void _deleteAccount() => print("Delete Account tapped");
-  void _openHelpCenter() => print("Help Center tapped");
-  void _sendFeedback() => print("Send Feedback tapped");
+  void _logSessionManagement() => print("Session Management tapped");
+  void _Accountdelete() => print("Delete Account tapped");
 }
 
-// Placeholder pages for navigation
 class ChangePasswordPage extends StatefulWidget {
   @override
   _ChangePasswordPageState createState() => _ChangePasswordPageState();
@@ -304,16 +334,12 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
     try {
       User? user = _auth.currentUser;
-
-      // Re-authenticate user with current password
       final credential = EmailAuthProvider.credential(
         email: user?.email ?? '',
         password: _currentPasswordController.text,
       );
 
       await user?.reauthenticateWithCredential(credential);
-
-      // Update password
       await user?.updatePassword(_newPasswordController.text);
       setState(() {
         _errorMessage = "Password changed successfully!";
@@ -369,117 +395,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   }
 }
 
-// Two-Factor Authentication Page
-// class TwoFactorAuthenticationPage extends StatefulWidget {
-//   @override
-//   _TwoFactorAuthenticationPageState createState() =>
-//       _TwoFactorAuthenticationPageState();
-// }
-
-// class _TwoFactorAuthenticationPageState
-//     extends State<TwoFactorAuthenticationPage> {
-//   final FirebaseAuth _auth = FirebaseAuth.instance;
-//   String _verificationId = '';
-//   final _phoneController = TextEditingController();
-//   final _smsCodeController = TextEditingController();
-//   String _message = '';
-
-//   Future<void> _verifyPhoneNumber() async {
-//     await _auth.verifyPhoneNumber(
-//       phoneNumber: _phoneController.text,
-//       verificationCompleted: (PhoneAuthCredential credential) async {
-//         await _auth.currentUser?.linkWithCredential(credential);
-//         setState(() {
-//           _message = "Phone number automatically verified and linked.";
-//         });
-//       },
-//       verificationFailed: (FirebaseAuthException e) {
-//         setState(() {
-//           _message = "Verification failed. Please try again.";
-//         });
-//       },
-//       codeSent: (String verificationId, int? resendToken) {
-//         setState(() {
-//           _verificationId = verificationId;
-//           _message = "Verification code sent.";
-//         });
-//       },
-//       codeAutoRetrievalTimeout: (String verificationId) {
-//         setState(() {
-//           _verificationId = verificationId;
-//         });
-//       },
-//     );
-//   }
-
-//   Future<void> _signInWithSmsCode() async {
-//     PhoneAuthCredential credential = PhoneAuthProvider.credential(
-//       verificationId: _verificationId,
-//       smsCode: _smsCodeController.text,
-//     );
-
-//     try {
-//       await _auth.currentUser?.linkWithCredential(credential);
-//       setState(() {
-//         _message = "Phone number verified and linked successfully.";
-//       });
-//     } catch (e) {
-//       setState(() {
-//         _message = "Failed to verify SMS code. Please try again.";
-//       });
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text("Two-Factor Authentication")),
-//       body: Padding(
-//         padding: const EdgeInsets.all(16.0),
-//         child: Column(
-//           children: [
-//             TextField(
-//               controller: _phoneController,
-//               decoration: InputDecoration(labelText: 'Phone Number'),
-//               keyboardType: TextInputType.phone,
-//             ),
-//             ElevatedButton(
-//               onPressed: _verifyPhoneNumber,
-//               child: Text("Verify Phone Number"),
-//             ),
-//             if (_verificationId.isNotEmpty) ...[
-//               TextField(
-//                 controller: _smsCodeController,
-//                 decoration: InputDecoration(labelText: 'SMS Code'),
-//               ),
-//               ElevatedButton(
-//                 onPressed: _signInWithSmsCode,
-//                 child: Text("Submit Code"),
-//               ),
-//             ],
-//             if (_message.isNotEmpty) ...[
-//               SizedBox(height: 20),
-//               Text(
-//                 _message,
-//                 style: TextStyle(color: Colors.red),
-//               ),
-//             ],
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class LinkedAccountsPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text("Linked Accounts")),
-//       body: Center(child: Text("Linked Accounts Page")),
-//     );
-//   }
-// }
 // Language & Region Settings Page
 class openLanguageRegionSettings extends StatefulWidget {
   @override
@@ -549,6 +464,51 @@ class _LanguageRegionSettingsPageState
           }).toList(),
         );
       },
+    );
+  }
+}
+
+// Session Management Page
+class SessionManagementPage extends StatefulWidget {
+  @override
+  _SessionManagementPageState createState() => _SessionManagementPageState();
+}
+
+class _SessionManagementPageState extends State<SessionManagementPage> {
+  Future<void> _signOutFromAllSessions() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => SignInPage()),
+        (Route<dynamic> route) => false,
+      );
+    } catch (e) {
+      print("Error signing out: $e");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Session Management"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Text(
+              "Manage your active sessions",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _signOutFromAllSessions,
+              child: Text("Sign out from all sessions"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

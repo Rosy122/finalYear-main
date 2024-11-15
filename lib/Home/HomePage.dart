@@ -345,19 +345,13 @@ class HomePage extends StatelessWidget {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.business,
-              ),
-              label: 'Business',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.photo),
+              icon: Icon(Icons.person),
               label: 'Profile',
             ),
           ],
           onTap: (index) {
             print("BottomNavigationBar tapped, index: $index");
-            if (index == 2) {
+            if (index == 1) {
               print("Navigating to ProfilePage"); // Debug print
               // Navigate to ProfilePage when the "Profile" icon is tapped
               Navigator.push(

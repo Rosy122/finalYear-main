@@ -101,8 +101,40 @@ class LightingInstallationPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              const HariLightingInstallationPage()));
+                          builder: (context) => const HariLightingInstallation(
+                                name: 'Hari Shrestha',
+                                experience:
+                                    '8 years of experience in lighting installation services.',
+                                rating: 4.9,
+                                bio:
+                                    'Hari Shrestha has 8 years of experience in lighting installation. He is highly regarded for his precision and ability to create efficient and aesthetically pleasing lighting solutions.',
+                                services: [
+                                  'Indoor Lighting Installation',
+                                  'Outdoor Lighting Setup',
+                                  'LED Lighting Installation',
+                                  'Lighting Maintenance and Repair',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Ram Thapa',
+                                    'reviewText':
+                                        'Hari did an amazing job with our indoor lighting. He was very professional and attentive to detail.',
+                                  },
+                                  {
+                                    'reviewerName': 'Maya Shrestha',
+                                    'reviewText':
+                                        'Very satisfied with Hari’s service. The lighting setup was done perfectly and has transformed our living space.',
+                                  },
+                                  {
+                                    'reviewerName': 'Shyam Gurung',
+                                    'reviewText':
+                                        'Hari is experienced and reliable. The outdoor lighting he installed looks fantastic and works flawlessly.',
+                                  },
+                                ],
+                                imagePath: 'assets/HariLighting.PNG',
+                                providerId:
+                                    'Hari Shrestha(Lighting Installation)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -114,8 +146,40 @@ class LightingInstallationPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              const AshaLightingInstallationPage()));
+                          builder: (context) => const AshaLightingInstallation(
+                                name: 'Asha Khadka',
+                                experience:
+                                    '6 years of experience in lighting installation services.',
+                                rating: 4.8,
+                                bio:
+                                    'Asha Khadka has been providing lighting installation services for 6 years. She is known for her attention to detail and her ability to deliver excellent lighting solutions.',
+                                services: [
+                                  'Indoor Lighting Installation',
+                                  'Outdoor Lighting Setup',
+                                  'LED Lighting Installation',
+                                  'Lighting Maintenance and Repair',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Sunil Lama',
+                                    'reviewText':
+                                        'Asha did an excellent job with our new lighting setup. She was professional and very knowledgeable.',
+                                  },
+                                  {
+                                    'reviewerName': 'Nirmala Sharma',
+                                    'reviewText':
+                                        'We were very happy with Asha’s work. The lighting installation was done perfectly and exactly as we wanted.',
+                                  },
+                                  {
+                                    'reviewerName': 'Kiran Shrestha',
+                                    'reviewText':
+                                        'Asha is highly skilled and provided great service. The lighting in our office looks fantastic.',
+                                  },
+                                ],
+                                imagePath: 'assets/AshaLighting.PNG',
+                                providerId:
+                                    'Asha Khadka(Lighting Installation)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -128,7 +192,40 @@ class LightingInstallationPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              const BikashLightingInstallationPage()));
+                              const BikashLightingInstallation(
+                                name: 'Bikash Lama',
+                                experience:
+                                    '10 years of experience in lighting installation services.',
+                                rating: 4.7,
+                                bio:
+                                    'Bikash Lama has been delivering professional lighting installation services for 10 years. His expertise ensures top-notch lighting solutions for both residential and commercial spaces.',
+                                services: [
+                                  'Indoor Lighting Installation',
+                                  'Outdoor Lighting Installation',
+                                  'LED Lighting Solutions',
+                                  'Lighting System Maintenance',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Ramesh Thapa',
+                                    'reviewText':
+                                        'Bikash did an outstanding job with our office lighting. Highly professional and efficient.',
+                                  },
+                                  {
+                                    'reviewerName': 'Priya Shrestha',
+                                    'reviewText':
+                                        'We are extremely satisfied with Bikash’s service. The lighting installation was perfect.',
+                                  },
+                                  {
+                                    'reviewerName': 'Rajesh Lama',
+                                    'reviewText':
+                                        'Bikash is very skilled and his work is impressive. The lighting in our home looks amazing now.',
+                                  },
+                                ],
+                                imagePath: 'assets/BikashLighting.PNG',
+                                providerId:
+                                    'Bikash Lama(Lighting Installation)',
+                              )));
                 },
               ),
             ],

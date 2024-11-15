@@ -123,22 +123,24 @@ class WindowCleaningPage extends StatelessWidget {
                         ],
                         reviews: [
                           {
-                            'reviewerName': 'Ravi Patel',
-                            'reviewText':
+                            'reviewer': 'Ravi Patel',
+                            'review':
                                 'Anil did a fantastic job cleaning my windows. Highly recommended!',
                           },
                           {
-                            'reviewerName': 'Meera Sharma',
-                            'reviewText':
+                            'reviewer': 'Meera Sharma',
+                            'review':
                                 'Professional and efficient service. The windows look great!',
                           },
                           {
-                            'reviewerName': 'Sanjay Reddy',
-                            'reviewText':
+                            'reviewer': 'Sanjay Reddy',
+                            'review':
                                 'Very thorough and reliable. Will use again for sure.',
                           },
                         ],
-                        imagePath: 'assets/AnilWindowCleaner.PNG',
+                        imagePath:
+                            'assets/AnilWindowCleaner.PNG', // Replace with the path to Anil Kumar's image
+                        providerId: 'Anil Kumar(Window Cleaning)',
                       ),
                     ),
                   );
@@ -154,37 +156,37 @@ class WindowCleaningPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const PriyaWindowCleaning(
-                        name: 'Priya Shrestha',
-                        experience:
-                            '5 years of experience in professional window cleaning.',
-                        rating: 4.9,
-                        bio:
-                            'With 5 years of experience in window cleaning, I offer high-quality and reliable services. My focus is on delivering a sparkling clean finish for every job.',
-                        services: [
-                          'Residential Window Cleaning',
-                          'Commercial Window Cleaning',
-                          'High-rise Window Cleaning',
-                          'Post-Construction Window Cleaning'
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Anit Gurung',
-                            'reviewText':
-                                'Priya did an excellent job with my windows. Very satisfied!',
-                          },
-                          {
-                            'reviewerName': 'Nina Rai',
-                            'reviewText':
-                                'Professional service and the windows are spotless!',
-                          },
-                          {
-                            'reviewerName': 'Rajeev Sharma',
-                            'reviewText':
-                                'Great attention to detail. Highly recommended for window cleaning.',
-                          },
-                        ],
-                        imagePath: 'assets/PriyaWindowCleaner.PNG',
-                      ),
+                          name: 'Priya Shrestha',
+                          experience:
+                              '5 years of experience in professional window cleaning.',
+                          rating: 4.9,
+                          bio:
+                              'With 5 years of experience in window cleaning, I offer high-quality and reliable services. My focus is on delivering a sparkling clean finish for every job.',
+                          services: [
+                            'Residential Window Cleaning',
+                            'Commercial Window Cleaning',
+                            'High-rise Window Cleaning',
+                            'Post-Construction Window Cleaning'
+                          ],
+                          reviews: [
+                            {
+                              'reviewerName': 'Anit Gurung',
+                              'reviewText':
+                                  'Priya did an excellent job with my windows. Very satisfied!',
+                            },
+                            {
+                              'reviewerName': 'Nina Rai',
+                              'reviewText':
+                                  'Professional service and the windows are spotless!',
+                            },
+                            {
+                              'reviewerName': 'Rajeev Sharma',
+                              'reviewText':
+                                  'Great attention to detail. Highly recommended for window cleaning.',
+                            },
+                          ],
+                          imagePath: 'assets/PriyaWindowCleaner.PNG',
+                          providerId: 'Priya Shrestha(Window Cleaning)'),
                     ),
                   );
                 },
@@ -229,6 +231,7 @@ class WindowCleaningPage extends StatelessWidget {
                                   },
                                 ],
                                 imagePath: 'assets/RohitWindowCleaner.PNG',
+                                providerId: 'Rohit Shakya(Window Cleaning)',
                               )));
                 },
               ),

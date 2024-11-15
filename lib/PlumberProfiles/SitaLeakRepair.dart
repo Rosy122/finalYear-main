@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class SitaLeakRepairProfile extends StatefulWidget {
@@ -8,8 +9,10 @@ class SitaLeakRepairProfile extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
+  final String providerId; // Add providerId for Firestore document ID
 
-  const SitaLeakRepairProfile({super.key, 
+  const SitaLeakRepairProfile({
+    super.key,
     required this.name,
     required this.experience,
     required this.rating,
@@ -17,6 +20,7 @@ class SitaLeakRepairProfile extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
+    required this.providerId, // Initialize providerId
   });
 
   @override
@@ -26,15 +30,33 @@ class SitaLeakRepairProfile extends StatefulWidget {
 class _SitaLeakRepairProfileState extends State<SitaLeakRepairProfile> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
+  bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  // Fetch likes from Firestore
+  Future<void> _fetchLikes() async {
+    // Fetch the likes count from Firestore
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
-    final reviewText = _reviewTextController.text;
+    final String reviewText = _reviewTextController.text;
 
     if (reviewText.isNotEmpty) {
       setState(() {
@@ -42,6 +64,25 @@ class _SitaLeakRepairProfileState extends State<SitaLeakRepairProfile> {
       });
 
       _reviewTextController.clear();
+    }
+  }
+
+  void _toggleLike() {
+    setState(() {
+      _isLiked = !_isLiked;
+    });
+
+    if (_isLiked) {
+      FirebaseFirestore.instance
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
+          });
     }
   }
 
@@ -94,6 +135,20 @@ class _SitaLeakRepairProfileState extends State<SitaLeakRepairProfile> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
+                          ],
+                        ),
                       ],
                     ),
                   )
@@ -140,7 +195,8 @@ class _SitaLeakRepairProfileState extends State<SitaLeakRepairProfile> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 122, 165, 160),
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -196,14 +252,13 @@ class _SitaLeakRepairProfileState extends State<SitaLeakRepairProfile> {
 class ServiceListTile extends StatelessWidget {
   final String service;
 
-  const ServiceListTile({super.key, 
-    required this.service,
-  });
+  const ServiceListTile({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
+      leading:
+          const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
       title: Text(service, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
@@ -212,9 +267,7 @@ class ServiceListTile extends StatelessWidget {
 class DetailedReviewTile extends StatelessWidget {
   final Map<String, String> review;
 
-  const DetailedReviewTile({super.key, 
-    required this.review,
-  });
+  const DetailedReviewTile({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +278,8 @@ class DetailedReviewTile extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 122, 165, 160),
         child: Icon(Icons.person, color: Colors.white),
       ),
-      title: Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
+      title:
+          Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(reviewText),
     );
   }
@@ -265,8 +319,8 @@ class SitaLeakRepairPage extends StatelessWidget {
               'Sita\'s attention to detail is impressive. She fixed our toilet leak perfectly, and we haven’t had any issues since.',
         },
       ],
-      imagePath:
-          'assets/SitaLeakRepair.PNG', // Specify the correct path to the image asset
+      imagePath: 'assets/SitaLeakRepair.PNG',
+      providerId: 'your_provider_id_here', // Firestore document ID here
     );
   }
 }

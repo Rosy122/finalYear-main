@@ -103,7 +103,34 @@ class LeakRepairPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RamLeakRepairPage()));
+                          builder: (context) => const RamLeakRepairProfile(
+                                name: 'Ram Thapa',
+                                experience:
+                                    '10 years of experience in leak repair services.',
+                                rating: 4.9,
+                                bio:
+                                    'Ram Thapa has been providing professional leak repair services for over a decade. He specializes in detecting and fixing leaks with precision and efficiency.',
+                                services: [
+                                  'Water Pipe Leak Repair',
+                                  'Faucet Leak Fixing',
+                                  'Toilet Leak Repair',
+                                  'Roof and Ceiling Leak Repair'
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Bikash Tamang',
+                                    'reviewText':
+                                        'Ram did a fantastic job fixing our leaking pipes. He was quick and efficient.',
+                                  },
+                                  {
+                                    'reviewerName': 'Anjana KC',
+                                    'reviewText':
+                                        'Highly recommend Ram for any leak repair needs. He fixed our roof leak with great attention to detail.',
+                                  },
+                                ],
+                                imagePath: 'assets/RamLeakRepair.PNG',
+                                providerId: 'Y2N4aReSGaGxrqHKLf8M',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -115,7 +142,39 @@ class LeakRepairPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SitaLeakRepairPage()));
+                          builder: (context) => const SitaLeakRepairProfile(
+                                name: 'Sita Sharma',
+                                experience:
+                                    '7 years of experience in leak repair services.',
+                                rating: 4.8,
+                                bio:
+                                    'Sita Sharma is a highly skilled professional with 7 years of experience in leak repair services. She is known for her meticulous approach and dedication to resolving even the most challenging leaks efficiently.',
+                                services: [
+                                  'Water Pipe Leak Repair',
+                                  'Faucet Leak Fixing',
+                                  'Toilet Leak Repair',
+                                  'Roof and Ceiling Leak Repair',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Ramesh Thapa',
+                                    'reviewText':
+                                        'Sita provided excellent service. She was prompt and fixed the leak quickly and efficiently.',
+                                  },
+                                  {
+                                    'reviewerName': 'Gita Sharma',
+                                    'reviewText':
+                                        'I highly recommend Sita for any leak repairs. Her work is of the highest quality, and she is very professional.',
+                                  },
+                                  {
+                                    'reviewerName': 'Prakash Shrestha',
+                                    'reviewText':
+                                        'Sita\'s attention to detail is impressive. She fixed our toilet leak perfectly, and we haven’t had any issues since.',
+                                  },
+                                ],
+                                imagePath: 'assets/SitaLeakRepair.PNG',
+                                providerId: 'A2iTZkuKdqTVQRmUzemC',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -127,7 +186,39 @@ class LeakRepairPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const GopalLeakRepairPage()));
+                          builder: (context) => const GopalLeakRepair(
+                                name: 'Gopal Lama',
+                                experience:
+                                    '12 years of experience in leak repair services.',
+                                rating: 4.7,
+                                bio:
+                                    'Gopal Lama has been in the leak repair industry for 12 years. His extensive experience and technical skills make him a reliable choice for resolving any kind of leak issue.',
+                                services: [
+                                  'Water Pipe Leak Repair',
+                                  'Faucet Leak Fixing',
+                                  'Toilet Leak Repair',
+                                  'Roof and Ceiling Leak Repair',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Anita Khadka',
+                                    'reviewText':
+                                        'Gopal was very professional and resolved the issue quickly. Highly recommended!',
+                                  },
+                                  {
+                                    'reviewerName': 'Bikash Karki',
+                                    'reviewText':
+                                        'Very satisfied with Gopal’s service. He was thorough and ensured everything was fixed properly.',
+                                  },
+                                  {
+                                    'reviewerName': 'Sunita Gurung',
+                                    'reviewText':
+                                        'Gopal is very experienced and reliable. We had a major leak, and he handled it expertly.',
+                                  },
+                                ],
+                                imagePath: 'assets/GopalLeakRepair.PNG',
+                                providerId: 'ZWi1wIBOusqb9wFvnA6p',
+                              )));
                 },
               ),
             ],

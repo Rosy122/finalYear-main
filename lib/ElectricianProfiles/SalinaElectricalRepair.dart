@@ -9,7 +9,8 @@ class SalinaElectricalRepair extends StatefulWidget {
   final List<Map<String, String>> reviews;
   final String imagePath;
 
-  const SalinaElectricalRepair({super.key, 
+  const SalinaElectricalRepair({
+    super.key,
     required this.name,
     required this.experience,
     required this.rating,
@@ -140,7 +141,8 @@ class _SalinaElectricalRepairState extends State<SalinaElectricalRepair> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 122, 165, 160),
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -196,14 +198,16 @@ class _SalinaElectricalRepairState extends State<SalinaElectricalRepair> {
 class ServiceListTile extends StatelessWidget {
   final String service;
 
-  const ServiceListTile({super.key, 
+  const ServiceListTile({
+    super.key,
     required this.service,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
+      leading:
+          const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
       title: Text(service, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
@@ -212,7 +216,8 @@ class ServiceListTile extends StatelessWidget {
 class DetailedReviewTile extends StatelessWidget {
   final Map<String, String> review;
 
-  const DetailedReviewTile({super.key, 
+  const DetailedReviewTile({
+    super.key,
     required this.review,
   });
 
@@ -225,7 +230,8 @@ class DetailedReviewTile extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 122, 165, 160),
         child: Icon(Icons.person, color: Colors.white),
       ),
-      title: Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
+      title:
+          Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(reviewText),
     );
   }

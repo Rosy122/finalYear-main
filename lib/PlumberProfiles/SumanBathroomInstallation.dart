@@ -1,15 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class SumanBathroomInstallation extends StatefulWidget {
+class SumanPlumberProfile extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
   final String bio;
   final List<String> services;
-  final List<String> reviews; // Changed to List<String> for review text only
+  final List<Map<String, String>> reviews;
   final String imagePath;
+  final String providerId; // Unique ID for Firestore document
 
-  const SumanBathroomInstallation({super.key, 
+  const SumanPlumberProfile({
+    super.key,
     required this.name,
     required this.experience,
     required this.rating,
@@ -17,22 +20,38 @@ class SumanBathroomInstallation extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
+    required this.providerId, // Initialize providerId
   });
 
   @override
-  _SumanBathroomInstallationProfileState createState() =>
-      _SumanBathroomInstallationProfileState();
+  _SumanPlumberProfileState createState() => _SumanPlumberProfileState();
 }
 
-class _SumanBathroomInstallationProfileState
-    extends State<SumanBathroomInstallation> {
+class _SumanPlumberProfileState extends State<SumanPlumberProfile> {
   final _reviewTextController = TextEditingController();
-  late List<String> reviews;
+  late List<Map<String, String>> reviews;
+  bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  Future<void> _fetchLikes() async {
+    // Fetch the likes count from Firestore
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
@@ -40,10 +59,29 @@ class _SumanBathroomInstallationProfileState
 
     if (reviewText.isNotEmpty) {
       setState(() {
-        reviews.add(reviewText); // Add only the review text
+        reviews.add({'reviewerName': 'Anonymous', 'reviewText': reviewText});
       });
 
       _reviewTextController.clear();
+    }
+  }
+
+  void _toggleLike() {
+    setState(() {
+      _isLiked = !_isLiked;
+    });
+
+    if (_isLiked) {
+      FirebaseFirestore.instance
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
+          });
     }
   }
 
@@ -96,6 +134,20 @@ class _SumanBathroomInstallationProfileState
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
+                          ],
+                        ),
                       ],
                     ),
                   )
@@ -142,7 +194,8 @@ class _SumanBathroomInstallationProfileState
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 122, 165, 160),
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -188,10 +241,7 @@ class _SumanBathroomInstallationProfileState
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color.fromARGB(255, 122, 165, 160),
           ),
-          child: const Text(
-            'Submit Review',
-            style: TextStyle(color: Colors.white),
-          ),
+          child: const Text('Submit Review'),
         ),
       ],
     );
@@ -201,62 +251,77 @@ class _SumanBathroomInstallationProfileState
 class ServiceListTile extends StatelessWidget {
   final String service;
 
-  const ServiceListTile({super.key, 
-    required this.service,
-  });
+  const ServiceListTile({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
+      leading:
+          const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
       title: Text(service, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
 }
 
 class DetailedReviewTile extends StatelessWidget {
-  final String review; // Only review text
+  final Map<String, String> review;
 
-  const DetailedReviewTile({super.key, 
-    required this.review,
-  });
+  const DetailedReviewTile({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
+    final reviewer = review['reviewerName'] ?? 'Anonymous';
+    final reviewText = review['reviewText'] ?? 'No review text provided';
     return ListTile(
       leading: const CircleAvatar(
         backgroundColor: Color.fromARGB(255, 122, 165, 160),
         child: Icon(Icons.person, color: Colors.white),
       ),
-      title: Text(review), // Display only the review text
+      title:
+          Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
+      subtitle: Text(reviewText),
     );
   }
 }
 
-class SumanBathroomInstallationPage extends StatelessWidget {
-  const SumanBathroomInstallationPage({super.key});
+// Use the following instance for Suman's profile
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SumanBathroomInstallation(
-      name: 'Suman Rai',
-      experience: '8 years of experience in bathroom installation services.',
-      rating: 4.7,
+    return const SumanPlumberProfile(
+      name: 'Suman',
+      experience: '7 years of plumbing experience.',
+      rating: 4.8,
       bio:
-          'Suman Rai has 8 years of experience in providing bathroom installation services, known for delivering high-quality results with great attention to detail and customer satisfaction.',
+          'With 7 years of experience in plumbing, I specialize in leak repairs, pipe installations, and bathroom fittings. Dedicated to providing efficient and reliable services.',
       services: [
-        'Complete Bathroom Installation',
-        'Custom Shower Installation',
-        'Luxury Bathtub Installation',
-        'Toilet and Sink Installation',
+        'Leak Repairs',
+        'Pipe Installations',
+        'Bathroom Fittings',
+        'Drain Unclogging',
       ],
       reviews: [
-        'Suman did a fantastic job with our bathroom installation. Highly recommended!',
-        'Professional and efficient. Suman is reliable and knows his work well.',
-        'Great service! The installation was smooth and exceeded our expectations.',
+        {
+          'reviewerName': 'Rohit Thapa',
+          'reviewText':
+              'Suman was very efficient in fixing my bathroom pipe. Great service!',
+        },
+        {
+          'reviewerName': 'Meera Shrestha',
+          'reviewText': 'Quick and professional. Highly recommended!',
+        },
+        {
+          'reviewerName': 'Gopal Gurung',
+          'reviewText':
+              'Solved my plumbing issues with ease. Will definitely call again.',
+        },
       ],
       imagePath:
-          'assets/SumanPlumber.PNG', // Specify the correct path to the image asset
+          'assets/SumanPlumber.PNG', // Specify the path to the image asset
+      providerId: 'your_provider_id_here', // Replace with Firestore document ID
     );
   }
 }

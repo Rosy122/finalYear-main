@@ -117,37 +117,40 @@ class PostConstructionCleaningPage extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) =>
                               const DeepakConstructionCleaning(
-                                  name: 'Deepak Shah',
-                                  experience:
-                                      '8 years of experience in post-construction cleaning.',
-                                  rating: 4.8,
-                                  bio:
-                                      'I specialize in post-construction cleaning, ensuring that newly built or renovated spaces are spotless and ready for use. With 8 years of experience, I provide efficient and thorough cleaning services tailored to your needs.',
-                                  services: [
-                                    'Debris Removal',
-                                    'Dust and Dirt Removal',
-                                    'Window and Glass Cleaning',
-                                    'Floor and Surface Cleaning'
-                                  ],
-                                  reviews: [
-                                    {
-                                      'reviewerName': 'Anil Thapa',
-                                      'reviewText':
-                                          'Deepak did a fantastic job cleaning our newly constructed home. Highly recommended!',
-                                    },
-                                    {
-                                      'reviewerName': 'Nisha Rai',
-                                      'reviewText':
-                                          'Professional and thorough. The place was spotless after Deepak finished!',
-                                    },
-                                    {
-                                      'reviewerName': 'Kishor Bhandari',
-                                      'reviewText':
-                                          'Great service and attention to detail. Will definitely hire again.',
-                                    },
-                                  ],
-                                  imagePath:
-                                      'assets/DeepakConstructionCleaner.PNG')));
+                                name: 'Deepak Shah',
+                                experience:
+                                    '8 years of experience in post-construction cleaning.',
+                                rating: 4.8,
+                                bio:
+                                    'I specialize in post-construction cleaning, ensuring that newly built or renovated spaces are spotless and ready for use. With 8 years of experience, I provide efficient and thorough cleaning services tailored to your needs.',
+                                services: [
+                                  'Debris Removal',
+                                  'Dust and Dirt Removal',
+                                  'Window and Glass Cleaning',
+                                  'Floor and Surface Cleaning'
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Anil Thapa',
+                                    'reviewText':
+                                        'Deepak did a fantastic job cleaning our newly constructed home. Highly recommended!',
+                                  },
+                                  {
+                                    'reviewerName': 'Nisha Rai',
+                                    'reviewText':
+                                        'Professional and thorough. The place was spotless after Deepak finished!',
+                                  },
+                                  {
+                                    'reviewerName': 'Kishor Bhandari',
+                                    'reviewText':
+                                        'Great service and attention to detail. Will definitely hire again.',
+                                  },
+                                ],
+                                imagePath:
+                                    'assets/DeepakConstructionCleaner.PNG',
+                                providerId:
+                                    'Deepak Shah(Construction Cleaning)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -192,6 +195,8 @@ class PostConstructionCleaningPage extends StatelessWidget {
                                 ],
                                 imagePath:
                                     'assets/AnjaliConstructionCleaner.PNG',
+                                providerId:
+                                    'Anjali Thapa(Construction Cleaning)',
                               )));
                 },
               ),
@@ -237,6 +242,8 @@ class PostConstructionCleaningPage extends StatelessWidget {
                                 ],
                                 imagePath:
                                     'assets/RajeshConstructionCleaner.PNG',
+                                providerId:
+                                    'Rajesh Sharma(construction Cleaning)',
                               )));
                 },
               ),

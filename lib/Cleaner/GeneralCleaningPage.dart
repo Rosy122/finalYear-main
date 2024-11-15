@@ -137,10 +137,24 @@ class GeneralCleaningPage extends StatelessWidget {
                               'Bathroom Cleaning',
                             ],
                             reviews: [
-                              'Excellent service, very professional.',
-                              'Sita did an amazing job, highly recommend her!',
+                              {
+                                'reviewerName': 'Kiran Lama',
+                                'reviewText':
+                                    'Sita was very thorough and professional.',
+                              },
+                              {
+                                'reviewerName': 'Sneha Thapa',
+                                'reviewText':
+                                    'Sita cleaned our house so well. Highly recommended!',
+                              },
+                              {
+                                'reviewerName': 'Manoj Shrestha',
+                                'reviewText':
+                                    'Fantastic service, our house is sparkling clean!',
+                              },
                             ],
                             imagePath: 'assets/SitaRaiCleaner.PNG',
+                            providerId: 'UKD7e4u9r1G0pV3N1Tur',
                           ),
                         ));
                   },
@@ -154,7 +168,39 @@ class GeneralCleaningPage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RajuProfilePage()));
+                            builder: (context) => const RajuProfilePage(
+                                  name: 'Raju Shrestha',
+                                  experience:
+                                      '3 years of experience in cleaning services.',
+                                  rating: 4.6,
+                                  bio:
+                                      'Raju Shrestha is a skilled cleaner with over 3 years of experience, known for his thoroughness and attention to detail.',
+                                  services: [
+                                    'General Cleaning',
+                                    'Deep Cleaning',
+                                    'Window Cleaning',
+                                    'Bathroom Cleaning'
+                                  ],
+                                  reviews: [
+                                    {
+                                      'reviewerName': 'Suresh',
+                                      'reviewText':
+                                          'Excellent service, very professional.',
+                                    },
+                                    {
+                                      'reviewerName': 'Rajeev',
+                                      'reviewText':
+                                          'Raju did a great job, highly recommend him!',
+                                    },
+                                    {
+                                      'reviewerName': 'Mina',
+                                      'reviewText':
+                                          'Very thorough and efficient.',
+                                    },
+                                  ],
+                                  imagePath: 'assets/RajuShresthaCleaner.PNG',
+                                  providerId: 'w4BcWJFfSEpZday56cgH',
+                                )));
                   },
                   imagePath: 'assets/RajuShresthaCleaner.PNG'),
               const SizedBox(height: 10),
@@ -166,7 +212,39 @@ class GeneralCleaningPage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const AnitaProfilePage()));
+                            builder: (context) => const AnitaProfilePage(
+                                  name: 'Anita Thapa',
+                                  experience:
+                                      '7 years of experience in cleaning services.',
+                                  rating: 4.9,
+                                  bio:
+                                      'Anita Thapa is a highly experienced cleaner with 7 years of experience. She is known for her meticulous cleaning and customer satisfaction.',
+                                  services: [
+                                    'General Cleaning',
+                                    'Deep Cleaning',
+                                    'Window Cleaning',
+                                    'Bathroom Cleaning'
+                                  ],
+                                  reviews: [
+                                    {
+                                      'reviewerName': 'Suresh',
+                                      'reviewText':
+                                          'Excellent service, very professional.',
+                                    },
+                                    {
+                                      'reviewerName': 'Rajeev',
+                                      'reviewText':
+                                          'Anita did a great job, highly recommend her!',
+                                    },
+                                    {
+                                      'reviewerName': 'Mina',
+                                      'reviewText':
+                                          'Very thorough and efficient.',
+                                    },
+                                  ],
+                                  imagePath: 'assets/AnitaThapaCleaner.PNG',
+                                  providerId: 'Anita Thapa ( Cleaner)',
+                                )));
                   },
                   imagePath: 'assets/AnitaThapaCleaner.PNG'),
             ],

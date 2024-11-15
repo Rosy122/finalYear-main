@@ -9,7 +9,7 @@ class GopalLeakRepair extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
-  final String providerId;
+  final String providerId; // Firestore document ID for this provider
 
   const GopalLeakRepair({
     super.key,
@@ -37,9 +37,10 @@ class _GopalLeakRepairState extends State<GopalLeakRepair> {
   void initState() {
     super.initState();
     reviews = widget.reviews;
-    _fetchLikes();
+    _fetchLikes(); // Fetch likes count when the page loads
   }
 
+  // Fetch likes count from Firestore
   Future<void> _fetchLikes() async {
     // Fetch the likes count from Firestore
     DocumentSnapshot snapshot = await FirebaseFirestore.instance
@@ -251,10 +252,7 @@ class _GopalLeakRepairState extends State<GopalLeakRepair> {
 class ServiceListTile extends StatelessWidget {
   final String service;
 
-  const ServiceListTile({
-    super.key,
-    required this.service,
-  });
+  const ServiceListTile({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -269,10 +267,7 @@ class ServiceListTile extends StatelessWidget {
 class DetailedReviewTile extends StatelessWidget {
   final Map<String, String> review;
 
-  const DetailedReviewTile({
-    super.key,
-    required this.review,
-  });
+  const DetailedReviewTile({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -325,7 +320,7 @@ class GopalLeakRepairPage extends StatelessWidget {
         },
       ],
       imagePath: 'assets/GopalLeakRepair.PNG',
-      providerId: '', // Specify the correct path to the image asset
+      providerId: 'your_provider_id_here', // Firestore document ID here
     );
   }
 }

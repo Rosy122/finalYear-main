@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class SudipBathroomInstallation extends StatefulWidget {
@@ -8,6 +9,7 @@ class SudipBathroomInstallation extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
+  final String providerId; // Firestore document ID for this provider
 
   const SudipBathroomInstallation({
     super.key,
@@ -18,6 +20,7 @@ class SudipBathroomInstallation extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
+    required this.providerId, // Initialize providerId for Firestore
   });
 
   @override
@@ -29,11 +32,29 @@ class _SudipBathroomInstallationProfileState
     extends State<SudipBathroomInstallation> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
+  bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  // Fetch likes from Firestore
+  Future<void> _fetchLikes() async {
+    // Fetch the likes count from Firestore
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
@@ -45,6 +66,25 @@ class _SudipBathroomInstallationProfileState
       });
 
       _reviewTextController.clear();
+    }
+  }
+
+  void _toggleLike() {
+    setState(() {
+      _isLiked = !_isLiked;
+    });
+
+    if (_isLiked) {
+      FirebaseFirestore.instance
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
+          });
     }
   }
 
@@ -95,6 +135,20 @@ class _SudipBathroomInstallationProfileState
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
                           ],
                         ),
                       ],
@@ -276,6 +330,7 @@ class SudipBathroomInstallationPage extends StatelessWidget {
       ],
       imagePath:
           'assets/SudipPlumber.PNG', // Specify the correct path to the image asset
+      providerId: 'your_provider_id_here', // Firestore document ID here
     );
   }
 }

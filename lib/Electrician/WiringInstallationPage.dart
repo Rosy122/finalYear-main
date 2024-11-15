@@ -100,8 +100,39 @@ class WiringInstallationPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              const JohnWiringInstallationPage()));
+                          builder: (context) => const JohnWiringInstallation(
+                                name: 'John Rai',
+                                experience:
+                                    '15 years of experience in wiring installation services.',
+                                rating: 4.9,
+                                bio:
+                                    'John Rai has 15 years of experience in wiring installation services. His deep understanding of electrical systems and commitment to safety make him a trusted professional in the field.',
+                                services: [
+                                  'Residential Wiring Installation',
+                                  'Commercial Wiring Installation',
+                                  'Electrical Panel Upgrades',
+                                  'Lighting Installation and Repair',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Michael Sharma',
+                                    'reviewText':
+                                        'John was incredibly thorough and ensured everything was installed safely. Highly recommend!',
+                                  },
+                                  {
+                                    'reviewerName': 'Anjali Gupta',
+                                    'reviewText':
+                                        'Very professional and knowledgeable. John did a fantastic job with our home wiring.',
+                                  },
+                                  {
+                                    'reviewerName': 'Ravi Shrestha',
+                                    'reviewText':
+                                        'John’s work exceeded our expectations. He’s very skilled and efficient.',
+                                  },
+                                ],
+                                imagePath: 'assets/JohnWiring.PNG',
+                                providerId: 'John Rai(Wiring Installation)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -113,8 +144,40 @@ class WiringInstallationPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              const JaneWiringInstallationPage()));
+                          builder: (context) => const JaneWiringInstallation(
+                                name: 'Jane Shrestha',
+                                experience:
+                                    '10 years of experience in wiring installation services.',
+                                rating: 4.8,
+                                bio:
+                                    'Jane Shrestha has 10 years of experience in wiring installation. She is known for her precision and thorough understanding of electrical systems, making her a highly sought-after professional.',
+                                services: [
+                                  'Residential Wiring Installation',
+                                  'Commercial Wiring Installation',
+                                  'Electrical Panel Upgrades',
+                                  'Lighting Installation and Repair',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Sunil Bajracharya',
+                                    'reviewText':
+                                        'Jane was very professional and handled our wiring installation with great care.',
+                                  },
+                                  {
+                                    'reviewerName': 'Nisha Singh',
+                                    'reviewText':
+                                        'Excellent work by Jane. She is highly knowledgeable and very efficient.',
+                                  },
+                                  {
+                                    'reviewerName': 'Amit Tamang',
+                                    'reviewText':
+                                        'Jane is the best in the business. Her work is top-notch and reliable.',
+                                  },
+                                ],
+                                imagePath: 'assets/JaneWiring.PNG',
+                                providerId:
+                                    'Jane Shrestha( Wiring Installation)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -126,8 +189,39 @@ class WiringInstallationPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              const DavidWiringInstallationPage()));
+                          builder: (context) => const DavidWiringInstallation(
+                                name: 'David Magar',
+                                experience:
+                                    '8 years of experience in wiring installation services.',
+                                rating: 4.7,
+                                bio:
+                                    'David Magar has 8 years of experience in wiring installation. He is highly regarded for his attention to detail and efficiency in handling all types of wiring projects.',
+                                services: [
+                                  'Residential Wiring Installation',
+                                  'Commercial Wiring Installation',
+                                  'Electrical Panel Upgrades',
+                                  'Lighting Installation and Repair',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Kiran Thapa',
+                                    'reviewText':
+                                        'David did a fantastic job with our home wiring. He was very professional and completed the work on time.',
+                                  },
+                                  {
+                                    'reviewerName': 'Laxmi Gurung',
+                                    'reviewText':
+                                        'I am very satisfied with David’s work. He is knowledgeable and thorough in his approach.',
+                                  },
+                                  {
+                                    'reviewerName': 'Sujan Rai',
+                                    'reviewText':
+                                        'David is reliable and efficient. He handled our office wiring installation perfectly.',
+                                  },
+                                ],
+                                imagePath: 'assets/DavidWiring.PNG',
+                                providerId: 'David Magar(wiring Installation)',
+                              )));
                 },
               ),
             ],

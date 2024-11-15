@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class RajeshBathroomInstallation extends StatefulWidget {
+class RajeshPlumberProfile extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
@@ -8,8 +9,10 @@ class RajeshBathroomInstallation extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
+  final String providerId; // Firestore document ID
 
-  const RajeshBathroomInstallation({super.key, 
+  const RajeshPlumberProfile({
+    super.key,
     required this.name,
     required this.experience,
     required this.rating,
@@ -17,22 +20,38 @@ class RajeshBathroomInstallation extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
+    required this.providerId, // Initialize providerId
   });
 
   @override
-  _RajeshBathroomInstallationProfileState createState() =>
-      _RajeshBathroomInstallationProfileState();
+  _RajeshPlumberProfileState createState() => _RajeshPlumberProfileState();
 }
 
-class _RajeshBathroomInstallationProfileState
-    extends State<RajeshBathroomInstallation> {
+class _RajeshPlumberProfileState extends State<RajeshPlumberProfile> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
+  bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  Future<void> _fetchLikes() async {
+    // Fetch the likes count from Firestore
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
@@ -44,6 +63,25 @@ class _RajeshBathroomInstallationProfileState
       });
 
       _reviewTextController.clear();
+    }
+  }
+
+  void _toggleLike() {
+    setState(() {
+      _isLiked = !_isLiked;
+    });
+
+    if (_isLiked) {
+      FirebaseFirestore.instance
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
+          });
     }
   }
 
@@ -96,6 +134,20 @@ class _RajeshBathroomInstallationProfileState
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
+                          ],
+                        ),
                       ],
                     ),
                   )
@@ -142,7 +194,8 @@ class _RajeshBathroomInstallationProfileState
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 122, 165, 160),
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -179,8 +232,8 @@ class _RajeshBathroomInstallationProfileState
             labelText: 'Your Review',
             border: OutlineInputBorder(),
           ),
-          maxLines: 2, // Reduced size for the review box
-          minLines: 1, // Maintain a single line as minimum
+          maxLines: 2,
+          minLines: 1,
         ),
         const SizedBox(height: 10),
         ElevatedButton(
@@ -198,14 +251,13 @@ class _RajeshBathroomInstallationProfileState
 class ServiceListTile extends StatelessWidget {
   final String service;
 
-  const ServiceListTile({super.key, 
-    required this.service,
-  });
+  const ServiceListTile({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
+      leading:
+          const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
       title: Text(service, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
@@ -214,9 +266,7 @@ class ServiceListTile extends StatelessWidget {
 class DetailedReviewTile extends StatelessWidget {
   final Map<String, String> review;
 
-  const DetailedReviewTile({super.key, 
-    required this.review,
-  });
+  const DetailedReviewTile({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -227,47 +277,49 @@ class DetailedReviewTile extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 122, 165, 160),
         child: Icon(Icons.person, color: Colors.white),
       ),
-      title: Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
+      title:
+          Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(reviewText),
     );
   }
 }
 
-class RajeshBathroomInstallationPage extends StatelessWidget {
-  const RajeshBathroomInstallationPage({super.key});
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const RajeshBathroomInstallation(
+    return RajeshPlumberProfile(
       name: 'Rajesh Kumar',
-      experience: '10 years of experience in bathroom installation services.',
-      rating: 4.8,
+      experience: '8 years of experience in professional plumbing services.',
+      rating: 4.7,
       bio:
-          'Rajesh Kumar has 10 years of experience in bathroom installation services. Despite the challenges faced, he remains dedicated to improving his craft and customer service.',
+          'With 8 years of experience in plumbing, I specialize in fixing leaks, installing pipes, and ensuring that all plumbing systems are functioning smoothly. My work is thorough, and I strive for customer satisfaction in every job I undertake.',
       services: [
-        'Basic Bathroom Installation',
-        'Shower Installation',
-        'Bathtub Installation',
-        'Toilet Installation',
+        'Leak Repair',
+        'Pipe Installation',
+        'Bathroom and Kitchen Plumbing',
+        'Emergency Plumbing Services'
       ],
       reviews: [
         {
-          'reviewerName': 'Anonymous',
+          'reviewerName': 'Arjun Shrestha',
           'reviewText':
-              'The work was not up to standard, and communication was poor.',
+              'Rajesh was quick and efficient in fixing the leak in our bathroom. Great service!',
         },
         {
-          'reviewerName': 'Manoj Thapa',
+          'reviewerName': 'Mina Koirala',
           'reviewText':
-              'Unfortunately, I was not satisfied with the service provided.',
+              'He did a fantastic job installing new pipes in our kitchen. Highly recommend!',
         },
         {
-          'reviewerName': 'Rita Sharma',
+          'reviewerName': 'Suman Gurung',
           'reviewText':
-              'The installation was delayed, and the quality was not what I expected.',
+              'Very professional and knowledgeable. Solved our plumbing issue with ease.',
         },
       ],
       imagePath: 'assets/RajeshKumarPlumber.PNG',
+      providerId: 'your_provider_id_here', // Replace with Firestore document ID
     );
   }
 }

@@ -148,7 +148,9 @@ class DeepCleaningPage extends StatelessWidget {
                                           'Highly professional and reliable, I recommend Kamal to everyone.'
                                     },
                                   ],
-                                  imagePath: 'assets/KamaldeepCleaning.PNG',
+                                  imagePath:
+                                      'assets/KamaldeepCleaning.PNG', // Specify the path to the image asset
+                                  providerId: 'Kamal Sharma(deep cleaning)',
                                 )));
                   }),
               ProfessionalProfileTile(
@@ -191,7 +193,10 @@ class DeepCleaningPage extends StatelessWidget {
                                           'I couldn’t be happier with the services Sunita provides.',
                                     },
                                   ],
-                                  imagePath: 'assets/SunitadeepCleaner.PNG',
+
+                                  imagePath:
+                                      'assets/SunitadeepCleaner.PNG', // Specify the path to the image asset
+                                  providerId: 'Sunita Joshi(deep Cleaner)',
                                 )));
                   }),
               ProfessionalProfileTile(
@@ -204,36 +209,40 @@ class DeepCleaningPage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => const RameshDeepCleaner(
-                                name: 'Ramesh Sharma',
-                                experience:
-                                    '5 years of experience in deep cleaning services.',
-                                rating: 4.8,
-                                bio:
-                                    'With five years of hands-on experience in deep cleaning, I ensure every corner of your home is meticulously cleaned. My goal is to leave your space spotless and fresh.',
-                                services: [
-                                  'Floor Scrubbing and Polishing',
-                                  'Bathroom and Kitchen Deep Cleaning',
-                                  'Furniture and Upholstery Cleaning',
-                                  'Window and Glass Cleaning',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewer': 'Amit Verma',
-                                    'review':
-                                        'Ramesh did a fantastic job with our post-construction cleanup!'
-                                  },
-                                  {
-                                    'reviewer': 'Sneha Patil',
-                                    'review':
-                                        'Very punctual and thorough. Highly recommended!'
-                                  },
-                                  {
-                                    'reviewer': 'Rahul Singh',
-                                    'review':
-                                        'My furniture looks brand new thanks to Ramesh’s deep cleaning service.'
-                                  },
-                                ],
-                                imagePath: 'assets/RameshdeepCleaner.PNG')));
+                                  name: 'Ramesh Sharma',
+                                  experience:
+                                      '5 years of experience in deep cleaning services.',
+                                  rating: 4.8,
+                                  bio:
+                                      'With five years of hands-on experience in deep cleaning, I ensure every corner of your home is meticulously cleaned. My goal is to leave your space spotless and fresh.',
+                                  services: [
+                                    'Floor Scrubbing and Polishing',
+                                    'Bathroom and Kitchen Deep Cleaning',
+                                    'Furniture and Upholstery Cleaning',
+                                    'Window and Glass Cleaning',
+                                    'Post-Construction Cleanup'
+                                  ],
+                                  reviews: [
+                                    {
+                                      'reviewer': 'Amit Verma',
+                                      'review':
+                                          'Ramesh did a fantastic job with our post-construction cleanup!'
+                                    },
+                                    {
+                                      'reviewer': 'Sneha Patil',
+                                      'review':
+                                          'Very punctual and thorough. Highly recommended!'
+                                    },
+                                    {
+                                      'reviewer': 'Rahul Singh',
+                                      'review':
+                                          'My furniture looks brand new thanks to Ramesh’s deep cleaning service.'
+                                    },
+                                  ],
+                                  imagePath:
+                                      'assets/RameshdeepCleaner.PNG', // Specify the path to the image asset
+                                  providerId: 'Ramesh Gupta(Deep Cleaning)',
+                                )));
                   }),
             ],
           ),
