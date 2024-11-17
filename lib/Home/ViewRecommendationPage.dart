@@ -52,13 +52,29 @@ class ViewRecommendationPage extends StatelessWidget {
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         var provider = snapshot.data!.docs[index];
+                        var data = provider.data()
+                            as Map<String, dynamic>; // Fetch data as a Map
+
+                        // Debugging print to check the actual fields returned
+                        print(
+                            data); // This will print all the fields in the document
+
+                        // Safe access to 'Experience' field with a null check
+                        String experience = data.containsKey('Experience')
+                            ? data['Experience']
+                            : 'No experience available';
+                        // Access 'bio' field correctly
+                        String bio = data.containsKey('bio')
+                            ? data['bio']
+                            : 'No bio available';
+                        String name = data['name'] ?? 'No name available';
+
                         return RecommendedItem(
-                          title: provider['name'], // Using 'name' field
-                          by: provider['bio'], // Using 'bio' field
-                          rating: provider['likes']
-                              .toString(), // Using 'likes' field
-                          experience: provider[
-                              'Experience'], // Using 'Experience' field
+                          title: name, // 'name' field
+                          by: bio, // 'bio' field
+                          rating: data['likes'].toString(), // 'likes' field
+                          experience:
+                              experience, // Safely use the 'Experience' field
                         );
                       },
                     );

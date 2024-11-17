@@ -103,35 +103,36 @@ class ACServicingPage extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => const PranishaACService(
                         name: 'Pranisha Thapa',
-                        experience: '10 years of experience in AC servicing.',
-                        rating: 4.9,
+                        experience:
+                            '10 years of experience in AC repair services.',
+                        rating: 4.8,
                         bio:
-                            'Pranisha Thapa is a dedicated AC servicing expert with 5 years of experience, known for her professionalism and quality service.',
+                            'Pranisha Thapa is a highly skilled AC repair technician with 5 years of experience. Known for her professionalism and expertise in the field.',
                         services: [
-                          'AC Repair',
-                          'AC Cleaning',
                           'AC Installation',
+                          'AC Repair',
                           'AC Maintenance',
+                          'Air Purification Systems',
                         ],
                         reviews: [
                           {
-                            'reviewerName': 'Meera Joshi',
+                            'reviewerName': 'Sita Rai',
                             'reviewText':
-                                'Pranisha did a fantastic job. My AC is working perfectly now!',
+                                'Pranisha did an amazing job with my AC repair! Highly recommend her.',
                           },
                           {
-                            'reviewerName': 'Amit Singh',
+                            'reviewerName': 'Ravi Lama',
                             'reviewText':
-                                'Very professional and thorough. Highly recommend her services.',
+                                'Excellent service! My AC is working perfectly again.',
                           },
                           {
-                            'reviewerName': 'Nina Patel',
+                            'reviewerName': 'Anjali Shrestha',
                             'reviewText':
-                                'Great experience! Pranisha is knowledgeable and friendly.',
+                                'Very professional and quick service. Great experience!',
                           },
                         ],
                         imagePath: 'assets/Pranisha.PNG',
-                        providerId: 'iONsX1KH6UdYC5yOd2j2',
+                        providerId: 'Pranisha Thapa(AC Service)',
                       ),
                     ),
                   );
@@ -147,11 +148,11 @@ class ACServicingPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => SamishaACService(
-                          name: 'Samisha Thapa',
+                          name: 'Samisha Sharma',
                           experience: '7 years of experience in AC servicing.',
-                          rating: 4.6,
+                          rating: 4.8,
                           bio:
-                              'Samisha Thapa is a reliable AC servicing expert with 4 years of experience, dedicated to providing excellent service and customer satisfaction.',
+                              'Samisha Sharma is a reliable AC servicing expert with 4 years of experience, dedicated to providing excellent service and customer satisfaction.',
                           services: [
                             'AC Repair',
                             'AC Cleaning',
@@ -176,7 +177,7 @@ class ACServicingPage extends StatelessWidget {
                             },
                           ],
                           imagePath: 'assets/Samisha.PNG',
-                          providerId: 'NR5RJADCYggJVckOF5hr',
+                          providerId: 'Samisha Sharma(Ac Service)',
                         ),
                       ));
                 },
@@ -220,6 +221,7 @@ class ACServicingPage extends StatelessWidget {
                           },
                         ],
                         imagePath: 'assets/Pramod.PNG',
+                        providerId: 'Pramod Lama(Ac Service)',
                       ),
                     ),
                   );

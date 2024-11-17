@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class LawnMowingProfile extends StatefulWidget {
+class RaviCarpenterService extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
@@ -9,9 +9,9 @@ class LawnMowingProfile extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
-  final String providerId; // Firebase provider ID for likes
+  final String providerId; // Firestore provider ID for likes
 
-  const LawnMowingProfile({
+  const RaviCarpenterService({
     super.key,
     required this.name,
     required this.experience,
@@ -20,14 +20,14 @@ class LawnMowingProfile extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
-    required this.providerId, // Firebase provider ID
+    required this.providerId, // Firestore provider ID for likes
   });
 
   @override
-  _LawnMowingProfileState createState() => _LawnMowingProfileState();
+  _RaviCarpenterServiceState createState() => _RaviCarpenterServiceState();
 }
 
-class _LawnMowingProfileState extends State<LawnMowingProfile> {
+class _RaviCarpenterServiceState extends State<RaviCarpenterService> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
   bool _isLiked = false;
@@ -150,7 +150,7 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -290,42 +290,40 @@ class DetailedReviewTile extends StatelessWidget {
   }
 }
 
-class RajuLawnMowingPage extends StatelessWidget {
-  const RajuLawnMowingPage({super.key});
+class RaviCarpenterServicePage extends StatelessWidget {
+  const RaviCarpenterServicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const LawnMowingProfile(
-      name: 'Raju Singh',
-      experience: '8 years of experience in lawn mowing services.',
-      rating: 4.8,
+    return const RaviCarpenterService(
+      name: 'Ravi Patel',
+      experience: '10 years of experience in carpentry services.',
+      rating: 4.7,
       bio:
-          'Raju Singh is a dedicated lawn care professional with 8 years of experience. His attention to detail ensures your lawn looks its best all year round.',
+          'Ravi Patel is an expert carpenter with over 10 years of experience in custom woodwork and home installations. Known for quality craftsmanship and customer satisfaction.',
       services: [
-        'Regular Lawn Mowing',
-        'Edging and Trimming',
-        'Lawn Fertilization',
-        'Weed Control',
+        'Furniture Repair',
+        'Custom Furniture',
+        'Cabinet Installation',
+        'Wooden Decks',
       ],
       reviews: [
         {
-          'reviewerName': 'Suman Gautam',
-          'reviewText':
-              'Raju did a fantastic job with our lawn. It has never looked better!',
+          'reviewerName': 'Anjali Patel',
+          'reviewText': 'Ravi did an amazing job repairing my old furniture.',
         },
         {
-          'reviewerName': 'Priya Sharma',
-          'reviewText':
-              'Very satisfied with Raju’s work. He is punctual and professional.',
+          'reviewerName': 'Rohan Shah',
+          'reviewText': 'Fantastic work on custom cabinetry. Highly recommend!',
         },
         {
-          'reviewerName': 'Anil Shrestha',
+          'reviewerName': 'Kiran Joshi',
           'reviewText':
-              'Raju is an expert in lawn care. I highly recommend his services.',
+              'Ravi’s attention to detail in the deck installation was superb.',
         },
       ],
-      imagePath: 'assets/RajuLawnMowing.PNG',
-      providerId: 'your_provider_id_here', // Firestore provider ID
+      imagePath: 'assets/Ravi.PNG', // Replace with actual image path
+      providerId: 'your_provider_id_here', // Firestore provider ID for likes
     );
   }
 }

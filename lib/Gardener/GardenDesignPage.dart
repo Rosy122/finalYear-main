@@ -101,8 +101,39 @@ class GardenDesignPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              const RadhikaGardenDesignPage()));
+                          builder: (context) => const RadhikaGardenDesign(
+                                name: 'Radhika Gurung',
+                                experience:
+                                    '10 years of experience in garden design services.',
+                                rating: 4.9,
+                                bio:
+                                    'Radhika Gurung is a skilled garden designer with a decade of experience. She specializes in creating beautiful, sustainable garden spaces that bring nature closer to home.',
+                                services: [
+                                  'Custom Garden Design',
+                                  'Plant Selection and Installation',
+                                  'Garden Maintenance Plans',
+                                  'Seasonal Planting and Care',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Aarati Singh',
+                                    'reviewText':
+                                        'Radhika transformed our backyard into a beautiful garden. Highly recommended!',
+                                  },
+                                  {
+                                    'reviewerName': 'Sanjay Lama',
+                                    'reviewText':
+                                        'Her designs are unique and perfectly suited to our space. We love our new garden!',
+                                  },
+                                  {
+                                    'reviewerName': 'Nisha Thapa',
+                                    'reviewText':
+                                        'Radhika’s work is exceptional. She is professional, creative, and very knowledgeable.',
+                                  },
+                                ],
+                                imagePath: 'assets/RadhikaGardenDesign.PNG',
+                                providerId: 'Radhika Gurung(GardenDesign)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -114,8 +145,39 @@ class GardenDesignPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              const SharmilaGardenDesignPage()));
+                          builder: (context) => const SharmilaGardenDesign(
+                                name: 'Sharmila Kumar',
+                                experience:
+                                    '7 years of experience in garden design services.',
+                                rating: 4.8,
+                                bio:
+                                    'Sharmila Kumar is a passionate garden designer with 7 years of experience. She is known for creating serene and functional garden spaces that reflect her clients’ personalities.',
+                                services: [
+                                  'Landscape Design',
+                                  'Plant Installation',
+                                  'Garden Renovation',
+                                  'Maintenance Services',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Anita Rai',
+                                    'reviewText':
+                                        'Sharmila did an amazing job with our garden. Her designs are truly unique!',
+                                  },
+                                  {
+                                    'reviewerName': 'Bikash Shrestha',
+                                    'reviewText':
+                                        'Her attention to detail is remarkable. Our garden looks stunning!',
+                                  },
+                                  {
+                                    'reviewerName': 'Priya Giri',
+                                    'reviewText':
+                                        'Sharmila’s work exceeded our expectations. Highly recommended!',
+                                  },
+                                ],
+                                imagePath: 'assets/SharmilaGardenDesign.PNG',
+                                providerId: 'Sharmila Kumar(GardenDesign)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -127,7 +189,39 @@ class GardenDesignPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const GojoGardenDesignPage()));
+                          builder: (context) => const GojoGardenDesign(
+                                name: 'Gojo Lama',
+                                experience:
+                                    '12 years of experience in garden design services.',
+                                rating: 4.7,
+                                bio:
+                                    'Gojo Lama is an experienced garden designer with 12 years of expertise. He is known for creating beautiful and sustainable garden spaces.',
+                                services: [
+                                  'Landscape Architecture',
+                                  'Irrigation System Design',
+                                  'Outdoor Lighting',
+                                  'Garden Maintenance',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Kiran Sharma',
+                                    'reviewText':
+                                        'Gojo did an outstanding job on our garden. Highly skilled and professional!',
+                                  },
+                                  {
+                                    'reviewerName': 'Mina Rai',
+                                    'reviewText':
+                                        'We love our new garden! Gojo’s design and execution were flawless.',
+                                  },
+                                  {
+                                    'reviewerName': 'Sushil Pandey',
+                                    'reviewText':
+                                        'Gojo’s work transformed our outdoor space. Would definitely recommend!',
+                                  },
+                                ],
+                                imagePath: 'assets/GojoGardenDesign.PNG',
+                                providerId: 'Gojo Lama(GardenDesign)',
+                              )));
                 },
               ),
             ],

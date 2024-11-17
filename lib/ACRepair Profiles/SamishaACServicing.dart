@@ -31,15 +31,31 @@ class _SamishaACServiceState extends State<SamishaACService> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
   bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  // Fetch likes count from Firestore
+  Future<void> _fetchLikes() async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
-    final reviewText = _reviewTextController.text;
+    final String reviewText = _reviewTextController.text;
 
     if (reviewText.isNotEmpty) {
       setState(() {
@@ -57,15 +73,15 @@ class _SamishaACServiceState extends State<SamishaACService> {
 
     if (_isLiked) {
       FirebaseFirestore.instance
-          .collection(
-              'service Provider') // Ensure this matches your Firestore collection name
-          .doc(widget
-              .providerId) // Use providerId to update the correct document
-          .update({
-        'likes': FieldValue.increment(1), // Increment the 'likes' field by 1
-      }).catchError((error) {
-        print("Failed to increment likes: $error"); // Catch any errors
-      });
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
+          });
     }
   }
 
@@ -118,16 +134,23 @@ class _SamishaACServiceState extends State<SamishaACService> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
+                          ],
+                        ),
                       ],
                     ),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      _isLiked ? Icons.favorite : Icons.favorite_border,
-                      color: Colors.red,
-                    ),
-                    onPressed: _toggleLike,
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -302,8 +325,7 @@ class SamishaACRepairPage extends StatelessWidget {
         },
       ],
       imagePath: 'assets/Samisha.PNG',
-      providerId:
-          'NR5RJADCYggJVckOF5hr', // Replace with actual Firestore document ID
+      providerId: '', // Replace with actual Firestore document ID
     );
   }
 }

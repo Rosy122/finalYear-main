@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class SalinaElectricalRepair extends StatefulWidget {
@@ -8,6 +9,7 @@ class SalinaElectricalRepair extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
+  final String providerId; // Firestore provider ID for likes
 
   const SalinaElectricalRepair({
     super.key,
@@ -18,6 +20,7 @@ class SalinaElectricalRepair extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
+    required this.providerId, // Firestore provider ID
   });
 
   @override
@@ -27,15 +30,32 @@ class SalinaElectricalRepair extends StatefulWidget {
 class _SalinaElectricalRepairState extends State<SalinaElectricalRepair> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
+  bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  // Fetch likes count from Firestore
+  Future<void> _fetchLikes() async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
-    final reviewText = _reviewTextController.text;
+    final String reviewText = _reviewTextController.text;
 
     if (reviewText.isNotEmpty) {
       setState(() {
@@ -43,6 +63,25 @@ class _SalinaElectricalRepairState extends State<SalinaElectricalRepair> {
       });
 
       _reviewTextController.clear();
+    }
+  }
+
+  void _toggleLike() {
+    setState(() {
+      _isLiked = !_isLiked;
+    });
+
+    if (_isLiked) {
+      FirebaseFirestore.instance
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
+          });
     }
   }
 
@@ -95,9 +134,23 @@ class _SalinaElectricalRepairState extends State<SalinaElectricalRepair> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
+                          ],
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 20),
@@ -272,6 +325,7 @@ class SalinaElectricalRepairPage extends StatelessWidget {
         },
       ],
       imagePath: 'assets/SalinaElectricalRepair.PNG',
+      providerId: 'your_provider_id_here', // Firestore provider ID for likes
     );
   }
 }

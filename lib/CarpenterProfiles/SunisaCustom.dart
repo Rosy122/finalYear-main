@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class LawnMowingProfile extends StatefulWidget {
+class SunisaCustomFurnitureService extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
@@ -9,9 +9,9 @@ class LawnMowingProfile extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
-  final String providerId; // Firebase provider ID for likes
+  final String providerId; // Firestore provider ID for likes
 
-  const LawnMowingProfile({
+  const SunisaCustomFurnitureService({
     super.key,
     required this.name,
     required this.experience,
@@ -20,14 +20,16 @@ class LawnMowingProfile extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
-    required this.providerId, // Firebase provider ID
+    required this.providerId, // Firestore provider ID for likes
   });
 
   @override
-  _LawnMowingProfileState createState() => _LawnMowingProfileState();
+  _SunisaCustomFurnitureServiceState createState() =>
+      _SunisaCustomFurnitureServiceState();
 }
 
-class _LawnMowingProfileState extends State<LawnMowingProfile> {
+class _SunisaCustomFurnitureServiceState
+    extends State<SunisaCustomFurnitureService> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
   bool _isLiked = false;
@@ -150,7 +152,7 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -197,13 +199,10 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 15),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
-                  child: const Text(
-                    'Book Service',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
+                  child: const Text('Book Service',
+                      style: TextStyle(fontSize: 16, color: Colors.white)),
                 ),
               ),
             ],
@@ -220,18 +219,15 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
         const Text(
           'Add a Review',
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 122, 165, 160),
-          ),
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 122, 165, 160)),
         ),
         const SizedBox(height: 10),
         TextField(
           controller: _reviewTextController,
           decoration: const InputDecoration(
-            labelText: 'Your Review',
-            border: OutlineInputBorder(),
-          ),
+              labelText: 'Your Review', border: OutlineInputBorder()),
           maxLines: 2,
           minLines: 1,
         ),
@@ -239,8 +235,7 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
         ElevatedButton(
           onPressed: _submitReview,
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 122, 165, 160),
-          ),
+              backgroundColor: const Color.fromARGB(255, 122, 165, 160)),
           child: const Text('Submit Review'),
         ),
       ],
@@ -251,10 +246,7 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
 class ServiceListTile extends StatelessWidget {
   final String service;
 
-  const ServiceListTile({
-    super.key,
-    required this.service,
-  });
+  const ServiceListTile({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -269,10 +261,7 @@ class ServiceListTile extends StatelessWidget {
 class DetailedReviewTile extends StatelessWidget {
   final Map<String, String> review;
 
-  const DetailedReviewTile({
-    super.key,
-    required this.review,
-  });
+  const DetailedReviewTile({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -290,41 +279,42 @@ class DetailedReviewTile extends StatelessWidget {
   }
 }
 
-class RajuLawnMowingPage extends StatelessWidget {
-  const RajuLawnMowingPage({super.key});
+class SunisaCustomFurnitureServicePage extends StatelessWidget {
+  const SunisaCustomFurnitureServicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const LawnMowingProfile(
-      name: 'Raju Singh',
-      experience: '8 years of experience in lawn mowing services.',
-      rating: 4.8,
+    return const SunisaCustomFurnitureService(
+      name: 'Sunisa Bhattarai',
+      experience:
+          '10 years of experience in custom furniture design and build.',
+      rating: 4.9,
       bio:
-          'Raju Singh is a dedicated lawn care professional with 8 years of experience. His attention to detail ensures your lawn looks its best all year round.',
+          'Sunisa Bhattarai is an expert in custom furniture design and build with over 10 years of experience in creating unique, high-quality pieces for homes and businesses.',
       services: [
-        'Regular Lawn Mowing',
-        'Edging and Trimming',
-        'Lawn Fertilization',
-        'Weed Control',
+        'Custom Design Consultation',
+        'Furniture Build',
+        'Material Selection',
+        'Delivery and Setup',
       ],
       reviews: [
         {
-          'reviewerName': 'Suman Gautam',
+          'reviewerName': 'Rohit Shah',
           'reviewText':
-              'Raju did a fantastic job with our lawn. It has never looked better!',
+              'Sunisa did an amazing job designing and building my custom furniture. Highly recommended!'
         },
         {
-          'reviewerName': 'Priya Sharma',
+          'reviewerName': 'Ananya Thapa',
           'reviewText':
-              'Very satisfied with Raju’s work. He is punctual and professional.',
+              'Excellent service and great attention to detail. Very happy with my new furniture.'
         },
         {
-          'reviewerName': 'Anil Shrestha',
+          'reviewerName': 'Ravi Rai',
           'reviewText':
-              'Raju is an expert in lawn care. I highly recommend his services.',
+              'Top-quality craftsmanship and outstanding customer service.'
         },
       ],
-      imagePath: 'assets/RajuLawnMowing.PNG',
+      imagePath: 'assets/Sunisa.PNG',
       providerId: 'your_provider_id_here', // Firestore provider ID
     );
   }

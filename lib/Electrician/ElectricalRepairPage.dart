@@ -193,8 +193,39 @@ class ElectricalRepairPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              const SalinaElectricalRepairPage()));
+                          builder: (context) => const SalinaElectricalRepair(
+                                name: 'Salina Lama',
+                                experience:
+                                    '12 years of experience in electrical repair services.',
+                                rating: 4.7,
+                                bio:
+                                    'Salina Lama has been providing top-notch electrical repair services for 12 years. Her expertise and attention to detail ensure reliable and safe electrical solutions.',
+                                services: [
+                                  'Fuse Box Repair',
+                                  'Electrical Wiring Troubleshooting',
+                                  'Appliance Wiring Repair',
+                                  'Lighting Repair and Replacement',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Anil Tamang',
+                                    'reviewText':
+                                        'Salina did a great job fixing the electrical issues in our home. Very professional!',
+                                  },
+                                  {
+                                    'reviewerName': 'Rita Magar',
+                                    'reviewText':
+                                        'Salina is highly skilled and trustworthy. I would definitely recommend her services.',
+                                  },
+                                  {
+                                    'reviewerName': 'Kiran Gurung',
+                                    'reviewText':
+                                        'Very satisfied with Salina’s work. She is thorough and efficient.',
+                                  },
+                                ],
+                                imagePath: 'assets/SalinaElectricalRepair.PNG',
+                                providerId: 'Salina Lama(Electrical Repair)',
+                              )));
                 },
               ),
             ],

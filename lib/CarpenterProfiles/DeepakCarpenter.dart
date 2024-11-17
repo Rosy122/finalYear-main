@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class LawnMowingProfile extends StatefulWidget {
+class DeepakCarpenterService extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
@@ -9,9 +9,9 @@ class LawnMowingProfile extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
-  final String providerId; // Firebase provider ID for likes
+  final String providerId; // Firestore provider ID for likes
 
-  const LawnMowingProfile({
+  const DeepakCarpenterService({
     super.key,
     required this.name,
     required this.experience,
@@ -20,14 +20,14 @@ class LawnMowingProfile extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
-    required this.providerId, // Firebase provider ID
+    required this.providerId, // Firestore provider ID for likes
   });
 
   @override
-  _LawnMowingProfileState createState() => _LawnMowingProfileState();
+  _DeepakCarpenterServiceState createState() => _DeepakCarpenterServiceState();
 }
 
-class _LawnMowingProfileState extends State<LawnMowingProfile> {
+class _DeepakCarpenterServiceState extends State<DeepakCarpenterService> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
   bool _isLiked = false;
@@ -150,7 +150,7 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -290,41 +290,41 @@ class DetailedReviewTile extends StatelessWidget {
   }
 }
 
-class RajuLawnMowingPage extends StatelessWidget {
-  const RajuLawnMowingPage({super.key});
+class DeepakCarpenterServicePage extends StatelessWidget {
+  const DeepakCarpenterServicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const LawnMowingProfile(
-      name: 'Raju Singh',
-      experience: '8 years of experience in lawn mowing services.',
-      rating: 4.8,
+    return const DeepakCarpenterService(
+      name: 'Deepak Kumar',
+      experience: '12 years of experience in carpentry services.',
+      rating: 4.9,
       bio:
-          'Raju Singh is a dedicated lawn care professional with 8 years of experience. His attention to detail ensures your lawn looks its best all year round.',
+          'Deepak Kumar is an experienced carpenter, known for his craftsmanship and exceptional skills in furniture design and home installations.',
       services: [
-        'Regular Lawn Mowing',
-        'Edging and Trimming',
-        'Lawn Fertilization',
-        'Weed Control',
+        'Furniture Repair',
+        'Custom Furniture',
+        'Cabinet Installation',
+        'Wooden Decks',
       ],
       reviews: [
         {
-          'reviewerName': 'Suman Gautam',
+          'reviewerName': 'Rajesh Kumar',
           'reviewText':
-              'Raju did a fantastic job with our lawn. It has never looked better!',
+              'Deepak is a true professional. His work was exceptional!',
         },
         {
-          'reviewerName': 'Priya Sharma',
+          'reviewerName': 'Nisha Patel',
           'reviewText':
-              'Very satisfied with Raju’s work. He is punctual and professional.',
+              'Very satisfied with the furniture repair. Great quality!',
         },
         {
-          'reviewerName': 'Anil Shrestha',
+          'reviewerName': 'Amit Sharma',
           'reviewText':
-              'Raju is an expert in lawn care. I highly recommend his services.',
+              'The cabinet installation was done quickly and perfectly.',
         },
       ],
-      imagePath: 'assets/RajuLawnMowing.PNG',
+      imagePath: 'assets/Deepak.PNG', // Replace with actual image path
       providerId: 'your_provider_id_here', // Firestore provider ID
     );
   }

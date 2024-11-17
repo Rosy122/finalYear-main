@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class LawnMowingProfile extends StatefulWidget {
+class ManojKarkiCustomFurnitureService extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
@@ -9,9 +9,9 @@ class LawnMowingProfile extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
-  final String providerId; // Firebase provider ID for likes
+  final String providerId; // Firestore provider ID for likes
 
-  const LawnMowingProfile({
+  const ManojKarkiCustomFurnitureService({
     super.key,
     required this.name,
     required this.experience,
@@ -20,14 +20,16 @@ class LawnMowingProfile extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
-    required this.providerId, // Firebase provider ID
+    required this.providerId, // Firestore provider ID for likes
   });
 
   @override
-  _LawnMowingProfileState createState() => _LawnMowingProfileState();
+  _ManojKarkiCustomFurnitureServiceState createState() =>
+      _ManojKarkiCustomFurnitureServiceState();
 }
 
-class _LawnMowingProfileState extends State<LawnMowingProfile> {
+class _ManojKarkiCustomFurnitureServiceState
+    extends State<ManojKarkiCustomFurnitureService> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
   bool _isLiked = false;
@@ -150,7 +152,7 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -290,42 +292,42 @@ class DetailedReviewTile extends StatelessWidget {
   }
 }
 
-class RajuLawnMowingPage extends StatelessWidget {
-  const RajuLawnMowingPage({super.key});
+class ManojKarkiCustomFurnitureServicePage extends StatelessWidget {
+  const ManojKarkiCustomFurnitureServicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const LawnMowingProfile(
-      name: 'Raju Singh',
-      experience: '8 years of experience in lawn mowing services.',
+    return const ManojKarkiCustomFurnitureService(
+      name: 'Manoj Karki',
+      experience: '8 years of experience in custom furniture design and build.',
       rating: 4.8,
       bio:
-          'Raju Singh is a dedicated lawn care professional with 8 years of experience. His attention to detail ensures your lawn looks its best all year round.',
+          'Manoj Karki is a skilled carpenter with 8 years of experience in designing and building custom furniture, offering unique and high-quality craftsmanship.',
       services: [
-        'Regular Lawn Mowing',
-        'Edging and Trimming',
-        'Lawn Fertilization',
-        'Weed Control',
+        'Custom Design Consultation',
+        'Furniture Build',
+        'Material Selection',
+        'Delivery and Setup',
       ],
       reviews: [
         {
-          'reviewerName': 'Suman Gautam',
+          'reviewerName': 'Rohit Kumar',
           'reviewText':
-              'Raju did a fantastic job with our lawn. It has never looked better!',
+              'Manoj built a custom bookshelf for my home. His craftsmanship is outstanding!'
         },
         {
-          'reviewerName': 'Priya Sharma',
+          'reviewerName': 'Sita Rai',
           'reviewText':
-              'Very satisfied with Raju’s work. He is punctual and professional.',
+              'Amazing service! Manoj helped us design the perfect living room furniture set.'
         },
         {
-          'reviewerName': 'Anil Shrestha',
+          'reviewerName': 'Anita Shrestha',
           'reviewText':
-              'Raju is an expert in lawn care. I highly recommend his services.',
+              'Manoj is highly professional and very reliable. Highly recommend his services.'
         },
       ],
-      imagePath: 'assets/RajuLawnMowing.PNG',
-      providerId: 'your_provider_id_here', // Firestore provider ID
+      imagePath: 'assets/Manoj.PNG',
+      providerId: 'your_provider_id_here',
     );
   }
 }

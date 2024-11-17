@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:profix_new/Painter/ExteriorPainting.dart';
 import 'package:profix_new/Painter/InteriorPainting.dart';
+import 'package:profix_new/Painter/WallpaperInstallation.dart';
 import 'package:profix_new/PainterProfile/ArjunPainter.dart';
 import 'package:profix_new/PainterProfile/NeetaPainter.dart';
 import 'package:profix_new/PainterProfile/RajeshPainter.dart';
-import 'package:profix_new/Painter/WallpaperInstallation.dart';
 
 void main() => runApp(const PainterPageApp());
 
@@ -99,35 +99,38 @@ class PainterPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const ArjunPainter(
-                            name: 'Arjun Pandey',
-      experience: '9 years of experience in painting services.',
-      rating: 4.8,
-      bio:
-          'Arjun Pandey is a highly skilled painter with 9 years of experience. He is known for his precision and ability to bring colors to life on any surface.',
-      services: [
-        'Interior Painting',
-        'Exterior Painting',
-        'Custom Paint Jobs',
-        'Surface Preparation',
-      ],
-      reviews: [
-        {
-          'reviewerName': 'Ramesh Shrestha',
-          'reviewText':
-              'Arjun’s painting work is top-notch. My home looks amazing!',
-        },
-        {
-          'reviewerName': 'Sita Gurung',
-          'reviewText':
-              'Very professional and detail-oriented. Highly recommended!',
-        },
-        {
-          'reviewerName': 'Manish Tamang',
-          'reviewText': 'Excellent service and great attention to detail!',
-        },
-      ],
-      imagePath: 'assets/ArjunPainter.PNG',
-                          )));
+                                name: 'Arjun Pandey',
+                                experience:
+                                    '9 years of experience in painting services.',
+                                rating: 4.8,
+                                bio:
+                                    'Arjun Pandey is a highly skilled painter with 9 years of experience. He is known for his precision and ability to bring colors to life on any surface.',
+                                services: [
+                                  'Interior Painting',
+                                  'Exterior Painting',
+                                  'Custom Paint Jobs',
+                                  'Surface Preparation',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Ramesh Shrestha',
+                                    'reviewText':
+                                        'Arjun’s painting work is top-notch. My home looks amazing!',
+                                  },
+                                  {
+                                    'reviewerName': 'Sita Gurung',
+                                    'reviewText':
+                                        'Very professional and detail-oriented. Highly recommended!',
+                                  },
+                                  {
+                                    'reviewerName': 'Manish Tamang',
+                                    'reviewText':
+                                        'Excellent service and great attention to detail!',
+                                  },
+                                ],
+                                imagePath: 'assets/ArjunPainter.PNG',
+                                providerId: 'Arjun Pandey(Painter)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -139,7 +142,39 @@ class PainterPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const NeetaPainterPage()));
+                          builder: (context) => const NeetaPainter(
+                                name: 'Neeta Painter',
+                                experience:
+                                    '6 years of experience in painting services.',
+                                rating: 4.7,
+                                bio:
+                                    'Neeta Painter brings 6 years of experience to the table, known for her precision and eye for detail in every painting project she undertakes.',
+                                services: [
+                                  'Interior Painting',
+                                  'Exterior Painting',
+                                  'Custom Paint Jobs',
+                                  'Wall Preparation',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Anil Kumar',
+                                    'reviewText':
+                                        'Neeta did an excellent job on my home. Highly skilled and professional!',
+                                  },
+                                  {
+                                    'reviewerName': 'Poonam Shah',
+                                    'reviewText':
+                                        'Very pleased with the painting work. Neeta was punctual and delivered high-quality results.',
+                                  },
+                                  {
+                                    'reviewerName': 'Ravi Patel',
+                                    'reviewText':
+                                        'Great service, very satisfied with the outcome. Neeta is highly recommended!',
+                                  },
+                                ],
+                                imagePath: 'assets/NeetaPainter.PNG',
+                                providerId: 'Neeta Singh(Painter)',
+                              )));
                 },
               ),
               ProfessionalProfileTile(
@@ -151,7 +186,39 @@ class PainterPage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RajeshPainterPage()));
+                          builder: (context) => const RajeshPainter(
+                                name: 'Rajesh Gurung',
+                                experience:
+                                    '7 years of experience in painting services.',
+                                rating: 4.6,
+                                bio:
+                                    'Rajesh Gurung has 7 years of experience in providing exceptional painting services. Known for his attention to detail and reliability.',
+                                services: [
+                                  'Interior Painting',
+                                  'Exterior Painting',
+                                  'Color Consultation',
+                                  'Wall Repair',
+                                ],
+                                reviews: [
+                                  {
+                                    'reviewerName': 'Sita Rana',
+                                    'reviewText':
+                                        'Rajesh did a fantastic job on my home. The paint job is flawless!',
+                                  },
+                                  {
+                                    'reviewerName': 'Ramesh Thapa',
+                                    'reviewText':
+                                        'Professional and efficient. Rajesh is great at what he does.',
+                                  },
+                                  {
+                                    'reviewerName': 'Nisha Sharma',
+                                    'reviewText':
+                                        'Very happy with the results. Rajesh is highly recommended.',
+                                  },
+                                ],
+                                imagePath: 'assets/RajeshPainter.PNG',
+                                providerId: 'Rajesh Gurung(Painter)',
+                              )));
                 },
               ),
             ],

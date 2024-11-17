@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class LawnMowingProfile extends StatefulWidget {
+class SabinaFurnitureRepair extends StatefulWidget {
   final String name;
   final String experience;
   final double rating;
@@ -9,9 +9,9 @@ class LawnMowingProfile extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
-  final String providerId; // Firebase provider ID for likes
+  final String providerId; // Firestore document ID
 
-  const LawnMowingProfile({
+  const SabinaFurnitureRepair({
     super.key,
     required this.name,
     required this.experience,
@@ -20,14 +20,14 @@ class LawnMowingProfile extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
-    required this.providerId, // Firebase provider ID
+    required this.providerId, // Initialize providerId
   });
 
   @override
-  _LawnMowingProfileState createState() => _LawnMowingProfileState();
+  _SabinaFurnitureRepairState createState() => _SabinaFurnitureRepairState();
 }
 
-class _LawnMowingProfileState extends State<LawnMowingProfile> {
+class _SabinaFurnitureRepairState extends State<SabinaFurnitureRepair> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
   bool _isLiked = false;
@@ -150,7 +150,7 @@ class _LawnMowingProfileState extends State<LawnMowingProfile> {
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -290,42 +290,41 @@ class DetailedReviewTile extends StatelessWidget {
   }
 }
 
-class RajuLawnMowingPage extends StatelessWidget {
-  const RajuLawnMowingPage({super.key});
+class SabinaFurnitureRepairPage extends StatelessWidget {
+  const SabinaFurnitureRepairPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const LawnMowingProfile(
-      name: 'Raju Singh',
-      experience: '8 years of experience in lawn mowing services.',
+    return const SabinaFurnitureRepair(
+      name: 'Sabina Maharjan',
+      experience: '10 years of experience in furniture repair services.',
       rating: 4.8,
       bio:
-          'Raju Singh is a dedicated lawn care professional with 8 years of experience. His attention to detail ensures your lawn looks its best all year round.',
+          'Sabina Maharjan is a skilled carpenter with 10 years of experience in furniture repair and custom design.',
       services: [
-        'Regular Lawn Mowing',
-        'Edging and Trimming',
-        'Lawn Fertilization',
-        'Weed Control',
+        'Furniture Repair',
+        'Custom Furniture Design',
+        'Refinishing',
+        'Assembly',
       ],
       reviews: [
         {
-          'reviewerName': 'Suman Gautam',
-          'reviewText':
-              'Raju did a fantastic job with our lawn. It has never looked better!',
+          'reviewerName': 'Ravi Bhandari',
+          'reviewText': 'Sabina repaired my old table, and it looks like new!',
         },
         {
-          'reviewerName': 'Priya Sharma',
+          'reviewerName': 'Anita Rai',
           'reviewText':
-              'Very satisfied with Raju’s work. He is punctual and professional.',
+              'Great service! Very happy with the work done on my wooden chairs.',
         },
         {
-          'reviewerName': 'Anil Shrestha',
+          'reviewerName': 'Suman Gurung',
           'reviewText':
-              'Raju is an expert in lawn care. I highly recommend his services.',
+              'Sabina did a fantastic job in designing custom furniture for my home.',
         },
       ],
-      imagePath: 'assets/RajuLawnMowing.PNG',
-      providerId: 'your_provider_id_here', // Firestore provider ID
+      imagePath: 'assets/Sabina.PNG',
+      providerId: 'furniture_repair_id', // Add Firestore provider ID
     );
   }
 }

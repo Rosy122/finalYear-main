@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:profix_new/CarpenterProfiles/ManojCustom.dart';
+import 'package:profix_new/CarpenterProfiles/SunisaCustom.dart';
 
 class CustomFurniturePage extends StatelessWidget {
   const CustomFurniturePage({super.key});
@@ -90,12 +92,44 @@ class CustomFurniturePage extends StatelessWidget {
                 rating: 4.9,
                 imagePath: 'assets/Sunisa.PNG',
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const CustomFurnitureProfessional1Page(), // Make sure to create this page
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SunisaCustomFurnitureService(
+                        name: 'Sunisa Bhattarai',
+                        experience:
+                            '10 years of experience in custom furniture design and build.',
+                        rating: 4.9,
+                        bio:
+                            'Sunisa Bhattarai is an expert in custom furniture design and build with over 10 years of experience in creating unique, high-quality pieces for homes and businesses.',
+                        services: [
+                          'Custom Design Consultation',
+                          'Furniture Build',
+                          'Material Selection',
+                          'Delivery and Setup',
+                        ],
+                        reviews: [
+                          {
+                            'reviewerName': 'Rohit Shah',
+                            'reviewText':
+                                'Sunisa did an amazing job designing and building my custom furniture. Highly recommended!'
+                          },
+                          {
+                            'reviewerName': 'Ananya Thapa',
+                            'reviewText':
+                                'Excellent service and great attention to detail. Very happy with my new furniture.'
+                          },
+                          {
+                            'reviewerName': 'Ravi Rai',
+                            'reviewText':
+                                'Top-quality craftsmanship and outstanding customer service.'
+                          },
+                        ],
+                        imagePath: 'assets/Sunisa.PNG',
+                        providerId: 'Sunisa Bhattrai(Custom Furniture)',
+                      ),
+                    ),
+                  );
                 },
               ),
               ProfessionalProfileTile(
@@ -104,12 +138,45 @@ class CustomFurniturePage extends StatelessWidget {
                 rating: 4.8,
                 imagePath: 'assets/Manoj.PNG',
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const CustomFurnitureProfessional2Page(), // Make sure to create this page
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const ManojKarkiCustomFurnitureService(
+                        name: 'Manoj Karki',
+                        experience:
+                            '8 years of experience in custom furniture design and build.',
+                        rating: 4.8,
+                        bio:
+                            'Manoj Karki is a skilled carpenter with 8 years of experience in designing and building custom furniture, offering unique and high-quality craftsmanship.',
+                        services: [
+                          'Custom Design Consultation',
+                          'Furniture Build',
+                          'Material Selection',
+                          'Delivery and Setup',
+                        ],
+                        reviews: [
+                          {
+                            'reviewerName': 'Rohit Kumar',
+                            'reviewText':
+                                'Manoj built a custom bookshelf for my home. His craftsmanship is outstanding!'
+                          },
+                          {
+                            'reviewerName': 'Sita Rai',
+                            'reviewText':
+                                'Amazing service! Manoj helped us design the perfect living room furniture set.'
+                          },
+                          {
+                            'reviewerName': 'Anita Shrestha',
+                            'reviewText':
+                                'Manoj is highly professional and very reliable. Highly recommend his services.'
+                          },
+                        ],
+                        imagePath: 'assets/Manoj.PNG',
+                        providerId: 'Manoj Kumar(Custom Furniture)',
+                      ),
+                    ),
+                  );
                 },
               ),
               ProfessionalProfileTile(

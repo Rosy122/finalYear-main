@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class SamarpanPainting extends StatefulWidget {
@@ -8,8 +9,10 @@ class SamarpanPainting extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
+  final String providerId; // Firestore provider ID for likes
 
-  const SamarpanPainting({super.key, 
+  const SamarpanPainting({
+    super.key,
     required this.name,
     required this.experience,
     required this.rating,
@@ -17,6 +20,7 @@ class SamarpanPainting extends StatefulWidget {
     required this.services,
     required this.reviews,
     required this.imagePath,
+    required this.providerId, // Firestore provider ID
   });
 
   @override
@@ -26,15 +30,32 @@ class SamarpanPainting extends StatefulWidget {
 class _SamarpanPaintingState extends State<SamarpanPainting> {
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
+  bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  // Fetch likes count from Firestore
+  Future<void> _fetchLikes() async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
-    final reviewText = _reviewTextController.text;
+    final String reviewText = _reviewTextController.text;
 
     if (reviewText.isNotEmpty) {
       setState(() {
@@ -42,6 +63,25 @@ class _SamarpanPaintingState extends State<SamarpanPainting> {
       });
 
       _reviewTextController.clear();
+    }
+  }
+
+  void _toggleLike() {
+    setState(() {
+      _isLiked = !_isLiked;
+    });
+
+    if (_isLiked) {
+      FirebaseFirestore.instance
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
+          });
     }
   }
 
@@ -94,9 +134,23 @@ class _SamarpanPaintingState extends State<SamarpanPainting> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
+                          ],
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 20),
@@ -140,7 +194,8 @@ class _SamarpanPaintingState extends State<SamarpanPainting> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 122, 165, 160),
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -158,6 +213,7 @@ class _SamarpanPaintingState extends State<SamarpanPainting> {
     );
   }
 
+  // Review form
   Widget _buildReviewForm() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,26 +249,31 @@ class _SamarpanPaintingState extends State<SamarpanPainting> {
   }
 }
 
+// Service list tile
 class ServiceListTile extends StatelessWidget {
   final String service;
 
-  const ServiceListTile({super.key, 
+  const ServiceListTile({
+    super.key,
     required this.service,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
+      leading:
+          const Icon(Icons.check, color: Color.fromARGB(255, 122, 165, 160)),
       title: Text(service, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
 }
 
+// Detailed review tile
 class DetailedReviewTile extends StatelessWidget {
   final Map<String, String> review;
 
-  const DetailedReviewTile({super.key, 
+  const DetailedReviewTile({
+    super.key,
     required this.review,
   });
 
@@ -225,12 +286,14 @@ class DetailedReviewTile extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 122, 165, 160),
         child: Icon(Icons.person, color: Colors.white),
       ),
-      title: Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
+      title:
+          Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(reviewText),
     );
   }
 }
 
+// SamarpanExteriorPaintingPage (Sample provider page)
 class SamarpanExteriorPaintingPage extends StatelessWidget {
   const SamarpanExteriorPaintingPage({super.key});
 
@@ -266,6 +329,7 @@ class SamarpanExteriorPaintingPage extends StatelessWidget {
         },
       ],
       imagePath: 'assets/SamarpanExteriorPainting.PNG',
+      providerId: 'your_provider_id_here', // Firestore provider ID
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
 class PranishaACService extends StatefulWidget {
@@ -10,7 +10,7 @@ class PranishaACService extends StatefulWidget {
   final List<String> services;
   final List<Map<String, String>> reviews;
   final String imagePath;
-  final String providerId; // Add providerId for Firestore document ID
+  final String providerId; // Firestore provider ID for likes
 
   const PranishaACService({
     super.key,
@@ -29,19 +29,35 @@ class PranishaACService extends StatefulWidget {
 }
 
 class _PranishaACRepairState extends State<PranishaACService> {
-  final FirebaseAnalytics _analytics = FirebaseAnalytics.instance;
+  // final FirebaseAnalytics _analytics = FirebaseAnalytics.instance;
   final _reviewTextController = TextEditingController();
   late List<Map<String, String>> reviews;
   bool _isLiked = false;
+  int _likes = 0;
 
   @override
   void initState() {
     super.initState();
     reviews = widget.reviews;
+    _fetchLikes();
+  }
+
+  // Fetch likes count from Firestore
+  Future<void> _fetchLikes() async {
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('service Provider')
+        .doc(widget.providerId)
+        .get();
+
+    if (snapshot.exists && snapshot['likes'] != null) {
+      setState(() {
+        _likes = snapshot['likes'];
+      });
+    }
   }
 
   void _submitReview() {
-    final reviewText = _reviewTextController.text;
+    final String reviewText = _reviewTextController.text;
 
     if (reviewText.isNotEmpty) {
       setState(() {
@@ -58,27 +74,16 @@ class _PranishaACRepairState extends State<PranishaACService> {
     });
 
     if (_isLiked) {
-      print('Logging like_service event');
-      _analytics.logEvent(
-        name: 'like_service',
-        parameters: {
-          'service_name': widget.name,
-          'service_provider':
-              'Pranisha Thapa', // Additional information if needed
-        },
-      );
-
-      // Increment the likes count in Firestore
       FirebaseFirestore.instance
-          .collection(
-              'service Provider') // Make sure this matches your Firestore collection name
-          .doc(widget
-              .providerId) // Use providerId to update the correct document
-          .update({
-        'likes': FieldValue.increment(1), // Increment the 'likes' field by 1
-      }).catchError((error) {
-        print("Failed to increment likes: $error"); // Catch any errors
-      });
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .update({'likes': FieldValue.increment(1)})
+          .then((_) => setState(() {
+                _likes += 1;
+              }))
+          .catchError((error) {
+            print("Failed to update likes: $error");
+          });
     }
   }
 
@@ -119,16 +124,35 @@ class _PranishaACRepairState extends State<PranishaACService> {
                         Text(widget.experience,
                             style: TextStyle(
                                 fontSize: 16, color: Colors.grey[700])),
+                        const SizedBox(height: 5),
+                        Row(
+                          children: [
+                            Icon(Icons.star, color: Colors.yellow[700]),
+                            const SizedBox(width: 5),
+                            Text(
+                              widget.rating.toString(),
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                _isLiked
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                              ),
+                              onPressed: _toggleLike,
+                            ),
+                            Text('$_likes likes'),
+                          ],
+                        ),
                       ],
                     ),
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      _isLiked ? Icons.favorite : Icons.favorite_border,
-                      color: Colors.red,
-                    ),
-                    onPressed: _toggleLike,
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -194,6 +218,7 @@ class _PranishaACRepairState extends State<PranishaACService> {
     );
   }
 
+  // Review form
   Widget _buildReviewForm() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -229,6 +254,7 @@ class _PranishaACRepairState extends State<PranishaACService> {
   }
 }
 
+// Service list tile
 class ServiceListTile extends StatelessWidget {
   final String service;
 
@@ -247,6 +273,7 @@ class ServiceListTile extends StatelessWidget {
   }
 }
 
+// Detailed review tile
 class DetailedReviewTile extends StatelessWidget {
   final Map<String, String> review;
 
@@ -267,6 +294,45 @@ class DetailedReviewTile extends StatelessWidget {
       title:
           Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(reviewText),
+    );
+  }
+}
+
+class PranishaACServicePage extends StatelessWidget {
+  const PranishaACServicePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const PranishaACService(
+      name: 'Pranisha Thapa',
+      experience: '5 years of experience in AC repair services.',
+      rating: 4.8,
+      bio:
+          'Pranisha Thapa is a highly skilled AC repair technician with 5 years of experience. Known for her professionalism and expertise in the field.',
+      services: [
+        'AC Installation',
+        'AC Repair',
+        'AC Maintenance',
+        'Air Purification Systems',
+      ],
+      reviews: [
+        {
+          'reviewerName': 'Sita Rai',
+          'reviewText':
+              'Pranisha did an amazing job with my AC repair! Highly recommend her.',
+        },
+        {
+          'reviewerName': 'Ravi Lama',
+          'reviewText': 'Excellent service! My AC is working perfectly again.',
+        },
+        {
+          'reviewerName': 'Anjali Shrestha',
+          'reviewText':
+              'Very professional and quick service. Great experience!',
+        },
+      ],
+      imagePath: 'assets/Pranisha.PNG',
+      providerId: 'your_provider_id_here', // Add Firestore provider ID
     );
   }
 }
