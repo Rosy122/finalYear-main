@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/SignIn/SignInPage.dart';
@@ -16,6 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
+  String _selectedRole = "User"; // Default to User
   String _errorMessage = '';
 
   @override
@@ -64,11 +66,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         controller: _nameController,
                         decoration: InputDecoration(
                           hintText: 'Enter Name',
-                          hintStyle: const TextStyle(
-                            color: Colors.grey,
-                            fontStyle: FontStyle.italic,
-                            fontSize: 15,
-                          ),
                           filled: true,
                           fillColor: Colors.grey[300],
                           border: OutlineInputBorder(
@@ -86,11 +83,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         controller: _emailController,
                         decoration: InputDecoration(
                           hintText: 'Enter email',
-                          hintStyle: const TextStyle(
-                            color: Colors.grey,
-                            fontStyle: FontStyle.italic,
-                            fontSize: 15,
-                          ),
                           filled: true,
                           fillColor: Colors.grey[300],
                           border: OutlineInputBorder(
@@ -109,11 +101,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: 'Enter Password',
-                          hintStyle: const TextStyle(
-                            color: Colors.grey,
-                            fontStyle: FontStyle.italic,
-                            fontSize: 15,
-                          ),
                           filled: true,
                           fillColor: Colors.grey[300],
                           border: OutlineInputBorder(
@@ -132,11 +119,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: 'Confirm Password',
-                          hintStyle: const TextStyle(
-                            color: Colors.grey,
-                            fontStyle: FontStyle.italic,
-                            fontSize: 15,
-                          ),
                           filled: true,
                           fillColor: Colors.grey[300],
                           border: OutlineInputBorder(
@@ -144,6 +126,25 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderSide: BorderSide.none,
                           ),
                         ),
+                      ),
+                      const SizedBox(height: 15),
+                      const Row(
+                        children: [Text('Sign Up As')],
+                      ),
+                      const SizedBox(height: 5),
+                      DropdownButton<String>(
+                        value: _selectedRole,
+                        items: ['User', 'Service Provider'].map((String role) {
+                          return DropdownMenuItem<String>(
+                            value: role,
+                            child: Text(role),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selectedRole = newValue!;
+                          });
+                        },
                       ),
                       const SizedBox(height: 25),
                       if (_errorMessage.isNotEmpty)
@@ -189,10 +190,9 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Future<void> _signUp() async {
     setState(() {
-      _errorMessage = ''; // Clear previous error messages
+      _errorMessage = '';
     });
 
-    // Form validation
     if (_emailController.text.isEmpty ||
         _passwordController.text.isEmpty ||
         _confirmPasswordController.text.isEmpty ||
@@ -211,25 +211,39 @@ class _SignUpPageState extends State<SignUpPage> {
     }
 
     try {
-      // Create the user with email and password
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
 
-      // Set the display name to the user's full name
       if (userCredential.user != null) {
-        await userCredential.user!.updateDisplayName(_nameController.text);
-        await userCredential.user!
-            .reload(); // Reload to apply changes immediately
-      }
+        String uid = userCredential.user!.uid;
 
-      // Navigate to SignInPage on successful registration
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => SignInPage()),
-      );
+        if (_selectedRole == "User") {
+          await FirebaseFirestore.instance.collection('Users').doc(uid).set({
+            'name': _nameController.text,
+            'email': _emailController.text,
+            'role': 'User',
+          });
+        } else if (_selectedRole == "Service Provider") {
+          await FirebaseFirestore.instance
+              .collection('Service Providers')
+              .doc(uid)
+              .set({
+            'name': _nameController.text,
+            'email': _emailController.text,
+            'role': 'Service Provider',
+            'services': [],
+            'years_of_experience': 0,
+          });
+        }
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const SignInPage()),
+        );
+      }
     } on FirebaseAuthException catch (e) {
       setState(() {
         if (e.code == 'email-already-in-use') {
@@ -255,11 +269,10 @@ class MyClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     var path = Path();
     path.lineTo(0, 80);
-    path.lineTo(0, 40); // Start from the bottom of the teal container
-    path.quadraticBezierTo(0, 0, 70, 0); // Rounded top left corner
-    path.lineTo(size.width, 0); // Line to the top right corner
-    path.lineTo(size.width, size.height); // Line to the bottom right corner
-    path.lineTo(0, size.height); // Line to the bottom left corner
+    path.quadraticBezierTo(0, 0, 70, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
     path.close();
     return path;
   }

@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:profix_new/Home/HomePage.dart';
-import 'package:profix_new/SignUp/SignUpPage.dart';
+import 'package:profix_new/Service_Providers/ServiceProviderHomePage.dart';
 import 'package:profix_new/SignIn/forgotPasswordPage.dart';
+import 'package:profix_new/SignUp/SignUpPage.dart';
+import 'package:profix_new/User/Home/HomePage.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -15,20 +17,19 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool _isRememberMeChecked = false;
   String _errorMessage = '';
+  String selectedRole = "User"; // Default role
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> _signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) {
-        return;
-      }
+      if (googleUser == null) return;
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
+
       final OAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
@@ -38,19 +39,116 @@ class _SignInPageState extends State<SignInPage> {
           await _auth.signInWithCredential(credential);
 
       if (userCredential.user != null) {
-        String displayName = userCredential.user?.displayName ??
-            "Guest"; // Get display name or use "Guest"
-        print(
-            "Retrieved Display Name: $displayName"); // Check if the display name is correctly retrieved
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => HomePage(username: displayName)),
-        );
+        String displayName = userCredential.user?.displayName ?? "Guest";
+        if (selectedRole == "User") {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(username: displayName),
+            ),
+          );
+        } else if (selectedRole == "Service Provider") {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(username: displayName),
+            ),
+          );
+        }
       }
     } catch (e) {
       setState(() {
         _errorMessage = 'Google Sign-In failed. Please try again.';
+      });
+    }
+  }
+
+  Future<void> _signIn() async {
+    setState(() {
+      _errorMessage = '';
+    });
+
+    if (_emailController.text.trim().isEmpty ||
+        _passwordController.text.trim().isEmpty) {
+      setState(() {
+        _errorMessage = 'Email and password fields cannot be empty.';
+      });
+      return;
+    }
+
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      if (userCredential.user != null) {
+        if (selectedRole == "User") {
+          final userDoc = await FirebaseFirestore.instance
+              .collection('Users')
+              .doc(userCredential.user!.uid)
+              .get();
+
+          if (userDoc.exists) {
+            String displayName = userDoc['name'] ?? "Guest";
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePage(username: displayName),
+              ),
+            );
+          } else {
+            setState(() {
+              _errorMessage = 'No user account found. Please sign up.';
+            });
+          }
+        } else if (selectedRole == "Service Provider") {
+          final providerDoc = await FirebaseFirestore.instance
+              .collection('Service Providers')
+              .doc(userCredential.user!.uid)
+              .get();
+
+          if (providerDoc.exists) {
+            String providerName = providerDoc['name'] ?? "Service Provider";
+            String serviceType = providerDoc['service type'] ?? "General";
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ServiceProviderHomePage(
+                  providerName: providerName,
+                  serviceType: serviceType,
+                  providerId: userCredential
+                      .user!.uid, // This ensures correct providerId
+                ),
+              ),
+            );
+          } else {
+            setState(() {
+              _errorMessage =
+                  'No service provider account found. Please sign up.';
+            });
+          }
+        }
+      }
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        if (e.code == 'wrong-password') {
+          _errorMessage = 'Incorrect password. Please try again.';
+        } else if (e.code == 'user-not-found') {
+          _errorMessage = 'No user found with this email.';
+        } else if (e.code == 'invalid-email') {
+          _errorMessage = 'The email address is not valid.';
+        } else if (e.code == 'user-disabled') {
+          _errorMessage = 'This user has been disabled.';
+        } else if (e.code == 'too-many-requests') {
+          _errorMessage = 'Too many attempts. Try again later.';
+        } else {
+          _errorMessage = 'Login failed. Please try again.';
+        }
+      });
+    } catch (e) {
+      setState(() {
+        _errorMessage = 'An unexpected error occurred: $e';
       });
     }
   }
@@ -86,33 +184,21 @@ class _SignInPageState extends State<SignInPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
                   children: [
-                    const Row(
+                    const SizedBox(height: 30),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 30,
-                        ),
+                      children: const [
                         Text(
                           'Sign In',
                           style: TextStyle(
-                              color: Color(0xFF4A4B4B),
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),
+                            color: Color(0xFF4A4B4B),
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 30),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text('Email',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Color(0xFF4A4B4B),
-                            )),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
                     TextField(
                       controller: _emailController,
                       decoration: InputDecoration(
@@ -126,24 +212,11 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Password',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Color(0xFF4A4B4B),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
                     TextField(
                       controller: _passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
-                        hintText: '',
+                        hintText: 'Password',
                         filled: true,
                         fillColor: Colors.grey[200],
                         border: OutlineInputBorder(
@@ -155,7 +228,7 @@ class _SignInPageState extends State<SignInPage> {
                     const SizedBox(height: 10),
                     if (_errorMessage.isNotEmpty)
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
                           _errorMessage,
                           style:
@@ -163,48 +236,37 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                       ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Row(
-                          children: [
-                            Checkbox(
-                              value: _isRememberMeChecked,
-                              onChanged: (bool? value) {
-                                setState(() {
-                                  _isRememberMeChecked = value ?? false;
-                                });
-                              },
-                              checkColor: Colors.white,
-                              activeColor: Colors.blue,
-                            ),
-                            const Text(
-                              'Remember me',
-                              style: TextStyle(
-                                color: Color(0xFF4A4B4B),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ForgotPasswordPage(),
-                          ),
-                        );
-                      },
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ForgotPasswordPage()),
+                            );
+                          },
+                          child: const Text(
                             'Forgot Password?',
                             style: TextStyle(color: Colors.blue),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    DropdownButton<String>(
+                      value: selectedRole,
+                      items: ['User', 'Service Provider'].map((String role) {
+                        return DropdownMenuItem<String>(
+                          value: role,
+                          child: Text(role),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedRole = newValue!;
+                        });
+                      },
                     ),
                     const SizedBox(height: 20),
                     Center(
@@ -229,47 +291,20 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    const Row(
-                      children: [
-                        Expanded(child: Divider()),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            'or',
-                            style: TextStyle(
-                              color: Color(0xFF4A4B4B),
-                            ),
-                          ),
-                        ),
-                        Expanded(child: Divider()),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        GestureDetector(
-                          onTap: _signInWithGoogle,
-                          child: SizedBox(
-                            width: 25,
-                            height: 25,
-                            child: Image.asset('assets/Google.png'),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        SizedBox(
-                          width: 25,
-                          height: 25,
-                          child: Image.asset('assets/Facebook.PNG'),
-                        ),
-                      ],
+                    GestureDetector(
+                      onTap: _signInWithGoogle,
+                      child: SizedBox(
+                        width: 40,
+                        height: 40,
+                        child: Image.asset('assets/Google.png'),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Don\'t have an account?',
+                          "Don't have an account? ",
                           style: TextStyle(color: Color(0xFF4A4B4B)),
                         ),
                         TextButton(
@@ -277,8 +312,7 @@ class _SignInPageState extends State<SignInPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const SignUpPage(),
-                              ),
+                                  builder: (context) => SignUpPage()),
                             );
                           },
                           child: const Text(
@@ -297,57 +331,6 @@ class _SignInPageState extends State<SignInPage> {
       ]),
     );
   }
-
-  Future<void> _signIn() async {
-    setState(() {
-      _errorMessage = '';
-    });
-
-    if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
-      setState(() {
-        _errorMessage = 'Email and password fields cannot be empty.';
-      });
-      return;
-    }
-
-    try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-
-      if (userCredential.user != null) {
-        String displayName = userCredential.user?.displayName ??
-            "Guest"; // Get display name or use "Guest"
-        print("Retrieved Display Name: $displayName");
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => HomePage(username: displayName)));
-      }
-    } on FirebaseAuthException catch (e) {
-      setState(() {
-        if (e.code == 'wrong-password') {
-          _errorMessage = 'Incorrect password. Please try again.';
-        } else if (e.code == 'user-not-found') {
-          _errorMessage = 'No user found for that email.';
-        } else if (e.code == 'invalid-email') {
-          _errorMessage = 'The email address is not valid.';
-        } else if (e.code == 'user-disabled') {
-          _errorMessage = 'This user has been disabled.';
-        } else if (e.code == 'too-many-requests') {
-          _errorMessage = 'Too many attempts. Try again later.';
-        } else {
-          _errorMessage = 'Login failed. Please try again.';
-        }
-      });
-    } catch (e) {
-      setState(() {
-        _errorMessage = 'An unexpected error occurred. Please try again.';
-      });
-    }
-  }
 }
 
 class MyClipper extends CustomClipper<Path> {
@@ -355,17 +338,14 @@ class MyClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     var path = Path();
     path.lineTo(0, 80);
-    path.lineTo(0, 40); // Start from the bottom of the teal container
-    path.quadraticBezierTo(0, 0, 70, 0); // Rounded top left corner
-    path.lineTo(size.width, 0); // Line to the top right corner
-    path.lineTo(size.width, size.height); // Line to the bottom right corner
-    path.lineTo(0, size.height); // Line to the bottom left corner
+    path.quadraticBezierTo(0, 0, 70, 0);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
     path.close();
     return path;
   }
 
   @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
