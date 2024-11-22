@@ -55,6 +55,43 @@ class _SitaprofilepageState extends State<Sitaprofilepage> {
     }
   }
 
+  Future<void> _toggleLike() async {
+    try {
+      if (!_isLiked) {
+        await FirebaseFirestore.instance
+            .collection('service Provider')
+            .doc(widget.providerId)
+            .update({'likes': FieldValue.increment(1)});
+
+        // Add notification for the service provider
+        await FirebaseFirestore.instance.collection('Notifications').add({
+          'providerId': widget.providerId,
+          'message': 'Someone liked your profile!',
+          'timestamp': Timestamp.now(),
+          'status': 'Unread',
+        });
+
+        setState(() {
+          _isLiked = true;
+          _likes++;
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('You liked the profile!')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('You already liked this profile!')),
+        );
+      }
+    } catch (e) {
+      print('Error liking the profile: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to like the profile!')),
+      );
+    }
+  }
+
   void _submitReview() {
     final String reviewText = _reviewTextController.text;
 
@@ -64,25 +101,10 @@ class _SitaprofilepageState extends State<Sitaprofilepage> {
       });
 
       _reviewTextController.clear();
-    }
-  }
 
-  void _toggleLike() {
-    setState(() {
-      _isLiked = !_isLiked;
-    });
-
-    if (_isLiked) {
-      FirebaseFirestore.instance
-          .collection('service Provider')
-          .doc(widget.providerId)
-          .update({'likes': FieldValue.increment(1)})
-          .then((_) => setState(() {
-                _likes += 1;
-              }))
-          .catchError((error) {
-            print("Failed to update likes: $error");
-          });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Review submitted successfully!')),
+      );
     }
   }
 

@@ -45,7 +45,7 @@ class _BookServicePageState extends State<BookServicePage> {
     }
 
     try {
-      // Fetch current logged-in user details
+      // Fetch the current logged-in user details
       User? user = FirebaseAuth.instance.currentUser;
 
       if (user == null) {
@@ -62,7 +62,8 @@ class _BookServicePageState extends State<BookServicePage> {
 
       // Adding booking data to Firestore
       await FirebaseFirestore.instance.collection('Bookings').add({
-        'providerId': widget.providerId,
+        'providerId':
+            widget.providerId, // FIXED: Use providerId passed to the widget
         'providerName': widget.providerName,
         'userId': userId,
         'userName': userName,
@@ -78,7 +79,7 @@ class _BookServicePageState extends State<BookServicePage> {
         const SnackBar(content: Text('Booking request sent successfully!')),
       );
 
-      Navigator.pop(context);
+      Navigator.pop(context); // Navigate back after successful booking
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error sending booking request: $e')),
