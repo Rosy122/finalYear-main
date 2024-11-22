@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SignInPage(),
+      home: const ProHome(),
       routes: {
         '/signin': (context) => SignInPage(),
         '/Home': (context) => HomePage(),
@@ -43,7 +43,7 @@ class _ProHomeState extends State<ProHome> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 5), () {
       Navigator.push(
           context,
           MaterialPageRoute(
