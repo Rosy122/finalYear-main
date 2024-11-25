@@ -6,10 +6,8 @@ class ViewRecommendationPage extends StatelessWidget {
 
   Stream<QuerySnapshot> getTopLikedProviders() {
     return FirebaseFirestore.instance
-        .collection(
-            'service Provider') // Ensure this matches your Firestore collection name
-        .orderBy('likes',
-            descending: true) // Sort by likes instead of averageRating
+        .collection('service Provider')
+        .orderBy('likes', descending: true)
         .snapshots();
   }
 
@@ -73,8 +71,7 @@ class ViewRecommendationPage extends StatelessWidget {
                           title: name, // 'name' field
                           by: bio, // 'bio' field
                           rating: data['likes'].toString(), // 'likes' field
-                          experience:
-                              experience, // Safely use the 'Experience' field
+                          experience: experience,
                         );
                       },
                     );

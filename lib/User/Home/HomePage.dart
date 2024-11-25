@@ -80,6 +80,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: const Icon(Icons.privacy_tip),
               title: const Text(
                 'Privacy Policy',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
@@ -93,6 +94,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.gavel),
               title: const Text(
                 'Terms of Use',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
@@ -103,6 +105,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.info),
               title: const Text(
                 'About',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
@@ -113,6 +116,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.phone),
               title: const Text(
                 'Contact Us',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
@@ -123,6 +127,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.logout),
               title: const Text(
                 'Logout',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),

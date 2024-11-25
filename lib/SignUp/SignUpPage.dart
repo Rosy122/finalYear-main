@@ -16,9 +16,20 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+  final TextEditingController _experienceController = TextEditingController();
 
   String _selectedRole = "User"; // Default to User
+  List<String> _selectedServices = [];
   String _errorMessage = '';
+
+  final List<String> _services = [
+    "Cleaning",
+    "Gardening",
+    "Plumbing",
+    "Electrical Work",
+    "Painting",
+    "Carpentry"
+  ]; // List of service options
 
   @override
   Widget build(BuildContext context) {
@@ -146,6 +157,49 @@ class _SignUpPageState extends State<SignUpPage> {
                           });
                         },
                       ),
+                      const SizedBox(height: 15),
+                      if (_selectedRole == "Service Provider") ...[
+                        const Row(
+                          children: [Text('Services Offered')],
+                        ),
+                        const SizedBox(height: 5),
+                        Wrap(
+                          spacing: 8,
+                          children: _services.map((service) {
+                            return FilterChip(
+                              label: Text(service),
+                              selected: _selectedServices.contains(service),
+                              onSelected: (bool selected) {
+                                setState(() {
+                                  if (selected) {
+                                    _selectedServices.add(service);
+                                  } else {
+                                    _selectedServices.remove(service);
+                                  }
+                                });
+                              },
+                            );
+                          }).toList(),
+                        ),
+                        const SizedBox(height: 15),
+                        const Row(
+                          children: [Text('Years of Experience')],
+                        ),
+                        const SizedBox(height: 5),
+                        TextField(
+                          controller: _experienceController,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            hintText: 'Enter years of experience',
+                            filled: true,
+                            fillColor: Colors.grey[300],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
+                        ),
+                      ],
                       const SizedBox(height: 25),
                       if (_errorMessage.isNotEmpty)
                         Padding(
@@ -196,7 +250,10 @@ class _SignUpPageState extends State<SignUpPage> {
     if (_emailController.text.isEmpty ||
         _passwordController.text.isEmpty ||
         _confirmPasswordController.text.isEmpty ||
-        _nameController.text.isEmpty) {
+        _nameController.text.isEmpty ||
+        (_selectedRole == "Service Provider" &&
+            (_selectedServices.isEmpty ||
+                _experienceController.text.isEmpty))) {
       setState(() {
         _errorMessage = 'Please fill in all fields.';
       });
@@ -234,8 +291,8 @@ class _SignUpPageState extends State<SignUpPage> {
             'name': _nameController.text,
             'email': _emailController.text,
             'role': 'Service Provider',
-            'services': [],
-            'years_of_experience': 0,
+            'services': _selectedServices,
+            'years_of_experience': int.parse(_experienceController.text),
           });
         }
 

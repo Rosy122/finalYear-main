@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/BookNow.dart';
 
@@ -37,21 +38,26 @@ class _SitaprofilepageState extends State<Sitaprofilepage> {
   @override
   void initState() {
     super.initState();
-    reviews = widget.reviews;
+    reviews = [];
     _fetchLikes();
+    _fetchReviews();
   }
 
   Future<void> _fetchLikes() async {
-    // Fetch the likes count from Firestore
-    DocumentSnapshot snapshot = await FirebaseFirestore.instance
-        .collection('service Provider')
-        .doc(widget.providerId)
-        .get();
+    try {
+      // Fetch the likes count from Firestore
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance
+          .collection('service Provider')
+          .doc(widget.providerId)
+          .get();
 
-    if (snapshot.exists && snapshot['likes'] != null) {
-      setState(() {
-        _likes = snapshot['likes'];
-      });
+      if (snapshot.exists && snapshot['likes'] != null) {
+        setState(() {
+          _likes = snapshot['likes'];
+        });
+      }
+    } catch (e) {
+      print('Error fetching likes: $e');
     }
   }
 
@@ -92,18 +98,79 @@ class _SitaprofilepageState extends State<Sitaprofilepage> {
     }
   }
 
-  void _submitReview() {
+  Future<void> _fetchReviews() async {
+    try {
+      QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection('Reviews')
+          .where('providerId', isEqualTo: widget.providerId)
+          .orderBy('timestamp', descending: true)
+          .get();
+
+      setState(() {
+        reviews = snapshot.docs
+            .map((doc) {
+              final data = doc.data() as Map<String, dynamic>;
+              return {
+                'reviewerName': data['reviewerName']?.toString() ?? 'Anonymous',
+                'reviewText':
+                    data['reviewText']?.toString() ?? 'No review text provided',
+              };
+            })
+            .toList()
+            .cast<Map<String, String>>();
+      });
+    } catch (e) {
+      print('Error fetching reviews: $e');
+    }
+  }
+
+  Future<void> _submitReview() async {
     final String reviewText = _reviewTextController.text;
 
     if (reviewText.isNotEmpty) {
-      setState(() {
-        reviews.add({'reviewerName': 'Anonymous', 'reviewText': reviewText});
-      });
+      try {
+        User? user = FirebaseAuth.instance.currentUser;
 
-      _reviewTextController.clear();
+        // Ensure user is logged in
+        if (user == null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('You must be logged in to submit a review.')),
+          );
+          return;
+        }
 
+        String reviewerName = user.displayName ?? user.email ?? 'Anonymous';
+        print('Reviewer Name: $reviewerName');
+        // Save the review to Firestore
+        await FirebaseFirestore.instance.collection('Reviews').add({
+          'providerId': widget.providerId,
+          'reviewerName': reviewerName,
+          'reviewText': reviewText,
+          'timestamp': Timestamp.now(),
+        });
+
+        // Fetch and display the updated reviews
+        setState(() {
+          reviews.add({'reviewerName': reviewerName, 'reviewText': reviewText});
+        });
+
+        _reviewTextController.clear();
+
+        _fetchReviews();
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Review submitted successfully!')),
+        );
+      } catch (e) {
+        print('Error submitting review: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Failed to submit review!')),
+        );
+      }
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Review submitted successfully!')),
+        const SnackBar(content: Text('Please enter a review!')),
       );
     }
   }
@@ -217,13 +284,11 @@ class _SitaprofilepageState extends State<Sitaprofilepage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => BookServicePage(
-                            providerId:
-                                widget.providerId, // Pass Sita's Firestore ID
-                            providerName: widget.name, // Pass provider name
-                            selectedService:
-                                widget.services.first, // Pass the first service
+                            providerId: widget.providerId,
+                            providerName: widget.name,
+                            selectedService: widget.services.first,
                           ),
-                        )); // Add your booking functionality here
+                        ));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 122, 165, 160),
@@ -313,44 +378,6 @@ class DetailedReviewTile extends StatelessWidget {
       title:
           Text(reviewer, style: const TextStyle(fontWeight: FontWeight.bold)),
       subtitle: Text(reviewText),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Sitaprofilepage(
-      name: 'Sita Ram',
-      experience: '5 years of experience in home cleaning and maintenance.',
-      rating: 4.7,
-      bio:
-          'I am dedicated to providing high-quality cleaning and maintenance services. My goal is to ensure customer satisfaction with every service I provide.',
-      services: [
-        'Home Cleaning',
-        'Kitchen Cleaning',
-        'Office Cleaning',
-        'Window Washing',
-        'Carpet Cleaning'
-      ],
-      reviews: [
-        {
-          'reviewerName': 'Kiran Lama',
-          'reviewText': 'Sita was very thorough and professional.',
-        },
-        {
-          'reviewerName': 'Sneha Thapa',
-          'reviewText': 'Sita cleaned our house so well. Highly recommended!',
-        },
-        {
-          'reviewerName': 'Manoj Shrestha',
-          'reviewText': 'Fantastic service, our house is sparkling clean!',
-        },
-      ],
-      imagePath: 'assets/SitaRaiCleaner.PNG',
-      providerId: 'your_provider_id_here', // Firestore document ID here
     );
   }
 }
