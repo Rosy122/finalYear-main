@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/ElectricianProfiles/KrishnaElectricalRepair.dart';
-import 'package:profix_new/User/ElectricianProfiles/LaxmiElectricalRepair.dart';
-import 'package:profix_new/User/ElectricianProfiles/SalinaElectricalRepair.dart';
+// import 'package:profix_new/User/ElectricianProfiles/KrishnaElectricalRepair.dart';
+// import 'package:profix_new/User/ElectricianProfiles/LaxmiElectricalRepair.dart';
+// import 'package:profix_new/User/ElectricianProfiles/SalinaElectricalRepair.dart';
 // import 'package:profix/RamElectricalRepair.dart';
 // import 'package:profix/SitaElectricalRepair.dart';
 // import 'package:profix/GopalElectricalRepair.dart';
@@ -95,139 +95,139 @@ class ElectricalRepairPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Laxmi Thapa',
-                experience: '10 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/LaxmiElectricalRepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LaxmiElectricalRepair(
-                                name: 'Laxmi Thapa',
-                                experience:
-                                    '10 years of experience in electrical repair services.',
-                                rating: 4.9,
-                                bio:
-                                    'Laxmi Thapa has been providing expert electrical repair services for 10 years. Her deep knowledge and skills ensure safe and reliable solutions for all electrical issues.',
-                                services: [
-                                  'Circuit Breaker Repair',
-                                  'Wiring Repair',
-                                  'Electrical Outlet Repair',
-                                  'Electrical Safety Inspections',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Suman Gurung',
-                                    'reviewText':
-                                        'Laxmi was very thorough and professional. She fixed the issue quickly and efficiently.',
-                                  },
-                                  {
-                                    'reviewerName': 'Maya Rai',
-                                    'reviewText':
-                                        'Extremely satisfied with Laxmi’s service. She is knowledgeable and very reliable.',
-                                  },
-                                  {
-                                    'reviewerName': 'Anil Shrestha',
-                                    'reviewText':
-                                        'Laxmi’s work is excellent. She resolved our electrical problems with great skill.',
-                                  },
-                                ],
-                                imagePath:
-                                    'assets/LaxmiElectricalRepair.PNG', // Specify the correct path to the image asset
-                                providerId: 'Laxmi Thapa(Electrical Repair)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Krishna Sharma',
-                experience: '7 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/KrishnaElectricalRepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const KrishnaElectricalRepair(
-                                name: 'Krishna Sharma',
-                                experience:
-                                    '7 years of experience in electrical repair services.',
-                                rating: 4.8,
-                                bio:
-                                    'Krishna Sharma has been providing expert electrical repair services for 7 years. His commitment to quality and safety makes him a trusted choice for any electrical repair needs.',
-                                services: [
-                                  'Fuse Box Repair',
-                                  'Electrical Wiring Troubleshooting',
-                                  'Appliance Wiring Repair',
-                                  'Lighting Repair and Replacement',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Puja Lama',
-                                    'reviewText':
-                                        'Krishna was prompt and professional. He fixed the wiring issue efficiently.',
-                                  },
-                                  {
-                                    'reviewerName': 'Ram Thapa',
-                                    'reviewText':
-                                        'Very satisfied with Krishna’s work. He is reliable and skilled.',
-                                  },
-                                  {
-                                    'reviewerName': 'Sita Rai',
-                                    'reviewText':
-                                        'Krishna provided excellent service. Our electrical problems were solved quickly.',
-                                  },
-                                ],
-                                imagePath: 'assets/KrishnaElectricalRepair.PNG',
-                                providerId: 'Krishna Sharma(Electrical repair)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Salina Lama',
-                experience: '12 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/SalinaElectricalRepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SalinaElectricalRepair(
-                                name: 'Salina Lama',
-                                experience:
-                                    '12 years of experience in electrical repair services.',
-                                rating: 4.7,
-                                bio:
-                                    'Salina Lama has been providing top-notch electrical repair services for 12 years. Her expertise and attention to detail ensure reliable and safe electrical solutions.',
-                                services: [
-                                  'Fuse Box Repair',
-                                  'Electrical Wiring Troubleshooting',
-                                  'Appliance Wiring Repair',
-                                  'Lighting Repair and Replacement',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Anil Tamang',
-                                    'reviewText':
-                                        'Salina did a great job fixing the electrical issues in our home. Very professional!',
-                                  },
-                                  {
-                                    'reviewerName': 'Rita Magar',
-                                    'reviewText':
-                                        'Salina is highly skilled and trustworthy. I would definitely recommend her services.',
-                                  },
-                                  {
-                                    'reviewerName': 'Kiran Gurung',
-                                    'reviewText':
-                                        'Very satisfied with Salina’s work. She is thorough and efficient.',
-                                  },
-                                ],
-                                imagePath: 'assets/SalinaElectricalRepair.PNG',
-                                providerId: 'Salina Lama(Electrical Repair)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Laxmi Thapa',
+              //   experience: '10 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/LaxmiElectricalRepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const LaxmiElectricalRepair(
+              //                   name: 'Laxmi Thapa',
+              //                   experience:
+              //                       '10 years of experience in electrical repair services.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Laxmi Thapa has been providing expert electrical repair services for 10 years. Her deep knowledge and skills ensure safe and reliable solutions for all electrical issues.',
+              //                   services: [
+              //                     'Circuit Breaker Repair',
+              //                     'Wiring Repair',
+              //                     'Electrical Outlet Repair',
+              //                     'Electrical Safety Inspections',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Suman Gurung',
+              //                       'reviewText':
+              //                           'Laxmi was very thorough and professional. She fixed the issue quickly and efficiently.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Maya Rai',
+              //                       'reviewText':
+              //                           'Extremely satisfied with Laxmi’s service. She is knowledgeable and very reliable.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Anil Shrestha',
+              //                       'reviewText':
+              //                           'Laxmi’s work is excellent. She resolved our electrical problems with great skill.',
+              //                     },
+              //                   ],
+              //                   imagePath:
+              //                       'assets/LaxmiElectricalRepair.PNG', // Specify the correct path to the image asset
+              //                   providerId: 'Laxmi Thapa(Electrical Repair)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Krishna Sharma',
+              //   experience: '7 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/KrishnaElectricalRepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const KrishnaElectricalRepair(
+              //                   name: 'Krishna Sharma',
+              //                   experience:
+              //                       '7 years of experience in electrical repair services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Krishna Sharma has been providing expert electrical repair services for 7 years. His commitment to quality and safety makes him a trusted choice for any electrical repair needs.',
+              //                   services: [
+              //                     'Fuse Box Repair',
+              //                     'Electrical Wiring Troubleshooting',
+              //                     'Appliance Wiring Repair',
+              //                     'Lighting Repair and Replacement',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Puja Lama',
+              //                       'reviewText':
+              //                           'Krishna was prompt and professional. He fixed the wiring issue efficiently.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Ram Thapa',
+              //                       'reviewText':
+              //                           'Very satisfied with Krishna’s work. He is reliable and skilled.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sita Rai',
+              //                       'reviewText':
+              //                           'Krishna provided excellent service. Our electrical problems were solved quickly.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/KrishnaElectricalRepair.PNG',
+              //                   providerId: 'Krishna Sharma(Electrical repair)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Salina Lama',
+              //   experience: '12 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/SalinaElectricalRepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SalinaElectricalRepair(
+              //                   name: 'Salina Lama',
+              //                   experience:
+              //                       '12 years of experience in electrical repair services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Salina Lama has been providing top-notch electrical repair services for 12 years. Her expertise and attention to detail ensure reliable and safe electrical solutions.',
+              //                   services: [
+              //                     'Fuse Box Repair',
+              //                     'Electrical Wiring Troubleshooting',
+              //                     'Appliance Wiring Repair',
+              //                     'Lighting Repair and Replacement',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Anil Tamang',
+              //                       'reviewText':
+              //                           'Salina did a great job fixing the electrical issues in our home. Very professional!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Rita Magar',
+              //                       'reviewText':
+              //                           'Salina is highly skilled and trustworthy. I would definitely recommend her services.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Kiran Gurung',
+              //                       'reviewText':
+              //                           'Very satisfied with Salina’s work. She is thorough and efficient.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/SalinaElectricalRepair.PNG',
+              //                   providerId: 'Salina Lama(Electrical Repair)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

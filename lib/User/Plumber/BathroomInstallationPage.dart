@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/PlumberProfiles/RajeshBathroomInstallation.dart';
-import 'package:profix_new/User/PlumberProfiles/SudipBathroomInstallation.dart';
-import 'package:profix_new/User/PlumberProfiles/SumanBathroomInstallation.dart';
+// import 'package:profix_new/User/PlumberProfiles/RajeshBathroomInstallation.dart';
+// import 'package:profix_new/User/PlumberProfiles/SudipBathroomInstallation.dart';
+// import 'package:profix_new/User/PlumberProfiles/SumanBathroomInstallation.dart';
 // import 'package:profix/SumanBathroomInstallationPage.dart';
 // import 'package:profix/AnitaBathroomInstallationPage.dart';
 // import 'package:profix/RajBathroomInstallationPage.dart';
@@ -95,137 +95,137 @@ class BathroomInstallationPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Sudip Shrestha',
-                experience: '12 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/SudipPlumber.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SudipBathroomInstallation(
-                                name: 'Sudip Shrestha',
-                                experience:
-                                    '5 years of experience in professional plumbing services.',
-                                rating: 4.8,
-                                bio:
-                                    'Sudip Shrestha has 5 years of experience in providing top-notch plumbing services, specializing in both residential and commercial plumbing solutions. He is committed to delivering high-quality work with attention to detail and customer satisfaction.',
-                                services: [
-                                  'Leak Repair',
-                                  'Pipe Installation',
-                                  'Bathroom and Kitchen Plumbing',
-                                  'Emergency Plumbing Services'
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Kamal Rai',
-                                    'reviewText':
-                                        'Sudip was very thorough and professional. I am extremely satisfied with his work!',
-                                  },
-                                  {
-                                    'reviewerName': 'Nisha Bhattarai',
-                                    'reviewText':
-                                        'Quick and efficient service. Sudip is very knowledgeable and reliable.',
-                                  },
-                                  {
-                                    'reviewerName': 'Sita Gurung',
-                                    'reviewText':
-                                        'Excellent service! Sudip fixed our plumbing issues in no time.',
-                                  },
-                                ],
-                                imagePath: 'assets/SudipPlumber.PNG',
-                                providerId: 'PEycgwuhmxRpCIFEfqSr',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Rajesh Kumar',
-                experience: '10 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/RajeshKumarPlumber.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RajeshPlumberProfile(
-                                name: 'Rajesh Kumar',
-                                experience:
-                                    '8 years of experience in professional plumbing services.',
-                                rating: 4.7,
-                                bio:
-                                    'With 8 years of experience in plumbing, I specialize in fixing leaks, installing pipes, and ensuring that all plumbing systems are functioning smoothly. My work is thorough, and I strive for customer satisfaction in every job I undertake.',
-                                services: [
-                                  'Leak Repair',
-                                  'Pipe Installation',
-                                  'Bathroom and Kitchen Plumbing',
-                                  'Emergency Plumbing Services'
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Arjun Shrestha',
-                                    'reviewText':
-                                        'Rajesh was quick and efficient in fixing the leak in our bathroom. Great service!',
-                                  },
-                                  {
-                                    'reviewerName': 'Mina Koirala',
-                                    'reviewText':
-                                        'He did a fantastic job installing new pipes in our kitchen. Highly recommend!',
-                                  },
-                                  {
-                                    'reviewerName': 'Suman Gurung',
-                                    'reviewText':
-                                        'Very professional and knowledgeable. Solved our plumbing issue with ease.',
-                                  },
-                                ],
-                                imagePath: 'assets/RajeshKumarPlumber.PNG',
-                                providerId: 'dK7g6zojTDKrfV7Rufdx',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Suman Rai',
-                experience: '8 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/SumanPlumber.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SumanPlumberProfile(
-                                name: 'Suman',
-                                experience: '7 years of plumbing experience.',
-                                rating: 4.8,
-                                bio:
-                                    'With 7 years of experience in plumbing, I specialize in leak repairs, pipe installations, and bathroom fittings. Dedicated to providing efficient and reliable services.',
-                                services: [
-                                  'Leak Repairs',
-                                  'Pipe Installations',
-                                  'Bathroom Fittings',
-                                  'Drain Unclogging',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Rohit Thapa',
-                                    'reviewText':
-                                        'Suman was very efficient in fixing my bathroom pipe. Great service!',
-                                  },
-                                  {
-                                    'reviewerName': 'Meera Shrestha',
-                                    'reviewText':
-                                        'Quick and professional. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Gopal Gurung',
-                                    'reviewText':
-                                        'Solved my plumbing issues with ease. Will definitely call again.',
-                                  },
-                                ],
-                                imagePath: 'assets/SumanPlumber.PNG',
-                                providerId: '7QmoARVd7SemmViXzhJh',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Sudip Shrestha',
+              //   experience: '12 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/SudipPlumber.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SudipBathroomInstallation(
+              //                   name: 'Sudip Shrestha',
+              //                   experience:
+              //                       '5 years of experience in professional plumbing services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Sudip Shrestha has 5 years of experience in providing top-notch plumbing services, specializing in both residential and commercial plumbing solutions. He is committed to delivering high-quality work with attention to detail and customer satisfaction.',
+              //                   services: [
+              //                     'Leak Repair',
+              //                     'Pipe Installation',
+              //                     'Bathroom and Kitchen Plumbing',
+              //                     'Emergency Plumbing Services'
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Kamal Rai',
+              //                       'reviewText':
+              //                           'Sudip was very thorough and professional. I am extremely satisfied with his work!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Nisha Bhattarai',
+              //                       'reviewText':
+              //                           'Quick and efficient service. Sudip is very knowledgeable and reliable.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sita Gurung',
+              //                       'reviewText':
+              //                           'Excellent service! Sudip fixed our plumbing issues in no time.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/SudipPlumber.PNG',
+              //                   providerId: 'PEycgwuhmxRpCIFEfqSr',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Rajesh Kumar',
+              //   experience: '10 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/RajeshKumarPlumber.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const RajeshPlumberProfile(
+              //                   name: 'Rajesh Kumar',
+              //                   experience:
+              //                       '8 years of experience in professional plumbing services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'With 8 years of experience in plumbing, I specialize in fixing leaks, installing pipes, and ensuring that all plumbing systems are functioning smoothly. My work is thorough, and I strive for customer satisfaction in every job I undertake.',
+              //                   services: [
+              //                     'Leak Repair',
+              //                     'Pipe Installation',
+              //                     'Bathroom and Kitchen Plumbing',
+              //                     'Emergency Plumbing Services'
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Arjun Shrestha',
+              //                       'reviewText':
+              //                           'Rajesh was quick and efficient in fixing the leak in our bathroom. Great service!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Mina Koirala',
+              //                       'reviewText':
+              //                           'He did a fantastic job installing new pipes in our kitchen. Highly recommend!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Suman Gurung',
+              //                       'reviewText':
+              //                           'Very professional and knowledgeable. Solved our plumbing issue with ease.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/RajeshKumarPlumber.PNG',
+              //                   providerId: 'dK7g6zojTDKrfV7Rufdx',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Suman Rai',
+              //   experience: '8 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/SumanPlumber.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SumanPlumberProfile(
+              //                   name: 'Suman',
+              //                   experience: '7 years of plumbing experience.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'With 7 years of experience in plumbing, I specialize in leak repairs, pipe installations, and bathroom fittings. Dedicated to providing efficient and reliable services.',
+              //                   services: [
+              //                     'Leak Repairs',
+              //                     'Pipe Installations',
+              //                     'Bathroom Fittings',
+              //                     'Drain Unclogging',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Rohit Thapa',
+              //                       'reviewText':
+              //                           'Suman was very efficient in fixing my bathroom pipe. Great service!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Meera Shrestha',
+              //                       'reviewText':
+              //                           'Quick and professional. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Gopal Gurung',
+              //                       'reviewText':
+              //                           'Solved my plumbing issues with ease. Will definitely call again.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/SumanPlumber.PNG',
+              //                   providerId: '7QmoARVd7SemmViXzhJh',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

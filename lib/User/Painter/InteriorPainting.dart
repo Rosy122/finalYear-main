@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/PainterProfile/GopiInteriorPainting.dart';
-import 'package:profix_new/User/PainterProfile/RamitaInteriorPainting.dart';
-import 'package:profix_new/User/PainterProfile/ShivaniInteriorPainting.dart';
 
 class InteriorPaintingPage extends StatelessWidget {
   const InteriorPaintingPage({super.key});
@@ -92,138 +89,138 @@ class InteriorPaintingPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Ramita Thapa',
-                experience: '8 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/RamitaInteriorPainting.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RamitaInteriorPainting(
-                                name: 'Ramita Thapa',
-                                experience:
-                                    '8 years of experience in interior painting services.',
-                                rating: 4.8,
-                                bio:
-                                    'Ramita Thapa is an expert interior painter with 8 years of experience. She is dedicated to delivering high-quality painting services that transform living spaces.',
-                                services: [
-                                  'Interior Wall Painting',
-                                  'Ceiling Painting',
-                                  'Decorative Painting',
-                                  'Color Consultation',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Sita Rana',
-                                    'reviewText':
-                                        'Ramita did an amazing job painting our house. Her attention to detail is exceptional!',
-                                  },
-                                  {
-                                    'reviewerName': 'Hari Adhikari',
-                                    'reviewText':
-                                        'Highly professional and skilled. Ramita transformed our interiors beautifully!',
-                                  },
-                                  {
-                                    'reviewerName': 'Gita Gurung',
-                                    'reviewText':
-                                        'Ramita is very talented. Our home looks stunning after her work!',
-                                  },
-                                ],
-                                imagePath: 'assets/RamitaInteriorPainting.PNG',
-                                providerId: 'Ramita Thapa(Interior Painting)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Shivani Sharma',
-                experience: '6 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/ShivaniInteriorPainting.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ShivaniPainting(
-                                name: 'Shivani Sharma',
-                                experience:
-                                    '6 years of experience in interior painting services.',
-                                rating: 4.7,
-                                bio:
-                                    'Shivani Sharma is a skilled interior painter with 6 years of experience. She is passionate about transforming interiors with beautiful and precise painting.',
-                                services: [
-                                  'Interior Wall Painting',
-                                  'Decorative Wall Art',
-                                  'Ceiling Painting',
-                                  'Color Consultation',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Nisha Joshi',
-                                    'reviewText':
-                                        'Shivani did an excellent job painting our living room. The colors and finish are perfect!',
-                                  },
-                                  {
-                                    'reviewerName': 'Rajesh Koirala',
-                                    'reviewText':
-                                        'Very satisfied with Shivani\'s work. She was professional and attentive to details.',
-                                  },
-                                  {
-                                    'reviewerName': 'Sarita Thapa',
-                                    'reviewText':
-                                        'Shivani has a great eye for color. Our home looks fantastic thanks to her expertise.',
-                                  },
-                                ],
-                                imagePath: 'assets/ShivaniInteriorPainting.PNG',
-                                providerId: 'Shivani Sharma(Interior Painting)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Gopi Lama',
-                experience: '10 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/GopiInteriorPainting.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const GopiPainting(
-                                name: 'Gopi Lama',
-                                experience:
-                                    '10 years of experience in interior painting services.',
-                                rating: 4.9,
-                                bio:
-                                    'Gopi Lama is a highly experienced interior painter with a decade of expertise in transforming spaces with precise and beautiful painting.',
-                                services: [
-                                  'Interior Wall Painting',
-                                  'Decorative Wall Art',
-                                  'Ceiling Painting',
-                                  'Color Consultation',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Anita Tamang',
-                                    'reviewText':
-                                        'Gopi Lama did a fantastic job with our home. The paint job is flawless!',
-                                  },
-                                  {
-                                    'reviewerName': 'Sunil Gurung',
-                                    'reviewText':
-                                        'Professional, skilled, and very reliable. Gopi Lama exceeded our expectations.',
-                                  },
-                                  {
-                                    'reviewerName': 'Mina Rai',
-                                    'reviewText':
-                                        'Highly recommend Gopi Lama for any painting work. He is the best in the business.',
-                                  },
-                                ],
-                                imagePath: 'assets/GopiInteriorPainting.PNG',
-                                providerId: 'Gopi Lama(Interior Painting)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Ramita Thapa',
+              //   experience: '8 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/RamitaInteriorPainting.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const RamitaInteriorPainting(
+              //                   name: 'Ramita Thapa',
+              //                   experience:
+              //                       '8 years of experience in interior painting services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Ramita Thapa is an expert interior painter with 8 years of experience. She is dedicated to delivering high-quality painting services that transform living spaces.',
+              //                   services: [
+              //                     'Interior Wall Painting',
+              //                     'Ceiling Painting',
+              //                     'Decorative Painting',
+              //                     'Color Consultation',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Sita Rana',
+              //                       'reviewText':
+              //                           'Ramita did an amazing job painting our house. Her attention to detail is exceptional!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Hari Adhikari',
+              //                       'reviewText':
+              //                           'Highly professional and skilled. Ramita transformed our interiors beautifully!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Gita Gurung',
+              //                       'reviewText':
+              //                           'Ramita is very talented. Our home looks stunning after her work!',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/RamitaInteriorPainting.PNG',
+              //                   providerId: 'Ramita Thapa(Interior Painting)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Shivani Sharma',
+              //   experience: '6 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/ShivaniInteriorPainting.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const ShivaniPainting(
+              //                   name: 'Shivani Sharma',
+              //                   experience:
+              //                       '6 years of experience in interior painting services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Shivani Sharma is a skilled interior painter with 6 years of experience. She is passionate about transforming interiors with beautiful and precise painting.',
+              //                   services: [
+              //                     'Interior Wall Painting',
+              //                     'Decorative Wall Art',
+              //                     'Ceiling Painting',
+              //                     'Color Consultation',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Nisha Joshi',
+              //                       'reviewText':
+              //                           'Shivani did an excellent job painting our living room. The colors and finish are perfect!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Rajesh Koirala',
+              //                       'reviewText':
+              //                           'Very satisfied with Shivani\'s work. She was professional and attentive to details.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sarita Thapa',
+              //                       'reviewText':
+              //                           'Shivani has a great eye for color. Our home looks fantastic thanks to her expertise.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/ShivaniInteriorPainting.PNG',
+              //                   providerId: 'Shivani Sharma(Interior Painting)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Gopi Lama',
+              //   experience: '10 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/GopiInteriorPainting.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const GopiPainting(
+              //                   name: 'Gopi Lama',
+              //                   experience:
+              //                       '10 years of experience in interior painting services.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Gopi Lama is a highly experienced interior painter with a decade of expertise in transforming spaces with precise and beautiful painting.',
+              //                   services: [
+              //                     'Interior Wall Painting',
+              //                     'Decorative Wall Art',
+              //                     'Ceiling Painting',
+              //                     'Color Consultation',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Anita Tamang',
+              //                       'reviewText':
+              //                           'Gopi Lama did a fantastic job with our home. The paint job is flawless!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sunil Gurung',
+              //                       'reviewText':
+              //                           'Professional, skilled, and very reliable. Gopi Lama exceeded our expectations.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Mina Rai',
+              //                       'reviewText':
+              //                           'Highly recommend Gopi Lama for any painting work. He is the best in the business.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/GopiInteriorPainting.PNG',
+              //                   providerId: 'Gopi Lama(Interior Painting)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

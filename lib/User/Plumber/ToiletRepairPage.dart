@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/PlumberProfiles/PoojaToiletRepair.dart';
-import 'package:profix_new/User/PlumberProfiles/RamToiletRepair.dart';
-import 'package:profix_new/User/PlumberProfiles/SanjayToiletRepair.dart';
+
 // import 'package:profix/SanjayToiletRepairPage.dart';
 // import 'package:profix/PoojaToiletRepairPage.dart';
 // import 'package:profix/RamToiletRepairPage.dart';
@@ -95,171 +93,171 @@ class ToiletRepairPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Sanjay Karki',
-                experience: '10 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/SanjayToiletRepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SanjayToiletRepair(
-                                name: 'Sanjay Karki',
-                                experience:
-                                    '10 years of experience in toilet repair services.',
-                                rating: 4.8,
-                                bio:
-                                    'Sanjay Karki has been specializing in toilet repairs for 10 years. His extensive experience and high rating reflect his dedication and expertise in fixing toilet issues efficiently and reliably.',
-                                services: [
-                                  'Toilet Leak Repair',
-                                  'Clogged Toilet Clearing',
-                                  'Flush Mechanism Repair',
-                                  'Toilet Installation and Replacement',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Rajesh Kumar',
-                                    'reviewText':
-                                        'Sanjay did a fantastic job fixing our toilet. Highly professional and efficient!',
-                                  },
-                                  {
-                                    'reviewerName': 'Mina Rai',
-                                    'reviewText':
-                                        'Very pleased with Sanjay’s service. He resolved the issue quickly and was very friendly.',
-                                  },
-                                  {
-                                    'reviewerName': 'Arjun Sharma',
-                                    'reviewText':
-                                        'Sanjay is an expert in toilet repairs. Our toilet has been working perfectly since he fixed it.',
-                                  },
-                                ],
-                                imagePath:
-                                    'assets/SanjayToiletRepair.PNG', // Specify the correct path to the image asset
-                                providerId: '6Y6ayMCWidHSApFQIUh6',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Pooja Sharma',
-                experience: '8 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/PoojaToiletRepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PoojaToiletRepair(
-                                name: 'Pooja Sharma',
-                                experience:
-                                    '8 years of experience in toilet repair services.',
-                                rating: 4.7,
-                                bio:
-                                    'Pooja Sharma has 8 years of experience in toilet repairs. Her commitment to providing quality service is reflected in her high rating and positive customer feedback.',
-                                services: [
-                                  'Toilet Leak Repair',
-                                  'Clogged Toilet Clearing',
-                                  'Flush Mechanism Repair',
-                                  'Toilet Installation and Replacement',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Suresh Singh',
-                                    'reviewText':
-                                        'Pooja was great! She fixed our toilet quickly and was very professional.',
-                                  },
-                                  {
-                                    'reviewerName': 'Kiran Thapa',
-                                    'reviewText':
-                                        'Highly recommend Pooja! She knows her job well and provides excellent service.',
-                                  },
-                                  {
-                                    'reviewerName': 'Rekha Karki',
-                                    'reviewText':
-                                        'Pooja did a fantastic job fixing our toilet. We haven’t had any issues since.',
-                                  },
-                                ],
-                                imagePath:
-                                    'assets/PoojaToiletRepair.PNG', // Specify the correct path to the image asset
-                                providerId: 'kOkzlBIiw2wQbZSArXkd',
-                              )));
-                  //               name: 'Pooja Sharma',
-                  //               experience: '8 years of experience in toilet repairs.',
-                  //               rating: 4.7,
-                  //               bio:
-                  //                   'Pooja is known for her expertise in toilet repairs, with 8 years of experience handling everything from leaks to complex flush system issues.',
-                  //               services: [
-                  //                 'Seal Replacement',
-                  //                 'Flush System Repair',
-                  //                 'Clog Removal',
-                  //                 'Toilet Installation'
-                  //               ],
-                  //               reviews: [
-                  //                 {
-                  //                   'reviewerName': 'Raju Lama',
-                  //                   'reviewText':
-                  //                       'Pooja was fantastic! She fixed our clogged toilet quickly and efficiently.',
-                  //                 },
-                  //                 {
-                  //                   'reviewerName': 'Anita Gurung',
-                  //                   'reviewText':
-                  //                       'Highly professional and knowledgeable. Our toilet is working like new!',
-                  //                 },
-                  //                 {
-                  //                   'reviewerName': 'Sushil Shrestha',
-                  //                   'reviewText':
-                  //                       'Pooja provided great service and was very thorough in her work.',
-                  //                 },
-                  //               ],
-                  //               imagePath: 'assets/PoojaToiletRepair.PNG',
-                  //             )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Ram Shrestha',
-                experience: '12 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/RamToiletRepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RamToiletRepair(
-                                name: 'Ram Shrestha',
-                                experience:
-                                    '12 years of experience in toilet repair services.',
-                                rating: 4.9,
-                                bio:
-                                    'Ram Shrestha has over a decade of experience in toilet repairs. His exceptional skills and dedication to quality service have earned him a stellar reputation and a high customer satisfaction rating.',
-                                services: [
-                                  'Toilet Leak Repair',
-                                  'Clogged Toilet Clearing',
-                                  'Flush Mechanism Repair',
-                                  'Toilet Installation and Replacement',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Hari Dhakal',
-                                    'reviewText':
-                                        'Ram was fantastic! He resolved our toilet issue quickly and professionally.',
-                                  },
-                                  {
-                                    'reviewerName': 'Sarita Rai',
-                                    'reviewText':
-                                        'I highly recommend Ram for any toilet repairs. He is very skilled and efficient.',
-                                  },
-                                  {
-                                    'reviewerName': 'Keshav Koirala',
-                                    'reviewText':
-                                        'Ram’s work is top-notch. He fixed our toilet problem perfectly, and we haven’t had any issues since.',
-                                  },
-                                ],
-                                imagePath:
-                                    'assets/RamToiletRepair.PNG', // Specify the correct path to the image asset
-                                providerId: '8chDA4ZkbLT727YqdscD',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Sanjay Karki',
+              //   experience: '10 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/SanjayToiletRepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SanjayToiletRepair(
+              //                   name: 'Sanjay Karki',
+              //                   experience:
+              //                       '10 years of experience in toilet repair services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Sanjay Karki has been specializing in toilet repairs for 10 years. His extensive experience and high rating reflect his dedication and expertise in fixing toilet issues efficiently and reliably.',
+              //                   services: [
+              //                     'Toilet Leak Repair',
+              //                     'Clogged Toilet Clearing',
+              //                     'Flush Mechanism Repair',
+              //                     'Toilet Installation and Replacement',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Rajesh Kumar',
+              //                       'reviewText':
+              //                           'Sanjay did a fantastic job fixing our toilet. Highly professional and efficient!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Mina Rai',
+              //                       'reviewText':
+              //                           'Very pleased with Sanjay’s service. He resolved the issue quickly and was very friendly.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Arjun Sharma',
+              //                       'reviewText':
+              //                           'Sanjay is an expert in toilet repairs. Our toilet has been working perfectly since he fixed it.',
+              //                     },
+              //                   ],
+              //                   imagePath:
+              //                       'assets/SanjayToiletRepair.PNG', // Specify the correct path to the image asset
+              //                   providerId: '6Y6ayMCWidHSApFQIUh6',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Pooja Sharma',
+              //   experience: '8 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/PoojaToiletRepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const PoojaToiletRepair(
+              //                   name: 'Pooja Sharma',
+              //                   experience:
+              //                       '8 years of experience in toilet repair services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Pooja Sharma has 8 years of experience in toilet repairs. Her commitment to providing quality service is reflected in her high rating and positive customer feedback.',
+              //                   services: [
+              //                     'Toilet Leak Repair',
+              //                     'Clogged Toilet Clearing',
+              //                     'Flush Mechanism Repair',
+              //                     'Toilet Installation and Replacement',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Suresh Singh',
+              //                       'reviewText':
+              //                           'Pooja was great! She fixed our toilet quickly and was very professional.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Kiran Thapa',
+              //                       'reviewText':
+              //                           'Highly recommend Pooja! She knows her job well and provides excellent service.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Rekha Karki',
+              //                       'reviewText':
+              //                           'Pooja did a fantastic job fixing our toilet. We haven’t had any issues since.',
+              //                     },
+              //                   ],
+              //                   imagePath:
+              //                       'assets/PoojaToiletRepair.PNG', // Specify the correct path to the image asset
+              //                   providerId: 'kOkzlBIiw2wQbZSArXkd',
+              //                 )));
+              //     //               name: 'Pooja Sharma',
+              //     //               experience: '8 years of experience in toilet repairs.',
+              //     //               rating: 4.7,
+              //     //               bio:
+              //     //                   'Pooja is known for her expertise in toilet repairs, with 8 years of experience handling everything from leaks to complex flush system issues.',
+              //     //               services: [
+              //     //                 'Seal Replacement',
+              //     //                 'Flush System Repair',
+              //     //                 'Clog Removal',
+              //     //                 'Toilet Installation'
+              //     //               ],
+              //     //               reviews: [
+              //     //                 {
+              //     //                   'reviewerName': 'Raju Lama',
+              //     //                   'reviewText':
+              //     //                       'Pooja was fantastic! She fixed our clogged toilet quickly and efficiently.',
+              //     //                 },
+              //     //                 {
+              //     //                   'reviewerName': 'Anita Gurung',
+              //     //                   'reviewText':
+              //     //                       'Highly professional and knowledgeable. Our toilet is working like new!',
+              //     //                 },
+              //     //                 {
+              //     //                   'reviewerName': 'Sushil Shrestha',
+              //     //                   'reviewText':
+              //     //                       'Pooja provided great service and was very thorough in her work.',
+              //     //                 },
+              //     //               ],
+              //     //               imagePath: 'assets/PoojaToiletRepair.PNG',
+              //     //             )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Ram Shrestha',
+              //   experience: '12 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/RamToiletRepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const RamToiletRepair(
+              //                   name: 'Ram Shrestha',
+              //                   experience:
+              //                       '12 years of experience in toilet repair services.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Ram Shrestha has over a decade of experience in toilet repairs. His exceptional skills and dedication to quality service have earned him a stellar reputation and a high customer satisfaction rating.',
+              //                   services: [
+              //                     'Toilet Leak Repair',
+              //                     'Clogged Toilet Clearing',
+              //                     'Flush Mechanism Repair',
+              //                     'Toilet Installation and Replacement',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Hari Dhakal',
+              //                       'reviewText':
+              //                           'Ram was fantastic! He resolved our toilet issue quickly and professionally.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sarita Rai',
+              //                       'reviewText':
+              //                           'I highly recommend Ram for any toilet repairs. He is very skilled and efficient.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Keshav Koirala',
+              //                       'reviewText':
+              //                           'Ram’s work is top-notch. He fixed our toilet problem perfectly, and we haven’t had any issues since.',
+              //                     },
+              //                   ],
+              //                   imagePath:
+              //                       'assets/RamToiletRepair.PNG', // Specify the correct path to the image asset
+              //                   providerId: '8chDA4ZkbLT727YqdscD',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/AC%20Repair/ACInstallationPage.dart';
 import 'package:profix_new/User/AC%20Repair/ACService.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/DeepakACrepair.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/RajACrepair.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/SumanACrepair.dart';
 
 void main() => runApp(const ACRepairPageApp());
 
@@ -82,138 +79,138 @@ class ACRepairPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 122, 165, 160)),
               ),
-              ProfessionalProfileTile(
-                name: 'Deepak Sharma',
-                experience: '10 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/DeepakACrepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DeepakACRepair(
-                                name: 'Deepak Sharma',
-                                experience:
-                                    '10 years of experience in AC repair services.',
-                                rating: 4.9,
-                                bio:
-                                    'Deepak Sharma is an expert in AC repair with a decade of experience. Known for his reliable and efficient service, Deepak ensures your AC system runs smoothly.',
-                                services: [
-                                  'AC Installation',
-                                  'AC Repair',
-                                  'AC Maintenance',
-                                  'AC Troubleshooting',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Sanjay Gupta',
-                                    'reviewText':
-                                        'Deepak did an excellent job fixing my AC. Highly recommend!',
-                                  },
-                                  {
-                                    'reviewerName': 'Aarti Sharma',
-                                    'reviewText':
-                                        'Reliable and efficient service. Deepak is the best in AC repair.',
-                                  },
-                                  {
-                                    'reviewerName': 'Ravi Kumar',
-                                    'reviewText':
-                                        'Great experience with Deepak. My AC has never worked better.',
-                                  },
-                                ],
-                                imagePath: 'assets/DeepakACrepair.PNG',
-                                providerId: 'Deepak Sharma(Ac Repair)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Suman Rani',
-                experience: '8 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/SumanACrepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SumanACRepair(
-                                name: 'Suman Rani',
-                                experience:
-                                    '8 years of experience in AC repair services.',
-                                rating: 4.7,
-                                bio:
-                                    'Suman Rani is an experienced AC repair technician with 8 years of expertise. Known for her meticulous work and reliable service, Suman ensures your AC functions perfectly.',
-                                services: [
-                                  'AC Installation',
-                                  'AC Repair',
-                                  'AC Maintenance',
-                                  'AC Troubleshooting',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Deepak Joshi',
-                                    'reviewText':
-                                        'Suman provided excellent service. My AC is working like new!',
-                                  },
-                                  {
-                                    'reviewerName': 'Anita Rai',
-                                    'reviewText':
-                                        'Highly recommend Suman for her efficient and reliable AC repair service.',
-                                  },
-                                  {
-                                    'reviewerName': 'Raj Kumar',
-                                    'reviewText':
-                                        'Great job by Suman. Very professional and knowledgeable.',
-                                  },
-                                ],
-                                imagePath: 'assets/SumanACrepair.PNG',
-                                providerId: 'Suman Rani(Ac Repair)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Raj Kumar',
-                experience: '6 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/RajACrepair.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RajACRepair(
-                                name: 'Raj Kumar',
-                                experience:
-                                    '6 years of experience in AC repair services.',
-                                rating: 4.8,
-                                bio:
-                                    'Raj Kumar is a skilled AC repair technician with 6 years of experience. Known for his attention to detail and prompt service, Raj ensures high-quality repairs and maintenance.',
-                                services: [
-                                  'AC Installation',
-                                  'AC Repair',
-                                  'AC Maintenance',
-                                  'AC Troubleshooting',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Ravi Sharma',
-                                    'reviewText':
-                                        'Raj did an excellent job repairing my AC. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Priya Patel',
-                                    'reviewText':
-                                        'Very professional and reliable service. My AC works perfectly now.',
-                                  },
-                                  {
-                                    'reviewerName': 'Anil Gupta',
-                                    'reviewText':
-                                        'Raj is very knowledgeable and did a great job. Will use his service again.',
-                                  },
-                                ],
-                                imagePath: 'assets/RajACrepair.PNG',
-                                providerId: 'Raj Kumar(Ac Repair)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Deepak Sharma',
+              //   experience: '10 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/DeepakACrepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const DeepakACRepair(
+              //                   name: 'Deepak Sharma',
+              //                   experience:
+              //                       '10 years of experience in AC repair services.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Deepak Sharma is an expert in AC repair with a decade of experience. Known for his reliable and efficient service, Deepak ensures your AC system runs smoothly.',
+              //                   services: [
+              //                     'AC Installation',
+              //                     'AC Repair',
+              //                     'AC Maintenance',
+              //                     'AC Troubleshooting',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Sanjay Gupta',
+              //                       'reviewText':
+              //                           'Deepak did an excellent job fixing my AC. Highly recommend!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Aarti Sharma',
+              //                       'reviewText':
+              //                           'Reliable and efficient service. Deepak is the best in AC repair.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Ravi Kumar',
+              //                       'reviewText':
+              //                           'Great experience with Deepak. My AC has never worked better.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/DeepakACrepair.PNG',
+              //                   providerId: 'Deepak Sharma(Ac Repair)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Suman Rani',
+              //   experience: '8 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/SumanACrepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SumanACRepair(
+              //                   name: 'Suman Rani',
+              //                   experience:
+              //                       '8 years of experience in AC repair services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Suman Rani is an experienced AC repair technician with 8 years of expertise. Known for her meticulous work and reliable service, Suman ensures your AC functions perfectly.',
+              //                   services: [
+              //                     'AC Installation',
+              //                     'AC Repair',
+              //                     'AC Maintenance',
+              //                     'AC Troubleshooting',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Deepak Joshi',
+              //                       'reviewText':
+              //                           'Suman provided excellent service. My AC is working like new!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Anita Rai',
+              //                       'reviewText':
+              //                           'Highly recommend Suman for her efficient and reliable AC repair service.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Raj Kumar',
+              //                       'reviewText':
+              //                           'Great job by Suman. Very professional and knowledgeable.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/SumanACrepair.PNG',
+              //                   providerId: 'Suman Rani(Ac Repair)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Raj Kumar',
+              //   experience: '6 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/RajACrepair.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const RajACRepair(
+              //                   name: 'Raj Kumar',
+              //                   experience:
+              //                       '6 years of experience in AC repair services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Raj Kumar is a skilled AC repair technician with 6 years of experience. Known for his attention to detail and prompt service, Raj ensures high-quality repairs and maintenance.',
+              //                   services: [
+              //                     'AC Installation',
+              //                     'AC Repair',
+              //                     'AC Maintenance',
+              //                     'AC Troubleshooting',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Ravi Sharma',
+              //                       'reviewText':
+              //                           'Raj did an excellent job repairing my AC. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Priya Patel',
+              //                       'reviewText':
+              //                           'Very professional and reliable service. My AC works perfectly now.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Anil Gupta',
+              //                       'reviewText':
+              //                           'Raj is very knowledgeable and did a great job. Will use his service again.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/RajACrepair.PNG',
+              //                   providerId: 'Raj Kumar(Ac Repair)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

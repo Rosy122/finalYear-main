@@ -3,8 +3,11 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:profix_new/S.NotificationPage.dart';
+import 'package:profix_new/ServiceProviderDashboard.dart';
 import 'package:profix_new/SignIn/SignInPage.dart';
 import 'package:profix_new/User/Home/HomePage.dart';
+import 'package:profix_new/ViewRequests.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,10 +26,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const ProHome(),
+      initialRoute: 'signin',
       routes: {
-        '/signin': (context) => SignInPage(),
-        '/Home': (context) => HomePage(),
+        'signin': (context) => SignInPage(),
+        'home': (context) => HomePage(),
+        'viewRequests': (context) => const ViewRequestsPage(),
+        'dashboard': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments
+              as Map<String, dynamic>;
+          return ServiceProviderHomePage(
+            providerName: args['providerName'],
+            serviceType: args['serviceType'],
+          );
+        },
+        'notifications': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments
+              as Map<String, dynamic>;
+          return NotificationsPage(
+            providerId: args['providerId'] ?? '',
+          );
+        },
       },
     );
   }

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/PainterProfile/BishalWallpaperInstallation.dart';
-import 'package:profix_new/User/PainterProfile/GitaWallpaperInstallation.dart';
-import 'package:profix_new/User/PainterProfile/KaiWallpaperInstallation.dart';
 
 class WallpaperInstallationPage extends StatelessWidget {
   const WallpaperInstallationPage({super.key});
@@ -98,144 +95,144 @@ class WallpaperInstallationPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Bishal Purja',
-                experience: '8 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/BishalWallpaperInstallation.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const BishalWallpaperInstallation(
-                                name: 'Bishal Purja',
-                                experience:
-                                    '8 years of experience in wallpaper installation services.',
-                                rating: 4.9,
-                                bio:
-                                    'Bishal Purja is an expert in wallpaper installation with 8 years of experience. He is known for his precision and ability to bring any room to life with beautiful wallpapers.',
-                                services: [
-                                  'Wallpaper Installation',
-                                  'Wallpaper Removal',
-                                  'Custom Wallpaper Design',
-                                  'Wall Preparation',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Amit Rai',
-                                    'reviewText':
-                                        'Bishal did an amazing job with the wallpaper. Highly satisfied!',
-                                  },
-                                  {
-                                    'reviewerName': 'Pooja Shrestha',
-                                    'reviewText':
-                                        'Very professional and detail-oriented. The room looks fantastic!',
-                                  },
-                                  {
-                                    'reviewerName': 'Kamal Lama',
-                                    'reviewText':
-                                        'Bishal’s work exceeded my expectations. Will definitely hire him again!',
-                                  },
-                                ],
-                                imagePath:
-                                    'assets/BishalWallpaperInstallation.PNG',
-                                providerId:
-                                    'Bishal Purja(Wallpaper Installation)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Gita Sharma',
-                experience: '5 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/GitaWallpaperInstallation.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const GitaWallpaperInstallation(
-                                name: 'Gita Sharma',
-                                experience:
-                                    '5 years of experience in wallpaper installation services.',
-                                rating: 4.8,
-                                bio:
-                                    'Gita Sharma is a skilled wallpaper installation expert with 5 years of experience. She is known for her attention to detail and her ability to transform any space with beautiful wallpapers.',
-                                services: [
-                                  'Wallpaper Installation',
-                                  'Wallpaper Removal',
-                                  'Custom Wallpaper Design',
-                                  'Wall Preparation',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Prakash Rai',
-                                    'reviewText':
-                                        'Gita did an excellent job with my wallpaper. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Rina Shrestha',
-                                    'reviewText':
-                                        'Very precise and professional work. The room looks amazing!',
-                                  },
-                                  {
-                                    'reviewerName': 'Suman Lama',
-                                    'reviewText':
-                                        'Gita’s work is top-notch. Will definitely hire her again!',
-                                  },
-                                ],
-                                imagePath:
-                                    'assets/GitaWallpaperInstallation.PNG',
-                                providerId:
-                                    'Gita Sharma(Wallpaper Installation)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Kai Lama',
-                experience: '10 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/KaiWallpaperInstallation.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const KaiWallpaperInstallation(
-                                name: 'Kai Lama',
-                                experience:
-                                    '10 years of experience in wallpaper installation services.',
-                                rating: 4.7,
-                                bio:
-                                    'Kai Lama is a seasoned wallpaper installation expert with 10 years of experience. He has a keen eye for detail and is known for his high-quality work that transforms spaces beautifully.',
-                                services: [
-                                  'Wallpaper Installation',
-                                  'Wallpaper Removal',
-                                  'Custom Wallpaper Design',
-                                  'Wall Preparation',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Nima Tamang',
-                                    'reviewText':
-                                        'Kai’s work is exceptional. My room looks fantastic!',
-                                  },
-                                  {
-                                    'reviewerName': 'Tenzin Sherpa',
-                                    'reviewText':
-                                        'Great service and very professional. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Pemba Lama',
-                                    'reviewText':
-                                        'Kai did an amazing job with the wallpaper. Very satisfied!',
-                                  },
-                                ],
-                                imagePath:
-                                    'assets/KaiWallpaperInstallation.PNG',
-                                providerId: 'Kai Lama(Wallpaper Installation)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Bishal Purja',
+              //   experience: '8 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/BishalWallpaperInstallation.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) =>
+              //                 const BishalWallpaperInstallation(
+              //                   name: 'Bishal Purja',
+              //                   experience:
+              //                       '8 years of experience in wallpaper installation services.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Bishal Purja is an expert in wallpaper installation with 8 years of experience. He is known for his precision and ability to bring any room to life with beautiful wallpapers.',
+              //                   services: [
+              //                     'Wallpaper Installation',
+              //                     'Wallpaper Removal',
+              //                     'Custom Wallpaper Design',
+              //                     'Wall Preparation',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Amit Rai',
+              //                       'reviewText':
+              //                           'Bishal did an amazing job with the wallpaper. Highly satisfied!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Pooja Shrestha',
+              //                       'reviewText':
+              //                           'Very professional and detail-oriented. The room looks fantastic!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Kamal Lama',
+              //                       'reviewText':
+              //                           'Bishal’s work exceeded my expectations. Will definitely hire him again!',
+              //                     },
+              //                   ],
+              //                   imagePath:
+              //                       'assets/BishalWallpaperInstallation.PNG',
+              //                   providerId:
+              //                       'Bishal Purja(Wallpaper Installation)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Gita Sharma',
+              //   experience: '5 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/GitaWallpaperInstallation.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const GitaWallpaperInstallation(
+              //                   name: 'Gita Sharma',
+              //                   experience:
+              //                       '5 years of experience in wallpaper installation services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Gita Sharma is a skilled wallpaper installation expert with 5 years of experience. She is known for her attention to detail and her ability to transform any space with beautiful wallpapers.',
+              //                   services: [
+              //                     'Wallpaper Installation',
+              //                     'Wallpaper Removal',
+              //                     'Custom Wallpaper Design',
+              //                     'Wall Preparation',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Prakash Rai',
+              //                       'reviewText':
+              //                           'Gita did an excellent job with my wallpaper. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Rina Shrestha',
+              //                       'reviewText':
+              //                           'Very precise and professional work. The room looks amazing!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Suman Lama',
+              //                       'reviewText':
+              //                           'Gita’s work is top-notch. Will definitely hire her again!',
+              //                     },
+              //                   ],
+              //                   imagePath:
+              //                       'assets/GitaWallpaperInstallation.PNG',
+              //                   providerId:
+              //                       'Gita Sharma(Wallpaper Installation)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Kai Lama',
+              //   experience: '10 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/KaiWallpaperInstallation.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const KaiWallpaperInstallation(
+              //                   name: 'Kai Lama',
+              //                   experience:
+              //                       '10 years of experience in wallpaper installation services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Kai Lama is a seasoned wallpaper installation expert with 10 years of experience. He has a keen eye for detail and is known for his high-quality work that transforms spaces beautifully.',
+              //                   services: [
+              //                     'Wallpaper Installation',
+              //                     'Wallpaper Removal',
+              //                     'Custom Wallpaper Design',
+              //                     'Wall Preparation',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Nima Tamang',
+              //                       'reviewText':
+              //                           'Kai’s work is exceptional. My room looks fantastic!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Tenzin Sherpa',
+              //                       'reviewText':
+              //                           'Great service and very professional. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Pemba Lama',
+              //                       'reviewText':
+              //                           'Kai did an amazing job with the wallpaper. Very satisfied!',
+              //                     },
+              //                   ],
+              //                   imagePath:
+              //                       'assets/KaiWallpaperInstallation.PNG',
+              //                   providerId: 'Kai Lama(Wallpaper Installation)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

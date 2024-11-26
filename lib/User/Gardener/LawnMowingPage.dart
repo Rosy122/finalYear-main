@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/GardenerProfiles/PabitraLawnMowing.dart';
-import 'package:profix_new/User/GardenerProfiles/PratibhaLawnMowing.dart';
-import 'package:profix_new/User/GardenerProfiles/RajuLawnMowing.dart';
+
 // import 'package:profix/RajuLawnMowing.dart';
 // import 'package:profix/SitaLawnMowing.dart';
 // import 'package:profix/GopalLawnMowing.dart';
@@ -94,138 +92,138 @@ class LawnMowingPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Raju Singh',
-                experience: '8 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/RajuLawnMowing.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LawnMowingProfile(
-                                name: 'Raju Singh',
-                                experience:
-                                    '8 years of experience in lawn mowing services.',
-                                rating: 4.8,
-                                bio:
-                                    'Raju Singh is a dedicated lawn care professional with 8 years of experience. His attention to detail ensures your lawn looks its best all year round.',
-                                services: [
-                                  'Regular Lawn Mowing',
-                                  'Edging and Trimming',
-                                  'Lawn Fertilization',
-                                  'Weed Control',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Suman Gautam',
-                                    'reviewText':
-                                        'Raju did a fantastic job with our lawn. It has never looked better!',
-                                  },
-                                  {
-                                    'reviewerName': 'Priya Sharma',
-                                    'reviewText':
-                                        'Very satisfied with Raju’s work. He is punctual and professional.',
-                                  },
-                                  {
-                                    'reviewerName': 'Anil Shrestha',
-                                    'reviewText':
-                                        'Raju is an expert in lawn care. I highly recommend his services.',
-                                  },
-                                ],
-                                imagePath: 'assets/RajuLawnMowing.PNG',
-                                providerId: 'Raju Singh(LawnMowing)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Pratibha Sharma',
-                experience: '5 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/PratibhaLawnMowing.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PratibhaLawnMowing(
-                                name: 'Pratibha Sharma',
-                                experience:
-                                    '5 years of experience in lawn mowing services.',
-                                rating: 4.7,
-                                bio:
-                                    'Pratibha Sharma is a passionate lawn care expert with 5 years of experience. She ensures your lawn is perfectly maintained and healthy.',
-                                services: [
-                                  'Regular Lawn Mowing',
-                                  'Edging and Trimming',
-                                  'Lawn Fertilization',
-                                  'Weed Control',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Ramesh Thapa',
-                                    'reviewText':
-                                        'Pratibha did a great job with our lawn. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Sunita Bhandari',
-                                    'reviewText':
-                                        'Very pleased with the service. Pratibha is reliable and efficient.',
-                                  },
-                                  {
-                                    'reviewerName': 'Bikash Shrestha',
-                                    'reviewText':
-                                        'Pratibha’s attention to detail is amazing. The lawn looks beautiful!',
-                                  },
-                                ],
-                                imagePath: 'assets/PratibhaLawnMowing.PNG',
-                                providerId: 'Pratibha Sharma(LawnMowing)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Pabitra Lama',
-                experience: '10 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/PabitraLawnMowing.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PabitraLawnMowing(
-                                name: 'Pabitra Lama',
-                                experience:
-                                    '10 years of experience in lawn mowing services.',
-                                rating: 4.9,
-                                bio:
-                                    'Pabitra Lama is an expert in lawn care with a decade of experience. She is known for her attention to detail and commitment to keeping lawns healthy and well-manicured.',
-                                services: [
-                                  'Lawn Mowing',
-                                  'Trimming and Edging',
-                                  'Lawn Aeration',
-                                  'Fertilization and Weed Control',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Kamal Shrestha',
-                                    'reviewText':
-                                        'Pabitra did an exceptional job with my lawn. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Sita Rai',
-                                    'reviewText':
-                                        'Very happy with Pabitra’s service. She’s professional and thorough.',
-                                  },
-                                  {
-                                    'reviewerName': 'Gopal Lama',
-                                    'reviewText':
-                                        'Pabitra is reliable and knows her work well. My lawn looks great!',
-                                  },
-                                ],
-                                imagePath: 'assets/PabitraLawnMowing.PNG',
-                                providerId: 'Pabitra Lama(LawnMowing)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Raju Singh',
+              //   experience: '8 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/RajuLawnMowing.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const LawnMowingProfile(
+              //                   name: 'Raju Singh',
+              //                   experience:
+              //                       '8 years of experience in lawn mowing services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Raju Singh is a dedicated lawn care professional with 8 years of experience. His attention to detail ensures your lawn looks its best all year round.',
+              //                   services: [
+              //                     'Regular Lawn Mowing',
+              //                     'Edging and Trimming',
+              //                     'Lawn Fertilization',
+              //                     'Weed Control',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Suman Gautam',
+              //                       'reviewText':
+              //                           'Raju did a fantastic job with our lawn. It has never looked better!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Priya Sharma',
+              //                       'reviewText':
+              //                           'Very satisfied with Raju’s work. He is punctual and professional.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Anil Shrestha',
+              //                       'reviewText':
+              //                           'Raju is an expert in lawn care. I highly recommend his services.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/RajuLawnMowing.PNG',
+              //                   providerId: 'Raju Singh(LawnMowing)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Pratibha Sharma',
+              //   experience: '5 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/PratibhaLawnMowing.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const PratibhaLawnMowing(
+              //                   name: 'Pratibha Sharma',
+              //                   experience:
+              //                       '5 years of experience in lawn mowing services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Pratibha Sharma is a passionate lawn care expert with 5 years of experience. She ensures your lawn is perfectly maintained and healthy.',
+              //                   services: [
+              //                     'Regular Lawn Mowing',
+              //                     'Edging and Trimming',
+              //                     'Lawn Fertilization',
+              //                     'Weed Control',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Ramesh Thapa',
+              //                       'reviewText':
+              //                           'Pratibha did a great job with our lawn. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sunita Bhandari',
+              //                       'reviewText':
+              //                           'Very pleased with the service. Pratibha is reliable and efficient.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Bikash Shrestha',
+              //                       'reviewText':
+              //                           'Pratibha’s attention to detail is amazing. The lawn looks beautiful!',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/PratibhaLawnMowing.PNG',
+              //                   providerId: 'Pratibha Sharma(LawnMowing)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Pabitra Lama',
+              //   experience: '10 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/PabitraLawnMowing.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const PabitraLawnMowing(
+              //                   name: 'Pabitra Lama',
+              //                   experience:
+              //                       '10 years of experience in lawn mowing services.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Pabitra Lama is an expert in lawn care with a decade of experience. She is known for her attention to detail and commitment to keeping lawns healthy and well-manicured.',
+              //                   services: [
+              //                     'Lawn Mowing',
+              //                     'Trimming and Edging',
+              //                     'Lawn Aeration',
+              //                     'Fertilization and Weed Control',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Kamal Shrestha',
+              //                       'reviewText':
+              //                           'Pabitra did an exceptional job with my lawn. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sita Rai',
+              //                       'reviewText':
+              //                           'Very happy with Pabitra’s service. She’s professional and thorough.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Gopal Lama',
+              //                       'reviewText':
+              //                           'Pabitra is reliable and knows her work well. My lawn looks great!',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/PabitraLawnMowing.PNG',
+              //                   providerId: 'Pabitra Lama(LawnMowing)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/MakeupArtistProfiles/AnitaMakeup.dart';
-import 'package:profix_new/User/MakeupArtistProfiles/PriyaMakeup.dart';
-import 'package:profix_new/User/MakeupArtistProfiles/RaviMakeup.dart';
 
 class PartyMakeupPage extends StatelessWidget {
   const PartyMakeupPage({super.key});
@@ -83,135 +80,135 @@ class PartyMakeupPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Priya Singh',
-                experience: '8 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/Priya.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const PriyaSinghMakeupService(
-                                name: 'Priya Singh',
-                                experience:
-                                    '8 years of experience in makeup artistry.',
-                                rating: 4.9,
-                                bio:
-                                    'Priya Singh is a skilled makeup artist with 8 years of experience specializing in bridal, party, and special occasion makeup.',
-                                services: [
-                                  'Bridal Makeup (Rs. 8000/event)',
-                                  'Party Makeup (Rs. 4000/session)',
-                                  'Special Occasion Makeup (Rs. 5000/session)',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Anita Sharma',
-                                    'reviewText':
-                                        'Priya’s bridal makeup was fantastic. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Ravi Mehta',
-                                    'reviewText':
-                                        'She did an amazing job for the party makeup.',
-                                  },
-                                  {
-                                    'reviewerName': 'Sneha Rao',
-                                    'reviewText':
-                                        'Her makeup skills are exceptional. Loved the outcome!',
-                                  },
-                                ],
-                                imagePath: 'assets/Priya.PNG',
-                                providerId: 'Priya Singh(Makeup)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Anita Sharma',
-                experience: '6 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/Anita.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AnitaSharmaMakeupService(
-                                name: 'Anita Sharma',
-                                experience:
-                                    '6 years of experience in makeup artistry.',
-                                rating: 4.8,
-                                bio:
-                                    'Anita Sharma is a professional makeup artist with 6 years of experience specializing in bridal, party, and special occasion makeup.',
-                                services: [
-                                  'Bridal Makeup (Rs. 8000/event)',
-                                  'Party Makeup (Rs. 4000/session)',
-                                  'Special Occasion Makeup (Rs. 5000/session)',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Priya Singh',
-                                    'reviewText':
-                                        'Anita is amazing! She did fantastic work for my wedding.',
-                                  },
-                                  {
-                                    'reviewerName': 'Ravi Mehta',
-                                    'reviewText':
-                                        'The makeup for the event was flawless. Highly recommend!',
-                                  },
-                                  {
-                                    'reviewerName': 'Sneha Rao',
-                                    'reviewText':
-                                        'Loved her skills! Will definitely book her again.',
-                                  },
-                                ],
-                                imagePath: 'assets/Anita.PNG',
-                                providerId: 'Anita Sharma(Makeup)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Ravi Mehta',
-                experience: '5 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/RaviM.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RaviMehtaMakeupService(
-                                name: 'Ravi Mehta',
-                                experience:
-                                    '5 years of experience in makeup artistry.',
-                                rating: 4.7,
-                                bio:
-                                    'Ravi Mehta is a talented makeup artist with 5 years of experience, offering bridal, party, and special occasion makeup services.',
-                                services: [
-                                  'Bridal Makeup (Rs. 8000/event)',
-                                  'Party Makeup (Rs. 4000/session)',
-                                  'Special Occasion Makeup (Rs. 5000/session)',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Anita Sharma',
-                                    'reviewText':
-                                        'Ravi did an excellent job on my bridal makeup. Loved it!',
-                                  },
-                                  {
-                                    'reviewerName': 'Sneha Rao',
-                                    'reviewText':
-                                        'He’s amazing at what he does. Highly recommend!',
-                                  },
-                                  {
-                                    'reviewerName': 'Priya Singh',
-                                    'reviewText':
-                                        'His makeup skills are top-notch. Will hire again.',
-                                  },
-                                ],
-                                imagePath: 'assets/RaviM.PNG',
-                                providerId: 'Ravi Mehta(Makeup)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Priya Singh',
+              //   experience: '8 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/Priya.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const PriyaSinghMakeupService(
+              //                   name: 'Priya Singh',
+              //                   experience:
+              //                       '8 years of experience in makeup artistry.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Priya Singh is a skilled makeup artist with 8 years of experience specializing in bridal, party, and special occasion makeup.',
+              //                   services: [
+              //                     'Bridal Makeup (Rs. 8000/event)',
+              //                     'Party Makeup (Rs. 4000/session)',
+              //                     'Special Occasion Makeup (Rs. 5000/session)',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Anita Sharma',
+              //                       'reviewText':
+              //                           'Priya’s bridal makeup was fantastic. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Ravi Mehta',
+              //                       'reviewText':
+              //                           'She did an amazing job for the party makeup.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sneha Rao',
+              //                       'reviewText':
+              //                           'Her makeup skills are exceptional. Loved the outcome!',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/Priya.PNG',
+              //                   providerId: 'Priya Singh(Makeup)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Anita Sharma',
+              //   experience: '6 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/Anita.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const AnitaSharmaMakeupService(
+              //                   name: 'Anita Sharma',
+              //                   experience:
+              //                       '6 years of experience in makeup artistry.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Anita Sharma is a professional makeup artist with 6 years of experience specializing in bridal, party, and special occasion makeup.',
+              //                   services: [
+              //                     'Bridal Makeup (Rs. 8000/event)',
+              //                     'Party Makeup (Rs. 4000/session)',
+              //                     'Special Occasion Makeup (Rs. 5000/session)',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Priya Singh',
+              //                       'reviewText':
+              //                           'Anita is amazing! She did fantastic work for my wedding.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Ravi Mehta',
+              //                       'reviewText':
+              //                           'The makeup for the event was flawless. Highly recommend!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sneha Rao',
+              //                       'reviewText':
+              //                           'Loved her skills! Will definitely book her again.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/Anita.PNG',
+              //                   providerId: 'Anita Sharma(Makeup)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Ravi Mehta',
+              //   experience: '5 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/RaviM.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const RaviMehtaMakeupService(
+              //                   name: 'Ravi Mehta',
+              //                   experience:
+              //                       '5 years of experience in makeup artistry.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Ravi Mehta is a talented makeup artist with 5 years of experience, offering bridal, party, and special occasion makeup services.',
+              //                   services: [
+              //                     'Bridal Makeup (Rs. 8000/event)',
+              //                     'Party Makeup (Rs. 4000/session)',
+              //                     'Special Occasion Makeup (Rs. 5000/session)',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Anita Sharma',
+              //                       'reviewText':
+              //                           'Ravi did an excellent job on my bridal makeup. Loved it!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sneha Rao',
+              //                       'reviewText':
+              //                           'He’s amazing at what he does. Highly recommend!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Priya Singh',
+              //                       'reviewText':
+              //                           'His makeup skills are top-notch. Will hire again.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/RaviM.PNG',
+              //                   providerId: 'Ravi Mehta(Makeup)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/CateringProfiles/AnilCatering.dart';
-import 'package:profix_new/User/CateringProfiles/KaranCatering.dart';
-import 'package:profix_new/User/CateringProfiles/SitaCatering.dart';
 
 class TeaAndCoffeeServicePage extends StatelessWidget {
   const TeaAndCoffeeServicePage({super.key});
@@ -84,135 +81,135 @@ class TeaAndCoffeeServicePage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Anil Joshi',
-                experience: '15 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/Anil.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AnilJoshiCateringService(
-                                name: 'Anil Joshi',
-                                experience:
-                                    '15 years of experience in catering services.',
-                                rating: 4.9,
-                                bio:
-                                    'Anil Joshi is an experienced and renowned caterer with over 15 years of providing excellent catering services for various events.',
-                                services: [
-                                  'Buffet Catering (Rs. 3000/hr)',
-                                  'Plated Meals (Rs. 2500/hr)',
-                                  'Tea and Coffee Service (Rs. 1500/hr)',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Priya Sharma',
-                                    'reviewText':
-                                        'Anil provided excellent catering for our event. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Ravi Kumar',
-                                    'reviewText':
-                                        'Great food, great service. Anil made our event special!',
-                                  },
-                                  {
-                                    'reviewerName': 'Sita Rai',
-                                    'reviewText':
-                                        'The buffet catering was top-notch. Everyone loved the food!',
-                                  },
-                                ],
-                                imagePath: 'assets/Anil.PNG',
-                                providerId: 'Anil Joshi(Catering)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Sita Rani',
-                experience: '10 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/Sita.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SitaRaniCateringService(
-                                name: 'Sita Rani',
-                                experience:
-                                    '10 years of experience in catering services.',
-                                rating: 4.8,
-                                bio:
-                                    'Sita Rani is a professional caterer with 10 years of experience providing a variety of catering services for events.',
-                                services: [
-                                  'Buffet Catering (Rs. 3000/hr)',
-                                  'Plated Meals (Rs. 2500/hr)',
-                                  'Tea and Coffee Service (Rs. 1500/hr)',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Ravi Kumar',
-                                    'reviewText':
-                                        'Sita Rani did an excellent job catering for our wedding!',
-                                  },
-                                  {
-                                    'reviewerName': 'Priya Sharma',
-                                    'reviewText':
-                                        'Highly recommend her services. Everything was perfect!',
-                                  },
-                                  {
-                                    'reviewerName': 'Anil Joshi',
-                                    'reviewText':
-                                        'Amazing food and excellent service. Thank you, Sita!',
-                                  },
-                                ],
-                                imagePath: 'assets/Sita.PNG',
-                                providerId: 'Sita Rani(Catering)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Karan Verma',
-                experience: '12 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/Karan.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const KaranVermaCateringService(
-                                name: 'Karan Verma',
-                                experience:
-                                    '12 years of experience in catering services.',
-                                rating: 4.7,
-                                bio:
-                                    'Karan Verma is a highly experienced caterer providing premium catering services for various events for over 12 years.',
-                                services: [
-                                  'Buffet Catering (Rs. 3000/hr)',
-                                  'Plated Meals (Rs. 2500/hr)',
-                                  'Tea and Coffee Service (Rs. 1500/hr)',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Sita Rani',
-                                    'reviewText':
-                                        'Karan’s catering services are impeccable. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Anil Joshi',
-                                    'reviewText':
-                                        'Perfect for large events. Great food and service!',
-                                  },
-                                  {
-                                    'reviewerName': 'Ravi Kumar',
-                                    'reviewText':
-                                        'We had a great experience with Karan. Will definitely hire again.',
-                                  },
-                                ],
-                                imagePath: 'assets/Karan.PNG',
-                                providerId: 'Karan Verma(Catering)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Anil Joshi',
+              //   experience: '15 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/Anil.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const AnilJoshiCateringService(
+              //                   name: 'Anil Joshi',
+              //                   experience:
+              //                       '15 years of experience in catering services.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Anil Joshi is an experienced and renowned caterer with over 15 years of providing excellent catering services for various events.',
+              //                   services: [
+              //                     'Buffet Catering (Rs. 3000/hr)',
+              //                     'Plated Meals (Rs. 2500/hr)',
+              //                     'Tea and Coffee Service (Rs. 1500/hr)',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Priya Sharma',
+              //                       'reviewText':
+              //                           'Anil provided excellent catering for our event. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Ravi Kumar',
+              //                       'reviewText':
+              //                           'Great food, great service. Anil made our event special!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sita Rai',
+              //                       'reviewText':
+              //                           'The buffet catering was top-notch. Everyone loved the food!',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/Anil.PNG',
+              //                   providerId: 'Anil Joshi(Catering)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Sita Rani',
+              //   experience: '10 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/Sita.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SitaRaniCateringService(
+              //                   name: 'Sita Rani',
+              //                   experience:
+              //                       '10 years of experience in catering services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Sita Rani is a professional caterer with 10 years of experience providing a variety of catering services for events.',
+              //                   services: [
+              //                     'Buffet Catering (Rs. 3000/hr)',
+              //                     'Plated Meals (Rs. 2500/hr)',
+              //                     'Tea and Coffee Service (Rs. 1500/hr)',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Ravi Kumar',
+              //                       'reviewText':
+              //                           'Sita Rani did an excellent job catering for our wedding!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Priya Sharma',
+              //                       'reviewText':
+              //                           'Highly recommend her services. Everything was perfect!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Anil Joshi',
+              //                       'reviewText':
+              //                           'Amazing food and excellent service. Thank you, Sita!',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/Sita.PNG',
+              //                   providerId: 'Sita Rani(Catering)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Karan Verma',
+              //   experience: '12 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/Karan.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const KaranVermaCateringService(
+              //                   name: 'Karan Verma',
+              //                   experience:
+              //                       '12 years of experience in catering services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Karan Verma is a highly experienced caterer providing premium catering services for various events for over 12 years.',
+              //                   services: [
+              //                     'Buffet Catering (Rs. 3000/hr)',
+              //                     'Plated Meals (Rs. 2500/hr)',
+              //                     'Tea and Coffee Service (Rs. 1500/hr)',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Sita Rani',
+              //                       'reviewText':
+              //                           'Karan’s catering services are impeccable. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Anil Joshi',
+              //                       'reviewText':
+              //                           'Perfect for large events. Great food and service!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Ravi Kumar',
+              //                       'reviewText':
+              //                           'We had a great experience with Karan. Will definitely hire again.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/Karan.PNG',
+              //                   providerId: 'Karan Verma(Catering)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

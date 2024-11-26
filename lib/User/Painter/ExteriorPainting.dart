@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/PainterProfile/RasmitaExteriorPainting.dart';
-import 'package:profix_new/User/PainterProfile/SamarpanExteriorpainting.dart';
-import 'package:profix_new/User/PainterProfile/SujanExteriorPainting.dart';
 
 class ExteriorPaintingPage extends StatelessWidget {
   const ExteriorPaintingPage({super.key});
@@ -98,139 +95,139 @@ class ExteriorPaintingPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Rasmita Thapa',
-                experience: '12 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/RasmitaExteriorPainting.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RasmitaPainting(
-                                name: 'Rasmita Thapa',
-                                experience:
-                                    '12 years of experience in exterior painting services.',
-                                rating: 4.8,
-                                bio:
-                                    'Rasmita Thapa is a seasoned exterior painter with 12 years of experience. She specializes in transforming the exteriors of homes and buildings with high-quality, lasting finishes.',
-                                services: [
-                                  'Exterior Wall Painting',
-                                  'Fence Painting',
-                                  'Deck Staining',
-                                  'Weatherproof Coating',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Ravi Shah',
-                                    'reviewText':
-                                        'Rasmita did a fantastic job on our home’s exterior. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Anjali Rana',
-                                    'reviewText':
-                                        'Very professional and the quality of work was excellent. Our house looks great!',
-                                  },
-                                  {
-                                    'reviewerName': 'Sunil Thapa',
-                                    'reviewText':
-                                        'Rasmita is a true professional. The painting job exceeded our expectations.',
-                                  },
-                                ],
-                                imagePath: 'assets/RasmitaExteriorPainting.PNG',
-                                providerId: 'Rasmita Thapa(Exterior Painting)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Sujan Sharma',
-                experience: '9 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/SujanExteriorPainting.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SujanPainting(
-                                name: 'Sujan Sharma',
-                                experience:
-                                    '9 years of experience in exterior painting services.',
-                                rating: 4.7,
-                                bio:
-                                    'Sujan Sharma is a skilled exterior painter with 9 years of experience. He is known for his attention to detail and quality work that transforms the look of any building.',
-                                services: [
-                                  'Exterior Wall Painting',
-                                  'Fence Painting',
-                                  'Deck Staining',
-                                  'Weatherproof Coating',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Rita Karki',
-                                    'reviewText':
-                                        'Sujan did an amazing job painting the exterior of our house. Highly recommended!',
-                                  },
-                                  {
-                                    'reviewerName': 'Kiran Shrestha',
-                                    'reviewText':
-                                        'Very professional and the quality of work was top-notch. Sujan is great!',
-                                  },
-                                  {
-                                    'reviewerName': 'Prakash Thapa',
-                                    'reviewText':
-                                        'Sujan is a reliable painter who delivers excellent results. Our house looks fantastic!',
-                                  },
-                                ],
-                                imagePath: 'assets/SujanExteriorPainting.PNG',
-                                providerId: 'Sujan Sharma(Exterior Painting)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Samarpan Lama',
-                experience: '15 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/SamarpanExteriorPainting.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SamarpanPainting(
-                                name: 'Samarpan Lama',
-                                experience:
-                                    '15 years of experience in exterior painting services.',
-                                rating: 4.9,
-                                bio:
-                                    'Samarpan Lama is a highly experienced exterior painter with 15 years of expertise. Known for his meticulous work and exceptional quality, he transforms homes and buildings with stunning finishes.',
-                                services: [
-                                  'Exterior Wall Painting',
-                                  'Deck Staining',
-                                  'Fence Painting',
-                                  'Weatherproof Coating',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Nirjala Rai',
-                                    'reviewText':
-                                        'Samarpan did an outstanding job with our house. The finish is perfect!',
-                                  },
-                                  {
-                                    'reviewerName': 'Ganga Thapa',
-                                    'reviewText':
-                                        'Highly skilled and very professional. Samarpan exceeded our expectations!',
-                                  },
-                                  {
-                                    'reviewerName': 'Kishor Bhattarai',
-                                    'reviewText':
-                                        'Our home looks brand new thanks to Samarpan’s work. Highly recommended!',
-                                  },
-                                ],
-                                imagePath:
-                                    'assets/SamarpanExteriorPainting.PNG',
-                                providerId: 'Samarpan Lama(Exterior Painting)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Rasmita Thapa',
+              //   experience: '12 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/RasmitaExteriorPainting.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const RasmitaPainting(
+              //                   name: 'Rasmita Thapa',
+              //                   experience:
+              //                       '12 years of experience in exterior painting services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Rasmita Thapa is a seasoned exterior painter with 12 years of experience. She specializes in transforming the exteriors of homes and buildings with high-quality, lasting finishes.',
+              //                   services: [
+              //                     'Exterior Wall Painting',
+              //                     'Fence Painting',
+              //                     'Deck Staining',
+              //                     'Weatherproof Coating',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Ravi Shah',
+              //                       'reviewText':
+              //                           'Rasmita did a fantastic job on our home’s exterior. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Anjali Rana',
+              //                       'reviewText':
+              //                           'Very professional and the quality of work was excellent. Our house looks great!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sunil Thapa',
+              //                       'reviewText':
+              //                           'Rasmita is a true professional. The painting job exceeded our expectations.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/RasmitaExteriorPainting.PNG',
+              //                   providerId: 'Rasmita Thapa(Exterior Painting)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Sujan Sharma',
+              //   experience: '9 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/SujanExteriorPainting.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SujanPainting(
+              //                   name: 'Sujan Sharma',
+              //                   experience:
+              //                       '9 years of experience in exterior painting services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Sujan Sharma is a skilled exterior painter with 9 years of experience. He is known for his attention to detail and quality work that transforms the look of any building.',
+              //                   services: [
+              //                     'Exterior Wall Painting',
+              //                     'Fence Painting',
+              //                     'Deck Staining',
+              //                     'Weatherproof Coating',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Rita Karki',
+              //                       'reviewText':
+              //                           'Sujan did an amazing job painting the exterior of our house. Highly recommended!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Kiran Shrestha',
+              //                       'reviewText':
+              //                           'Very professional and the quality of work was top-notch. Sujan is great!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Prakash Thapa',
+              //                       'reviewText':
+              //                           'Sujan is a reliable painter who delivers excellent results. Our house looks fantastic!',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/SujanExteriorPainting.PNG',
+              //                   providerId: 'Sujan Sharma(Exterior Painting)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Samarpan Lama',
+              //   experience: '15 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/SamarpanExteriorPainting.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SamarpanPainting(
+              //                   name: 'Samarpan Lama',
+              //                   experience:
+              //                       '15 years of experience in exterior painting services.',
+              //                   rating: 4.9,
+              //                   bio:
+              //                       'Samarpan Lama is a highly experienced exterior painter with 15 years of expertise. Known for his meticulous work and exceptional quality, he transforms homes and buildings with stunning finishes.',
+              //                   services: [
+              //                     'Exterior Wall Painting',
+              //                     'Deck Staining',
+              //                     'Fence Painting',
+              //                     'Weatherproof Coating',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Nirjala Rai',
+              //                       'reviewText':
+              //                           'Samarpan did an outstanding job with our house. The finish is perfect!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Ganga Thapa',
+              //                       'reviewText':
+              //                           'Highly skilled and very professional. Samarpan exceeded our expectations!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Kishor Bhattarai',
+              //                       'reviewText':
+              //                           'Our home looks brand new thanks to Samarpan’s work. Highly recommended!',
+              //                     },
+              //                   ],
+              //                   imagePath:
+              //                       'assets/SamarpanExteriorPainting.PNG',
+              //                   providerId: 'Samarpan Lama(Exterior Painting)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

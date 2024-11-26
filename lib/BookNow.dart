@@ -2,16 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+//BOOKING PAGE KO LAGI
 class BookServicePage extends StatefulWidget {
   final String providerId;
   final String providerName;
-  final String selectedService;
 
   const BookServicePage({
     Key? key,
     required this.providerId,
     required this.providerName,
-    required this.selectedService,
   }) : super(key: key);
 
   @override
@@ -23,13 +22,7 @@ class _BookServicePageState extends State<BookServicePage> {
   DateTime? _selectedDate;
   String selectedTimeSlot = 'Morning'; // Default timeslot
 
-  Future<void> _addBooking() async {
-    // Debugging Logs
-    print('Booking Information:');
-    print('Provider ID: ${widget.providerId}');
-    print('Provider Name: ${widget.providerName}');
-    print('Service Name: ${widget.selectedService}');
-
+  Future<void> _confirmBooking() async {
     if (_selectedDate == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please select a date!')),
@@ -45,29 +38,25 @@ class _BookServicePageState extends State<BookServicePage> {
     }
 
     try {
-      // Fetch the current logged-in user details
       User? user = FirebaseAuth.instance.currentUser;
 
       if (user == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('You are not logged in!')),
+          const SnackBar(
+              content: Text('You need to log in to book a service!')),
         );
         return;
       }
 
-      String userId = user.uid; // Get the user's unique ID
-      String userName = user.displayName ??
-          user.email ??
-          'Unknown User'; // Use displayName, email, or fallback to 'Unknown User'
+      String userId = user.uid;
+      String userName = user.displayName ?? user.email ?? 'Unknown User';
 
-      // Adding booking data to Firestore
       await FirebaseFirestore.instance.collection('Bookings').add({
-        'providerId':
-            widget.providerId, // FIXED: Use providerId passed to the widget
+        'providerId': widget.providerId,
         'providerName': widget.providerName,
         'userId': userId,
         'userName': userName,
-        'serviceName': widget.selectedService,
+        'serviceName': 'General Cleaning', // Example static service name
         'status': 'Pending',
         'date': _selectedDate,
         'timeSlot': selectedTimeSlot,
@@ -76,13 +65,13 @@ class _BookServicePageState extends State<BookServicePage> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Booking request sent successfully!')),
+        const SnackBar(content: Text('Booking successful!')),
       );
 
-      Navigator.pop(context); // Navigate back after successful booking
+      Navigator.pop(context);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error sending booking request: $e')),
+        SnackBar(content: Text('Error confirming booking: $e')),
       );
     }
   }
@@ -91,7 +80,7 @@ class _BookServicePageState extends State<BookServicePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book ${widget.selectedService}'),
+        title: Text('Book ${widget.providerName}'),
         backgroundColor: const Color(0xFF7AA5A0),
       ),
       body: SingleChildScrollView(
@@ -119,7 +108,7 @@ class _BookServicePageState extends State<BookServicePage> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Service: ${widget.selectedService}',
+                      'Service: General Cleaning', // Example static service name
                       style: const TextStyle(fontSize: 16),
                     ),
                   ],
@@ -225,7 +214,7 @@ class _BookServicePageState extends State<BookServicePage> {
             const SizedBox(height: 30),
             Center(
               child: ElevatedButton(
-                onPressed: _addBooking,
+                onPressed: _confirmBooking,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF7AA5A0),
                   padding:

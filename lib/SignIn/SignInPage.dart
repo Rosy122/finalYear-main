@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:profix_new/Service_Providers/ServiceProviderHomePage.dart';
+import 'package:profix_new/ServiceProviderDashboard.dart';
 import 'package:profix_new/SignIn/forgotPasswordPage.dart';
 import 'package:profix_new/SignUp/SignUpPage.dart';
 import 'package:profix_new/User/Home/HomePage.dart';
@@ -109,16 +109,18 @@ class _SignInPageState extends State<SignInPage> {
               .get();
 
           if (providerDoc.exists) {
-            String providerName = providerDoc['name'] ?? "Service Provider";
-            String serviceType = providerDoc['service type'] ?? "General";
+            // String providerName = providerDoc['name'] ?? "Service Provider";
+            // String serviceType = providerDoc['service type'] ?? "General";
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => ServiceProviderHomePage(
-                  providerName: providerName,
-                  serviceType: serviceType,
-                  providerId: userCredential
-                      .user!.uid, // This ensures correct providerId
+                  providerName: providerDoc['name'], // Pass provider name
+                  serviceType: providerDoc['service type'], // Pass service type
+                  // providerName: providerName,
+                  // serviceType: serviceType,
+                  // providerId: userCredential
+                  //     .user!.uid, // This ensures correct providerId
                 ),
               ),
             );

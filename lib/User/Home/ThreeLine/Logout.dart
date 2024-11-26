@@ -6,7 +6,8 @@ class LogoutPage extends StatelessWidget {
 
   Future<void> _logout(BuildContext context) async {
     await _auth.signOut();
-    Navigator.of(context).pushReplacementNamed('/signin'); // Navigate to login screen after logout
+    Navigator.pushReplacementNamed(
+        context, 'signin'); // Navigate to login screen after logout
   }
 
   @override

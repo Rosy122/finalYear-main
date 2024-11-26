@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:profix_new/User/Photographer/EventPhotography.dart';
 import 'package:profix_new/User/Photographer/Portrait.dart';
 import 'package:profix_new/User/Photographer/WeddingPhotographer.dart';
-import 'package:profix_new/User/PhotographerProfiles/AmitPhotography.dart';
-import 'package:profix_new/User/PhotographerProfiles/RajivPhotography.dart';
-import 'package:profix_new/User/PhotographerProfiles/SnehaPhotography.dart';
 
 void main() => runApp(const PhotographerPageApp());
 
@@ -90,137 +87,137 @@ class PhotographerPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 122, 165, 160)),
               ),
-              ProfessionalProfileTile(
-                name: 'Amit Patel',
-                experience: '10 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/Amit.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const AmitPatelPhotographyService(
-                                  name: 'Amit Patel',
-                                  experience:
-                                      '10 years of experience in photography services.',
-                                  rating: 4.9,
-                                  bio:
-                                      'Amit Patel is a skilled photographer with over 10 years of experience, specializing in wedding, portrait, and event photography.',
-                                  services: [
-                                    'Wedding Photography (Rs. 15000/event)',
-                                    'Portrait Photography (Rs. 5000/session)',
-                                    'Event Photography (Rs. 8000/event)',
-                                  ],
-                                  reviews: [
-                                    {
-                                      'reviewerName': 'Sneha Rao',
-                                      'reviewText':
-                                          'Amit’s photography was amazing. Highly recommend!',
-                                    },
-                                    {
-                                      'reviewerName': 'Rajiv Kumar',
-                                      'reviewText':
-                                          'Great quality photos. Very professional!',
-                                    },
-                                    {
-                                      'reviewerName': 'Amit Patel',
-                                      'reviewText':
-                                          'Captured my wedding beautifully. Couldn’t be happier!',
-                                    },
-                                  ],
-                                  imagePath: 'assets/Amit.PNG',
-                                  providerId: 'Amit Patel(Photography)')));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Sneha Rao',
-                experience: '7 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/Sneha.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const SnehaRaoPhotographyService(
-                                name: 'Sneha Rao',
-                                experience:
-                                    '7 years of experience in photography services.',
-                                rating: 4.8,
-                                bio:
-                                    'Sneha Rao is a talented photographer with 7 years of experience, specializing in wedding, portrait, and event photography.',
-                                services: [
-                                  'Wedding Photography (Rs. 15000/event)',
-                                  'Portrait Photography (Rs. 5000/session)',
-                                  'Event Photography (Rs. 8000/event)',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Amit Patel',
-                                    'reviewText':
-                                        'Sneha’s photos are of the highest quality. Highly recommend!',
-                                  },
-                                  {
-                                    'reviewerName': 'Rajiv Kumar',
-                                    'reviewText':
-                                        'Great experience with Sneha. She captured our event beautifully.',
-                                  },
-                                  {
-                                    'reviewerName': 'Sneha Rao',
-                                    'reviewText':
-                                        'Absolutely loved the wedding photos. Thank you for your great work!',
-                                  },
-                                ],
-                                imagePath: 'assets/Sneha.PNG',
-                                providerId: 'Sneha Rao(Photography)',
-                              )));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Rajiv Kumar',
-                experience: '6 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/Rajiv.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const RajivKumarPhotographyService(
-                                name: 'Rajiv Kumar',
-                                experience:
-                                    '6 years of experience in photography services.',
-                                rating: 4.7,
-                                bio:
-                                    'Rajiv Kumar is a professional photographer with 6 years of experience in wedding, portrait, and event photography.',
-                                services: [
-                                  'Wedding Photography (Rs. 15000/event)',
-                                  'Portrait Photography (Rs. 5000/session)',
-                                  'Event Photography (Rs. 8000/event)',
-                                ],
-                                reviews: [
-                                  {
-                                    'reviewerName': 'Sneha Rao',
-                                    'reviewText':
-                                        'Rajiv’s photos were amazing. Definitely recommend!',
-                                  },
-                                  {
-                                    'reviewerName': 'Amit Patel',
-                                    'reviewText':
-                                        'Great quality work. He captured every moment perfectly!',
-                                  },
-                                  {
-                                    'reviewerName': 'Sneha Rao',
-                                    'reviewText':
-                                        'Fantastic photographer! Made our event special.',
-                                  },
-                                ],
-                                imagePath: 'assets/Rajiv.PNG',
-                                providerId: 'Rajiv Kumar(Photography)',
-                              )));
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Amit Patel',
+              //   experience: '10 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/Amit.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) =>
+              //                 const AmitPatelPhotographyService(
+              //                     name: 'Amit Patel',
+              //                     experience:
+              //                         '10 years of experience in photography services.',
+              //                     rating: 4.9,
+              //                     bio:
+              //                         'Amit Patel is a skilled photographer with over 10 years of experience, specializing in wedding, portrait, and event photography.',
+              //                     services: [
+              //                       'Wedding Photography (Rs. 15000/event)',
+              //                       'Portrait Photography (Rs. 5000/session)',
+              //                       'Event Photography (Rs. 8000/event)',
+              //                     ],
+              //                     reviews: [
+              //                       {
+              //                         'reviewerName': 'Sneha Rao',
+              //                         'reviewText':
+              //                             'Amit’s photography was amazing. Highly recommend!',
+              //                       },
+              //                       {
+              //                         'reviewerName': 'Rajiv Kumar',
+              //                         'reviewText':
+              //                             'Great quality photos. Very professional!',
+              //                       },
+              //                       {
+              //                         'reviewerName': 'Amit Patel',
+              //                         'reviewText':
+              //                             'Captured my wedding beautifully. Couldn’t be happier!',
+              //                       },
+              //                     ],
+              //                     imagePath: 'assets/Amit.PNG',
+              //                     providerId: 'Amit Patel(Photography)')));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Sneha Rao',
+              //   experience: '7 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/Sneha.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) =>
+              //                 const SnehaRaoPhotographyService(
+              //                   name: 'Sneha Rao',
+              //                   experience:
+              //                       '7 years of experience in photography services.',
+              //                   rating: 4.8,
+              //                   bio:
+              //                       'Sneha Rao is a talented photographer with 7 years of experience, specializing in wedding, portrait, and event photography.',
+              //                   services: [
+              //                     'Wedding Photography (Rs. 15000/event)',
+              //                     'Portrait Photography (Rs. 5000/session)',
+              //                     'Event Photography (Rs. 8000/event)',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Amit Patel',
+              //                       'reviewText':
+              //                           'Sneha’s photos are of the highest quality. Highly recommend!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Rajiv Kumar',
+              //                       'reviewText':
+              //                           'Great experience with Sneha. She captured our event beautifully.',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sneha Rao',
+              //                       'reviewText':
+              //                           'Absolutely loved the wedding photos. Thank you for your great work!',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/Sneha.PNG',
+              //                   providerId: 'Sneha Rao(Photography)',
+              //                 )));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Rajiv Kumar',
+              //   experience: '6 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/Rajiv.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) =>
+              //                 const RajivKumarPhotographyService(
+              //                   name: 'Rajiv Kumar',
+              //                   experience:
+              //                       '6 years of experience in photography services.',
+              //                   rating: 4.7,
+              //                   bio:
+              //                       'Rajiv Kumar is a professional photographer with 6 years of experience in wedding, portrait, and event photography.',
+              //                   services: [
+              //                     'Wedding Photography (Rs. 15000/event)',
+              //                     'Portrait Photography (Rs. 5000/session)',
+              //                     'Event Photography (Rs. 8000/event)',
+              //                   ],
+              //                   reviews: [
+              //                     {
+              //                       'reviewerName': 'Sneha Rao',
+              //                       'reviewText':
+              //                           'Rajiv’s photos were amazing. Definitely recommend!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Amit Patel',
+              //                       'reviewText':
+              //                           'Great quality work. He captured every moment perfectly!',
+              //                     },
+              //                     {
+              //                       'reviewerName': 'Sneha Rao',
+              //                       'reviewText':
+              //                           'Fantastic photographer! Made our event special.',
+              //                     },
+              //                   ],
+              //                   imagePath: 'assets/Rajiv.PNG',
+              //                   providerId: 'Rajiv Kumar(Photography)',
+              //                 )));
+              //   },
+              // ),
             ],
           ),
         ),

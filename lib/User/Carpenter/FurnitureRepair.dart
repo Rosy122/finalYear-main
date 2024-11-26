@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/CarpenterProfiles/JulinFurniture.dart';
-import 'package:profix_new/User/CarpenterProfiles/SabinaFurnniture.dart';
-import 'package:profix_new/User/CarpenterProfiles/SarojFurniture.dart';
+// import 'package:profix_new/User/CarpenterProfiles/JulinFurniture.dart';
+// import 'package:profix_new/User/CarpenterProfiles/SabinaFurnniture.dart';
+// import 'package:profix_new/User/CarpenterProfiles/SarojFurniture.dart';
 // import 'package:profix_new/FurnitureRepairService.dart'; // Make sure to create this file for the individual service page
 // import 'package:profix_new/Carpenter1.dart'; // Replace with actual names of your carpenter pages
 // import 'package:profix_new/Carpenter2.dart';
@@ -90,144 +90,144 @@ class FurniturerepairPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Julin Maharjan',
-                experience: '8 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/Julin.PNG',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const JulinFurnitureRepairService(
-                        name: 'Julin Maharjan',
-                        experience:
-                            '8 years of experience in furniture repair services.',
-                        rating: 4.9,
-                        bio:
-                            'Julin Sharma is a highly skilled furniture repair expert with over 6 years of experience. Known for her attention to detail and customer satisfaction.',
-                        services: [
-                          'Furniture Repair',
-                          'Restoration of Antique Furniture',
-                          'Custom Furniture Design',
-                          'Wooden Restoration',
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Priya Rai',
-                            'reviewText':
-                                'Julin repaired my old wooden chair, and it looks brand new now. Amazing work!',
-                          },
-                          {
-                            'reviewerName': 'Sita Verma',
-                            'reviewText':
-                                'Great experience with Julin! She did an excellent job restoring my wooden furniture.',
-                          },
-                          {
-                            'reviewerName': 'Anita Shrestha',
-                            'reviewText':
-                                'Highly recommend Julin! She is meticulous and reliable.',
-                          },
-                        ],
-                        imagePath: 'assets/Julin.PNG',
-                        providerId: 'Julin Maharjan(Furniture)',
-                      ),
-                    ),
-                  );
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Saroj Maharjan',
-                experience: '5 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/Saroj.PNG',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SarojFurnitureService(
-                        name: 'Saroj Maharjan',
-                        experience:
-                            '5 years of experience in Furniture Repair.',
-                        rating: 4.7,
-                        bio:
-                            'Saroj Maharjan is a skilled furniture repair professional with extensive experience in repairing and restoring furniture to its original form.',
-                        services: [
-                          'Furniture Repair',
-                          'Custom Furniture Design',
-                          'Refinishing',
-                          'Assembly',
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Sita Rai',
-                            'reviewText':
-                                'Saroj repaired my old chair beautifully. Highly recommend!',
-                          },
-                          {
-                            'reviewerName': 'Ravi Thapa',
-                            'reviewText':
-                                'Excellent work! Saroj is quick and efficient.',
-                          },
-                          {
-                            'reviewerName': 'Anita Sharma',
-                            'reviewText':
-                                'Very happy with the furniture repair service. Great job!',
-                          },
-                        ],
-                        imagePath: 'assets/Saroj.PNG',
-                        providerId: 'Saroj Maharjan(Furniture)',
-                      ), // Make sure to create this page
-                    ),
-                  );
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Sabina Maharjan',
-                experience: '10 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/Sabina.PNG',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SabinaFurnitureRepair(
-                        name: 'Sabina Maharjan',
-                        experience:
-                            '10 years of experience in furniture repair services.',
-                        rating: 4.8,
-                        bio:
-                            'Sabina Maharjan is a skilled carpenter with 10 years of experience in furniture repair and custom design.',
-                        services: [
-                          'Furniture Repair',
-                          'Custom Furniture Design',
-                          'Refinishing',
-                          'Assembly',
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Ravi Bhandari',
-                            'reviewText':
-                                'Sabina repaired my old table, and it looks like new!',
-                          },
-                          {
-                            'reviewerName': 'Anita Rai',
-                            'reviewText':
-                                'Great service! Very happy with the work done on my wooden chairs.',
-                          },
-                          {
-                            'reviewerName': 'Suman Gurung',
-                            'reviewText':
-                                'Sabina did a fantastic job in designing custom furniture for my home.',
-                          },
-                        ],
-                        imagePath: 'assets/Sabina.PNG',
-                        providerId: 'Sabina Maharjan( Furniture)',
-                      ),
-                    ),
-                  );
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Julin Maharjan',
+              //   experience: '8 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/Julin.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => const JulinFurnitureRepairService(
+              //           name: 'Julin Maharjan',
+              //           experience:
+              //               '8 years of experience in furniture repair services.',
+              //           rating: 4.9,
+              //           bio:
+              //               'Julin Sharma is a highly skilled furniture repair expert with over 6 years of experience. Known for her attention to detail and customer satisfaction.',
+              //           services: [
+              //             'Furniture Repair',
+              //             'Restoration of Antique Furniture',
+              //             'Custom Furniture Design',
+              //             'Wooden Restoration',
+              //           ],
+              //           reviews: [
+              //             {
+              //               'reviewerName': 'Priya Rai',
+              //               'reviewText':
+              //                   'Julin repaired my old wooden chair, and it looks brand new now. Amazing work!',
+              //             },
+              //             {
+              //               'reviewerName': 'Sita Verma',
+              //               'reviewText':
+              //                   'Great experience with Julin! She did an excellent job restoring my wooden furniture.',
+              //             },
+              //             {
+              //               'reviewerName': 'Anita Shrestha',
+              //               'reviewText':
+              //                   'Highly recommend Julin! She is meticulous and reliable.',
+              //             },
+              //           ],
+              //           imagePath: 'assets/Julin.PNG',
+              //           providerId: 'Julin Maharjan(Furniture)',
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Saroj Maharjan',
+              //   experience: '5 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/Saroj.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => const SarojFurnitureService(
+              //           name: 'Saroj Maharjan',
+              //           experience:
+              //               '5 years of experience in Furniture Repair.',
+              //           rating: 4.7,
+              //           bio:
+              //               'Saroj Maharjan is a skilled furniture repair professional with extensive experience in repairing and restoring furniture to its original form.',
+              //           services: [
+              //             'Furniture Repair',
+              //             'Custom Furniture Design',
+              //             'Refinishing',
+              //             'Assembly',
+              //           ],
+              //           reviews: [
+              //             {
+              //               'reviewerName': 'Sita Rai',
+              //               'reviewText':
+              //                   'Saroj repaired my old chair beautifully. Highly recommend!',
+              //             },
+              //             {
+              //               'reviewerName': 'Ravi Thapa',
+              //               'reviewText':
+              //                   'Excellent work! Saroj is quick and efficient.',
+              //             },
+              //             {
+              //               'reviewerName': 'Anita Sharma',
+              //               'reviewText':
+              //                   'Very happy with the furniture repair service. Great job!',
+              //             },
+              //           ],
+              //           imagePath: 'assets/Saroj.PNG',
+              //           providerId: 'Saroj Maharjan(Furniture)',
+              //         ), // Make sure to create this page
+              //       ),
+              //     );
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Sabina Maharjan',
+              //   experience: '10 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/Sabina.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => const SabinaFurnitureRepair(
+              //           name: 'Sabina Maharjan',
+              //           experience:
+              //               '10 years of experience in furniture repair services.',
+              //           rating: 4.8,
+              //           bio:
+              //               'Sabina Maharjan is a skilled carpenter with 10 years of experience in furniture repair and custom design.',
+              //           services: [
+              //             'Furniture Repair',
+              //             'Custom Furniture Design',
+              //             'Refinishing',
+              //             'Assembly',
+              //           ],
+              //           reviews: [
+              //             {
+              //               'reviewerName': 'Ravi Bhandari',
+              //               'reviewText':
+              //                   'Sabina repaired my old table, and it looks like new!',
+              //             },
+              //             {
+              //               'reviewerName': 'Anita Rai',
+              //               'reviewText':
+              //                   'Great service! Very happy with the work done on my wooden chairs.',
+              //             },
+              //             {
+              //               'reviewerName': 'Suman Gurung',
+              //               'reviewText':
+              //                   'Sabina did a fantastic job in designing custom furniture for my home.',
+              //             },
+              //           ],
+              //           imagePath: 'assets/Sabina.PNG',
+              //           providerId: 'Sabina Maharjan( Furniture)',
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),

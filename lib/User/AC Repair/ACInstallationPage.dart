@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/RabinACInstallation.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/RameshACInstallation.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/SimranACInstallation.dart';
 
 class ACInstallationPage extends StatelessWidget {
   const ACInstallationPage({super.key});
@@ -98,144 +95,144 @@ class ACInstallationPage extends StatelessWidget {
                     color: Color.fromARGB(255, 122, 165, 160),
                   ),
                 ),
-                ProfessionalProfileTile(
-                  name: 'Ramesh Thapa',
-                  experience: '10 years of experience',
-                  rating: 4.9,
-                  imagePath: 'assets/RameshACInstallation.PNG',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RameshACInstallation(
-                          name: 'Ramesh Thapa',
-                          experience:
-                              '10 years of experience in AC installation services.',
-                          rating: 4.9,
-                          bio:
-                              'Ramesh Thapa is a skilled AC installation specialist with a decade of experience. Known for his expertise and reliability, Ramesh provides top-notch AC installation services.',
-                          services: [
-                            'AC Installation',
-                            'AC Maintenance',
-                            'AC Repair',
-                            'System Upgrades',
-                          ],
-                          reviews: [
-                            {
-                              'reviewerName': 'Sita Sharma',
-                              'reviewText':
-                                  'Ramesh did a fantastic job installing my new AC unit. Very professional and efficient!',
-                            },
-                            {
-                              'reviewerName': 'Nisha Rai',
-                              'reviewText':
-                                  'Highly recommend Ramesh for AC installations. Great work and very knowledgeable.',
-                            },
-                            {
-                              'reviewerName': 'Ravi Patel',
-                              'reviewText':
-                                  'Excellent service. Ramesh is an expert in AC installations and handled everything perfectly.',
-                            },
-                          ],
-                          imagePath: 'assets/RameshACInstallation.PNG',
-                          providerId: 'Ramesh Thapa(Ac Installation)',
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                ProfessionalProfileTile(
-                  name: 'Simran Sharma',
-                  experience: '7 years of experience',
-                  rating: 4.8,
-                  imagePath: 'assets/SimranACInstallation.PNG',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SimranACInstallation(
-                          name: 'Simran Sharma',
-                          experience:
-                              '7 years of experience in AC installation services.',
-                          rating: 4.8,
-                          bio:
-                              'Simran Sharma is a seasoned AC installation expert with 7 years of experience. She is known for her precision and dedication to delivering top-quality services.',
-                          services: [
-                            'AC Installation',
-                            'AC Maintenance',
-                            'AC Repair',
-                            'System Upgrades',
-                          ],
-                          reviews: [
-                            {
-                              'reviewerName': 'Anjali Mishra',
-                              'reviewText':
-                                  'Simran did an excellent job installing my AC. Very satisfied with her work.',
-                            },
-                            {
-                              'reviewerName': 'Rohit Gupta',
-                              'reviewText':
-                                  'Professional and efficient. Simran knows her job well and provides great service.',
-                            },
-                            {
-                              'reviewerName': 'Priya Singh',
-                              'reviewText':
-                                  'Highly recommend Simran for any AC installation work. She is reliable and skilled.',
-                            },
-                          ],
-                          imagePath: 'assets/SimranACInstallation.PNG',
-                          providerId: 'Simran Sharma(Ac Installation)',
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                ProfessionalProfileTile(
-                  name: 'Rabin Lama',
-                  experience: '12 years of experience',
-                  rating: 4.7,
-                  imagePath: 'assets/RabinACInstallation.PNG',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RabinACInstallation(
-                          name: 'Rabin Lama',
-                          experience:
-                              '12 years of experience in AC installation services.',
-                          rating: 4.7,
-                          bio:
-                              'Rabin Lama is a highly experienced AC installation professional with 12 years of expertise. He is known for his meticulous work and customer satisfaction.',
-                          services: [
-                            'AC Installation',
-                            'AC Maintenance',
-                            'AC Repair',
-                            'System Upgrades',
-                          ],
-                          reviews: [
-                            {
-                              'reviewerName': 'Rajesh Shrestha',
-                              'reviewText':
-                                  'Rabin installed my AC perfectly. Very happy with his service.',
-                            },
-                            {
-                              'reviewerName': 'Nisha Tamang',
-                              'reviewText':
-                                  'Professional and thorough. Rabin is great at what he does.',
-                            },
-                            {
-                              'reviewerName': 'Kiran Thapa',
-                              'reviewText':
-                                  'Rabin provided excellent service. Highly recommended for AC installations.',
-                            },
-                          ],
-                          imagePath: 'assets/RabinACInstallation.PNG',
-                          providerId: 'Rabin Lama(Ac Installation)',
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                // ProfessionalProfileTile(
+                //   name: 'Ramesh Thapa',
+                //   experience: '10 years of experience',
+                //   rating: 4.9,
+                //   imagePath: 'assets/RameshACInstallation.PNG',
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => const RameshACInstallation(
+                //           name: 'Ramesh Thapa',
+                //           experience:
+                //               '10 years of experience in AC installation services.',
+                //           rating: 4.9,
+                //           bio:
+                //               'Ramesh Thapa is a skilled AC installation specialist with a decade of experience. Known for his expertise and reliability, Ramesh provides top-notch AC installation services.',
+                //           services: [
+                //             'AC Installation',
+                //             'AC Maintenance',
+                //             'AC Repair',
+                //             'System Upgrades',
+                //           ],
+                //           reviews: [
+                //             {
+                //               'reviewerName': 'Sita Sharma',
+                //               'reviewText':
+                //                   'Ramesh did a fantastic job installing my new AC unit. Very professional and efficient!',
+                //             },
+                //             {
+                //               'reviewerName': 'Nisha Rai',
+                //               'reviewText':
+                //                   'Highly recommend Ramesh for AC installations. Great work and very knowledgeable.',
+                //             },
+                //             {
+                //               'reviewerName': 'Ravi Patel',
+                //               'reviewText':
+                //                   'Excellent service. Ramesh is an expert in AC installations and handled everything perfectly.',
+                //             },
+                //           ],
+                //           imagePath: 'assets/RameshACInstallation.PNG',
+                //           providerId: 'Ramesh Thapa(Ac Installation)',
+                //         ),
+                //       ),
+                //     );
+                //   },
+                // ),
+                // ProfessionalProfileTile(
+                //   name: 'Simran Sharma',
+                //   experience: '7 years of experience',
+                //   rating: 4.8,
+                //   imagePath: 'assets/SimranACInstallation.PNG',
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => const SimranACInstallation(
+                //           name: 'Simran Sharma',
+                //           experience:
+                //               '7 years of experience in AC installation services.',
+                //           rating: 4.8,
+                //           bio:
+                //               'Simran Sharma is a seasoned AC installation expert with 7 years of experience. She is known for her precision and dedication to delivering top-quality services.',
+                //           services: [
+                //             'AC Installation',
+                //             'AC Maintenance',
+                //             'AC Repair',
+                //             'System Upgrades',
+                //           ],
+                //           reviews: [
+                //             {
+                //               'reviewerName': 'Anjali Mishra',
+                //               'reviewText':
+                //                   'Simran did an excellent job installing my AC. Very satisfied with her work.',
+                //             },
+                //             {
+                //               'reviewerName': 'Rohit Gupta',
+                //               'reviewText':
+                //                   'Professional and efficient. Simran knows her job well and provides great service.',
+                //             },
+                //             {
+                //               'reviewerName': 'Priya Singh',
+                //               'reviewText':
+                //                   'Highly recommend Simran for any AC installation work. She is reliable and skilled.',
+                //             },
+                //           ],
+                //           imagePath: 'assets/SimranACInstallation.PNG',
+                //           providerId: 'Simran Sharma(Ac Installation)',
+                //         ),
+                //       ),
+                //     );
+                //   },
+                // ),
+                // ProfessionalProfileTile(
+                //   name: 'Rabin Lama',
+                //   experience: '12 years of experience',
+                //   rating: 4.7,
+                //   imagePath: 'assets/RabinACInstallation.PNG',
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => const RabinACInstallation(
+                //           name: 'Rabin Lama',
+                //           experience:
+                //               '12 years of experience in AC installation services.',
+                //           rating: 4.7,
+                //           bio:
+                //               'Rabin Lama is a highly experienced AC installation professional with 12 years of expertise. He is known for his meticulous work and customer satisfaction.',
+                //           services: [
+                //             'AC Installation',
+                //             'AC Maintenance',
+                //             'AC Repair',
+                //             'System Upgrades',
+                //           ],
+                //           reviews: [
+                //             {
+                //               'reviewerName': 'Rajesh Shrestha',
+                //               'reviewText':
+                //                   'Rabin installed my AC perfectly. Very happy with his service.',
+                //             },
+                //             {
+                //               'reviewerName': 'Nisha Tamang',
+                //               'reviewText':
+                //                   'Professional and thorough. Rabin is great at what he does.',
+                //             },
+                //             {
+                //               'reviewerName': 'Kiran Thapa',
+                //               'reviewText':
+                //                   'Rabin provided excellent service. Highly recommended for AC installations.',
+                //             },
+                //           ],
+                //           imagePath: 'assets/RabinACInstallation.PNG',
+                //           providerId: 'Rabin Lama(Ac Installation)',
+                //         ),
+                //       ),
+                //     );
+                //   },
+                // ),
               ],
             ),
           ),

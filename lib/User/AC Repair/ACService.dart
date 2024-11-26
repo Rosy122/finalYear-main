@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/PramodACServicing.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/PranishaACService.dart';
-import 'package:profix_new/User/ACRepair%20Profiles/SamishaACServicing.dart';
 
 class ACServicingPage extends StatelessWidget {
   const ACServicingPage({super.key});
@@ -92,141 +89,141 @@ class ACServicingPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Pranisha Thapa',
-                experience: '10 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/Pranisha.PNG',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PranishaACService(
-                        name: 'Pranisha Thapa',
-                        experience:
-                            '10 years of experience in AC repair services.',
-                        rating: 4.8,
-                        bio:
-                            'Pranisha Thapa is a highly skilled AC repair technician with 5 years of experience. Known for her professionalism and expertise in the field.',
-                        services: [
-                          'AC Installation',
-                          'AC Repair',
-                          'AC Maintenance',
-                          'Air Purification Systems',
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Sita Rai',
-                            'reviewText':
-                                'Pranisha did an amazing job with my AC repair! Highly recommend her.',
-                          },
-                          {
-                            'reviewerName': 'Ravi Lama',
-                            'reviewText':
-                                'Excellent service! My AC is working perfectly again.',
-                          },
-                          {
-                            'reviewerName': 'Anjali Shrestha',
-                            'reviewText':
-                                'Very professional and quick service. Great experience!',
-                          },
-                        ],
-                        imagePath: 'assets/Pranisha.PNG',
-                        providerId: 'Pranisha Thapa(AC Service)',
-                      ),
-                    ),
-                  );
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Samisha Sharma',
-                experience: '7 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/Samisha.PNG',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SamishaACService(
-                          name: 'Samisha Sharma',
-                          experience: '7 years of experience in AC servicing.',
-                          rating: 4.8,
-                          bio:
-                              'Samisha Sharma is a reliable AC servicing expert with 4 years of experience, dedicated to providing excellent service and customer satisfaction.',
-                          services: [
-                            'AC Repair',
-                            'AC Cleaning',
-                            'AC Installation',
-                            'AC Maintenance',
-                          ],
-                          reviews: [
-                            {
-                              'reviewerName': 'Rita Sharma',
-                              'reviewText':
-                                  'Samisha did an amazing job. My AC is running like new!',
-                            },
-                            {
-                              'reviewerName': 'Pradeep Bhandari',
-                              'reviewText':
-                                  'Professional and efficient service. Highly recommended!',
-                            },
-                            {
-                              'reviewerName': 'Anita Rai',
-                              'reviewText':
-                                  'Great service! Samisha is friendly and knows her stuff.',
-                            },
-                          ],
-                          imagePath: 'assets/Samisha.PNG',
-                          providerId: 'Samisha Sharma(Ac Service)',
-                        ),
-                      ));
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Pramod Lama',
-                experience: '12 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/Pramod.PNG',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PramodACService(
-                        name: 'Pramod Lama',
-                        experience: '12 years of experience in AC servicing.',
-                        rating: 4.7,
-                        bio:
-                            'Pramod Lama is an experienced AC technician committed to providing quality service and customer satisfaction.',
-                        services: [
-                          'AC Repair',
-                          'AC Cleaning',
-                          'AC Installation',
-                          'AC Maintenance',
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Sita Sharma',
-                            'reviewText':
-                                'Pramod provided excellent service! Highly satisfied with the repair.',
-                          },
-                          {
-                            'reviewerName': 'Ravi Bhandari',
-                            'reviewText':
-                                'Very professional and quick. I recommend his services to everyone!',
-                          },
-                          {
-                            'reviewerName': 'Nisha Rai',
-                            'reviewText':
-                                'Fantastic experience! Pramod is knowledgeable and very friendly.',
-                          },
-                        ],
-                        imagePath: 'assets/Pramod.PNG',
-                        providerId: 'Pramod Lama(Ac Service)',
-                      ),
-                    ),
-                  );
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Pranisha Thapa',
+              //   experience: '10 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/Pranisha.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => const PranishaACService(
+              //           name: 'Pranisha Thapa',
+              //           experience:
+              //               '10 years of experience in AC repair services.',
+              //           rating: 4.8,
+              //           bio:
+              //               'Pranisha Thapa is a highly skilled AC repair technician with 5 years of experience. Known for her professionalism and expertise in the field.',
+              //           services: [
+              //             'AC Installation',
+              //             'AC Repair',
+              //             'AC Maintenance',
+              //             'Air Purification Systems',
+              //           ],
+              //           reviews: [
+              //             {
+              //               'reviewerName': 'Sita Rai',
+              //               'reviewText':
+              //                   'Pranisha did an amazing job with my AC repair! Highly recommend her.',
+              //             },
+              //             {
+              //               'reviewerName': 'Ravi Lama',
+              //               'reviewText':
+              //                   'Excellent service! My AC is working perfectly again.',
+              //             },
+              //             {
+              //               'reviewerName': 'Anjali Shrestha',
+              //               'reviewText':
+              //                   'Very professional and quick service. Great experience!',
+              //             },
+              //           ],
+              //           imagePath: 'assets/Pranisha.PNG',
+              //           providerId: 'Pranisha Thapa(AC Service)',
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Samisha Sharma',
+              //   experience: '7 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/Samisha.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //           builder: (context) => SamishaACService(
+              //             name: 'Samisha Sharma',
+              //             experience: '7 years of experience in AC servicing.',
+              //             rating: 4.8,
+              //             bio:
+              //                 'Samisha Sharma is a reliable AC servicing expert with 4 years of experience, dedicated to providing excellent service and customer satisfaction.',
+              //             services: [
+              //               'AC Repair',
+              //               'AC Cleaning',
+              //               'AC Installation',
+              //               'AC Maintenance',
+              //             ],
+              //             reviews: [
+              //               {
+              //                 'reviewerName': 'Rita Sharma',
+              //                 'reviewText':
+              //                     'Samisha did an amazing job. My AC is running like new!',
+              //               },
+              //               {
+              //                 'reviewerName': 'Pradeep Bhandari',
+              //                 'reviewText':
+              //                     'Professional and efficient service. Highly recommended!',
+              //               },
+              //               {
+              //                 'reviewerName': 'Anita Rai',
+              //                 'reviewText':
+              //                     'Great service! Samisha is friendly and knows her stuff.',
+              //               },
+              //             ],
+              //             imagePath: 'assets/Samisha.PNG',
+              //             providerId: 'Samisha Sharma(Ac Service)',
+              //           ),
+              //         ));
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Pramod Lama',
+              //   experience: '12 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/Pramod.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => const PramodACService(
+              //           name: 'Pramod Lama',
+              //           experience: '12 years of experience in AC servicing.',
+              //           rating: 4.7,
+              //           bio:
+              //               'Pramod Lama is an experienced AC technician committed to providing quality service and customer satisfaction.',
+              //           services: [
+              //             'AC Repair',
+              //             'AC Cleaning',
+              //             'AC Installation',
+              //             'AC Maintenance',
+              //           ],
+              //           reviews: [
+              //             {
+              //               'reviewerName': 'Sita Sharma',
+              //               'reviewText':
+              //                   'Pramod provided excellent service! Highly satisfied with the repair.',
+              //             },
+              //             {
+              //               'reviewerName': 'Ravi Bhandari',
+              //               'reviewText':
+              //                   'Very professional and quick. I recommend his services to everyone!',
+              //             },
+              //             {
+              //               'reviewerName': 'Nisha Rai',
+              //               'reviewText':
+              //                   'Fantastic experience! Pramod is knowledgeable and very friendly.',
+              //             },
+              //           ],
+              //           imagePath: 'assets/Pramod.PNG',
+              //           providerId: 'Pramod Lama(Ac Service)',
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),

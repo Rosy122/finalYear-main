@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/CarpenterProfiles/BidhanCabinet.dart';
-import 'package:profix_new/User/CarpenterProfiles/RupeshCabinet.dart';
-import 'package:profix_new/User/CarpenterProfiles/SafalCabinet.dart';
+// import 'package:profix_new/User/CarpenterProfiles/BidhanCabinet.dart';
+// import 'package:profix_new/User/CarpenterProfiles/RupeshCabinet.dart';
+// import 'package:profix_new/User/CarpenterProfiles/SafalCabinet.dart';
 // import 'package:profix_new/CabinetInstallationService.dart'; // Make sure to create this file for the individual service page
 // import 'package:profix_new/CabinetProfessional1.dart'; // Replace with actual names of your professional pages
 // import 'package:profix_new/CabinetProfessional2.dart';
@@ -89,147 +89,147 @@ class CabinetInstallationPage extends StatelessWidget {
                   color: Color.fromARGB(255, 122, 165, 160),
                 ),
               ),
-              ProfessionalProfileTile(
-                name: 'Bidhan Shrestha',
-                experience: '7 years of experience',
-                rating: 4.9,
-                imagePath: 'assets/Bidhan.PNG',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          const BidhanCabinetInstallationService(
-                        name: 'Bidhan Shrestha',
-                        experience:
-                            '7 years of experience in cabinet installation services.',
-                        rating: 4.9,
-                        bio:
-                            'Bidhan Shrestha is a highly skilled carpenter with 7 years of experience specializing in cabinet installation, repair, and customization.',
-                        services: [
-                          'New Cabinet Installation',
-                          'Cabinet Repair',
-                          'Customization',
-                          'Finishing Touches',
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Amit Tamang',
-                            'reviewText':
-                                'Bidhan did an excellent job installing my new cabinets. Very professional and efficient!',
-                          },
-                          {
-                            'reviewerName': 'Nina Rai',
-                            'reviewText':
-                                'Highly recommend Bidhan! He customized my kitchen cabinets and they look amazing!',
-                          },
-                          {
-                            'reviewerName': 'Sushil Thapa',
-                            'reviewText':
-                                'Bidhan did a great job repairing my old cabinets. They look brand new now!',
-                          },
-                        ],
-                        imagePath: 'assets/Bidhan.PNG',
-                        providerId: 'Bidhan Shrestha(Cabinet Installation)',
-                      ), // Make sure to create this page
-                    ),
-                  );
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Rupesh Sharma',
-                experience: '6 years of experience',
-                rating: 4.8,
-                imagePath: 'assets/Rupesh.PNG',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          const RupeshSharmaCabinetInstallationService(
-                        name: 'Rupesh Sharma',
-                        experience:
-                            '6 years of experience in cabinet installation services.',
-                        rating: 4.8,
-                        bio:
-                            'Rupesh Sharma is a highly skilled carpenter with 6 years of experience specializing in cabinet installation, repair, and customization.',
-                        services: [
-                          'New Cabinet Installation',
-                          'Cabinet Repair',
-                          'Customization',
-                          'Finishing Touches',
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Amit Tamang',
-                            'reviewText':
-                                'Rupesh did an excellent job installing my new cabinets. Very professional and efficient!',
-                          },
-                          {
-                            'reviewerName': 'Nina Rai',
-                            'reviewText':
-                                'Highly recommend Rupesh! He customized my kitchen cabinets and they look amazing!',
-                          },
-                          {
-                            'reviewerName': 'Sushil Thapa',
-                            'reviewText':
-                                'Rupesh did a great job repairing my old cabinets. They look brand new now!',
-                          },
-                        ],
-                        imagePath: 'assets/Rupesh.PNG',
-                        providerId: 'Rupesh Sharma(Cabinet Installation)',
-                      ),
-                    ),
-                  );
-                },
-              ),
-              ProfessionalProfileTile(
-                name: 'Safal Thapa',
-                experience: '9 years of experience',
-                rating: 4.7,
-                imagePath: 'assets/Safal.PNG',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          const SafalThapaCabinetInstallationService(
-                        name: 'Safal Thapa',
-                        experience:
-                            '9 years of experience in cabinet installation services.',
-                        rating: 4.7,
-                        bio:
-                            'Safal Thapa is a seasoned carpenter with 9 years of experience in cabinet installation, repair, and finishing.',
-                        services: [
-                          'New Cabinet Installation',
-                          'Cabinet Repair',
-                          'Customization',
-                          'Finishing Touches',
-                        ],
-                        reviews: [
-                          {
-                            'reviewerName': 'Amit Tamang',
-                            'reviewText':
-                                'Safal did an amazing job installing my cabinets. Highly skilled and professional!',
-                          },
-                          {
-                            'reviewerName': 'Nina Rai',
-                            'reviewText':
-                                'I loved the customized cabinets Safal installed for my kitchen. Great attention to detail!',
-                          },
-                          {
-                            'reviewerName': 'Sushil Thapa',
-                            'reviewText':
-                                'Safal did a great job repairing my cabinets. They look as good as new!',
-                          },
-                        ],
-                        imagePath: 'assets/Safal.PNG',
-                        providerId: 'Safal Thapa(Cabinet Installation)',
-                      ),
-                    ),
-                  );
-                },
-              ),
+              // ProfessionalProfileTile(
+              //   name: 'Bidhan Shrestha',
+              //   experience: '7 years of experience',
+              //   rating: 4.9,
+              //   imagePath: 'assets/Bidhan.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) =>
+              //             const BidhanCabinetInstallationService(
+              //           name: 'Bidhan Shrestha',
+              //           experience:
+              //               '7 years of experience in cabinet installation services.',
+              //           rating: 4.9,
+              //           bio:
+              //               'Bidhan Shrestha is a highly skilled carpenter with 7 years of experience specializing in cabinet installation, repair, and customization.',
+              //           services: [
+              //             'New Cabinet Installation',
+              //             'Cabinet Repair',
+              //             'Customization',
+              //             'Finishing Touches',
+              //           ],
+              //           reviews: [
+              //             {
+              //               'reviewerName': 'Amit Tamang',
+              //               'reviewText':
+              //                   'Bidhan did an excellent job installing my new cabinets. Very professional and efficient!',
+              //             },
+              //             {
+              //               'reviewerName': 'Nina Rai',
+              //               'reviewText':
+              //                   'Highly recommend Bidhan! He customized my kitchen cabinets and they look amazing!',
+              //             },
+              //             {
+              //               'reviewerName': 'Sushil Thapa',
+              //               'reviewText':
+              //                   'Bidhan did a great job repairing my old cabinets. They look brand new now!',
+              //             },
+              //           ],
+              //           imagePath: 'assets/Bidhan.PNG',
+              //           providerId: 'Bidhan Shrestha(Cabinet Installation)',
+              //         ), // Make sure to create this page
+              //       ),
+              //     );
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Rupesh Sharma',
+              //   experience: '6 years of experience',
+              //   rating: 4.8,
+              //   imagePath: 'assets/Rupesh.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) =>
+              //             const RupeshSharmaCabinetInstallationService(
+              //           name: 'Rupesh Sharma',
+              //           experience:
+              //               '6 years of experience in cabinet installation services.',
+              //           rating: 4.8,
+              //           bio:
+              //               'Rupesh Sharma is a highly skilled carpenter with 6 years of experience specializing in cabinet installation, repair, and customization.',
+              //           services: [
+              //             'New Cabinet Installation',
+              //             'Cabinet Repair',
+              //             'Customization',
+              //             'Finishing Touches',
+              //           ],
+              //           reviews: [
+              //             {
+              //               'reviewerName': 'Amit Tamang',
+              //               'reviewText':
+              //                   'Rupesh did an excellent job installing my new cabinets. Very professional and efficient!',
+              //             },
+              //             {
+              //               'reviewerName': 'Nina Rai',
+              //               'reviewText':
+              //                   'Highly recommend Rupesh! He customized my kitchen cabinets and they look amazing!',
+              //             },
+              //             {
+              //               'reviewerName': 'Sushil Thapa',
+              //               'reviewText':
+              //                   'Rupesh did a great job repairing my old cabinets. They look brand new now!',
+              //             },
+              //           ],
+              //           imagePath: 'assets/Rupesh.PNG',
+              //           providerId: 'Rupesh Sharma(Cabinet Installation)',
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // ),
+              // ProfessionalProfileTile(
+              //   name: 'Safal Thapa',
+              //   experience: '9 years of experience',
+              //   rating: 4.7,
+              //   imagePath: 'assets/Safal.PNG',
+              //   onTap: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) =>
+              //             const SafalThapaCabinetInstallationService(
+              //           name: 'Safal Thapa',
+              //           experience:
+              //               '9 years of experience in cabinet installation services.',
+              //           rating: 4.7,
+              //           bio:
+              //               'Safal Thapa is a seasoned carpenter with 9 years of experience in cabinet installation, repair, and finishing.',
+              //           services: [
+              //             'New Cabinet Installation',
+              //             'Cabinet Repair',
+              //             'Customization',
+              //             'Finishing Touches',
+              //           ],
+              //           reviews: [
+              //             {
+              //               'reviewerName': 'Amit Tamang',
+              //               'reviewText':
+              //                   'Safal did an amazing job installing my cabinets. Highly skilled and professional!',
+              //             },
+              //             {
+              //               'reviewerName': 'Nina Rai',
+              //               'reviewText':
+              //                   'I loved the customized cabinets Safal installed for my kitchen. Great attention to detail!',
+              //             },
+              //             {
+              //               'reviewerName': 'Sushil Thapa',
+              //               'reviewText':
+              //                   'Safal did a great job repairing my cabinets. They look as good as new!',
+              //             },
+              //           ],
+              //           imagePath: 'assets/Safal.PNG',
+              //           providerId: 'Safal Thapa(Cabinet Installation)',
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),

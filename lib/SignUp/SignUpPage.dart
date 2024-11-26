@@ -268,6 +268,7 @@ class _SignUpPageState extends State<SignUpPage> {
     }
 
     try {
+      // Create a user in Firebase Authentication
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text,
@@ -277,13 +278,21 @@ class _SignUpPageState extends State<SignUpPage> {
       if (userCredential.user != null) {
         String uid = userCredential.user!.uid;
 
+        // If role is 'User', add to 'Users' collection
         if (_selectedRole == "User") {
           await FirebaseFirestore.instance.collection('Users').doc(uid).set({
             'name': _nameController.text,
             'email': _emailController.text,
             'role': 'User',
           });
-        } else if (_selectedRole == "Service Provider") {
+        }
+        // If role is 'Service Provider', add to 'Service Providers' collection
+        else if (_selectedRole == "Service Provider") {
+          String name = _nameController.text;
+          int yearsOfExperience = int.parse(_experienceController.text);
+          List<String> services = _selectedServices;
+          final bio =
+              "$name is a highly skilled professional with $yearsOfExperience years of experience in ${services.join(", ")}. Known for quality and dedication, $name ensures every service is performed with excellence.";
           await FirebaseFirestore.instance
               .collection('Service Providers')
               .doc(uid)
@@ -293,9 +302,13 @@ class _SignUpPageState extends State<SignUpPage> {
             'role': 'Service Provider',
             'services': _selectedServices,
             'years_of_experience': int.parse(_experienceController.text),
+            'likes': 0, // Default value
+            'profileImage': '', // Default profile image URL
+            'bio': bio, // Default bio
           });
         }
 
+        // Redirect to Sign-In Page
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const SignInPage()),
