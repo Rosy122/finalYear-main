@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Plumber/BathroomInstallationPage.dart';
 import 'package:profix_new/User/Plumber/LeakRepairPage.dart';
-import 'package:profix_new/User/Plumber/PlumberProfilePage.dart';
 import 'package:profix_new/User/Plumber/ToiletRepairPage.dart';
+import 'package:profix_new/User/PlumberProfiles/PlumberProfilePage.dart';
 
 class PlumberPage extends StatelessWidget {
   const PlumberPage({super.key});

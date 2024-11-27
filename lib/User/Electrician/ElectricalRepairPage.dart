@@ -87,14 +87,14 @@ class ElectricalRepairPage extends StatelessWidget {
                     'Fixing issues with indoor and outdoor lighting systems to ensure proper illumination.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Electrical Repair Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Electrical Repair Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Laxmi Thapa',
               //   experience: '10 years of experience',

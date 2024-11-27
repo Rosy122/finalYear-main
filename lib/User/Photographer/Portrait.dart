@@ -73,14 +73,14 @@ class PortraitPhotographyPage extends StatelessWidget {
                 description: 'Natural and artistic portraits taken outdoors.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Portrait Photographers',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Portrait Photographers',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Amit Patel',
               //   experience: '10 years of experience',

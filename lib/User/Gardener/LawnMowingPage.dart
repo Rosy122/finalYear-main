@@ -84,14 +84,14 @@ class LawnMowingPage extends StatelessWidget {
                     'Providing guidance on how to maintain a healthy lawn.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Lawn Mowing Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Lawn Mowing Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Raju Singh',
               //   experience: '8 years of experience',

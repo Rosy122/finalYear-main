@@ -95,14 +95,14 @@ class BathroomCleaningPage extends StatelessWidget {
                     'Wiping and dusting of bathroom cabinets and fixtures.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Bathroom Cleaners',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Bathroom Cleaners',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
             ],
           ),
         ),

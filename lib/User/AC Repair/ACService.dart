@@ -81,14 +81,14 @@ class ACServicingPage extends StatelessWidget {
                     'Inspecting the compressor to avoid potential breakdowns.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top AC Servicing Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top AC Servicing Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Pranisha Thapa',
               //   experience: '10 years of experience',

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Gardener/GardenDesignPage.dart';
-import 'package:profix_new/User/Gardener/GardenerProfilePage.dart'; // Gardener profile page
 import 'package:profix_new/User/Gardener/LawnMowingPage.dart';
 import 'package:profix_new/User/Gardener/PlantingPage.dart';
+import 'package:profix_new/User/GardenerProfiles/GardenerProfilePage.dart'; // Gardener profile page
 
 class GardenerPage extends StatelessWidget {
   const GardenerPage({super.key});

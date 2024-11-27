@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Cleaner/BathroomCleaningPage.dart';
-import 'package:profix_new/User/Cleaner/CleanerProfilePage.dart';
 import 'package:profix_new/User/Cleaner/DeepCleaningPage.dart';
 import 'package:profix_new/User/Cleaner/GeneralCleaningPage.dart';
 import 'package:profix_new/User/Cleaner/PostConstructionCleaningPage.dart';
 import 'package:profix_new/User/Cleaner/WindowCleaningPage.dart';
+import 'package:profix_new/User/CleanerProfiles/CleanerProfilePage.dart';
 
 class CleanerPage extends StatelessWidget {
   const CleanerPage({super.key});

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Catering/BuffetCatering.dart';
-import 'package:profix_new/User/Catering/CateringProfilePage.dart';
 import 'package:profix_new/User/Catering/Platedmeals.dart';
 import 'package:profix_new/User/Catering/TeaService.dart';
+import 'package:profix_new/User/CateringProfiles/CateringProfilePage.dart';
 
 class CateringPage extends StatelessWidget {
   const CateringPage({super.key});

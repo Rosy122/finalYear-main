@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:profix_new/User/AC%20Repair/ACRepairProfilePage.dart';
-import 'package:profix_new/User/Carpenter/CarpenterProfilePage.dart';
-import 'package:profix_new/User/Cleaner/CleanerProfilePage.dart';
+import 'package:profix_new/User/ACRepair%20Profiles/ACRepairProfilePage.dart';
+import 'package:profix_new/User/CarpenterProfiles/CarpenterProfilePage.dart';
+import 'package:profix_new/User/CleanerProfiles/CleanerProfilePage.dart';
 import 'package:profix_new/User/MakeupArtist/MakrupArtistProfilePage.dart';
-import 'package:profix_new/User/Photographer/PhotographerProfilePage.dart';
-import 'package:profix_new/User/Plumber/PlumberProfilePage.dart';
+import 'package:profix_new/User/PhotographerProfiles/PhotographerProfilePage.dart';
+import 'package:profix_new/User/PlumberProfiles/PlumberProfilePage.dart';
 
 class ViewRecommendationPage extends StatelessWidget {
   const ViewRecommendationPage({super.key});

@@ -80,14 +80,14 @@ class WiringInstallationPage extends StatelessWidget {
                     'Installing new outlets and switches where needed.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Wiring Installation Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Wiring Installation Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'John Rai',
               //   experience: '15 years of experience',

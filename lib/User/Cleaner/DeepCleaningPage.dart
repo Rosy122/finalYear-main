@@ -97,14 +97,14 @@ class DeepCleaningPage extends StatelessWidget {
                     'Detailed dusting and polishing of furniture, fixtures, and décor.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Deep Cleaners',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Deep Cleaners',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
             ],
           ),
         ),

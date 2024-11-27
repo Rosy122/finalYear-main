@@ -82,14 +82,14 @@ class FurniturerepairPage extends StatelessWidget {
                 description: 'Assembling ready-to-assemble furniture pieces.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Carpenter Professionals',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Carpenter Professionals',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Julin Maharjan',
               //   experience: '8 years of experience',

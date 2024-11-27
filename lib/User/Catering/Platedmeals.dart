@@ -73,14 +73,14 @@ class PlatedMealsPage extends StatelessWidget {
                 description: 'Meals prepared with premium, fresh ingredients.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Caterers for Plated Meals',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Caterers for Plated Meals',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Anil Joshi',
               //   experience: '15 years of experience',

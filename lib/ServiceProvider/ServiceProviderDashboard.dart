@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:profix_new/S.NotificationPage.dart';
-import 'package:profix_new/Setting.dart';
+import 'package:profix_new/ServiceProvider/S.NotificationPage.dart';
+import 'package:profix_new/ServiceProvider/Setting.dart';
 
 class ServiceProviderHomePage extends StatelessWidget {
   final String providerName;
@@ -61,7 +61,7 @@ class ServiceProviderHomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Service Provider Dashboard"),
+        title: const Text("Home"),
         backgroundColor: const Color(0xFF7AA5A0),
         actions: [
           IconButton(

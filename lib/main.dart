@@ -3,11 +3,11 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:profix_new/S.NotificationPage.dart';
-import 'package:profix_new/ServiceProviderDashboard.dart';
+import 'package:profix_new/ServiceProvider/S.NotificationPage.dart';
+import 'package:profix_new/ServiceProvider/ServiceProviderDashboard.dart';
+import 'package:profix_new/ServiceProvider/ViewRequests.dart';
 import 'package:profix_new/SignIn/SignInPage.dart';
 import 'package:profix_new/User/Home/HomePage.dart';
-import 'package:profix_new/ViewRequests.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'signin',
+      // initialRoute: '/signin',
+      home: ProHome(),
       routes: {
         'signin': (context) => SignInPage(),
         'home': (context) => HomePage(),

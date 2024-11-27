@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Painter/ExteriorPainting.dart';
 import 'package:profix_new/User/Painter/InteriorPainting.dart';
-import 'package:profix_new/User/Painter/PainterProfilePage.dart';
 import 'package:profix_new/User/Painter/WallpaperInstallation.dart';
+import 'package:profix_new/User/PainterProfile/PainterProfilePage.dart';
 
 class PainterPage extends StatelessWidget {
   const PainterPage({super.key});

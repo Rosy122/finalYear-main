@@ -81,14 +81,14 @@ class PlantingPage extends StatelessWidget {
                     'Ensuring plants receive the right amount of water and nutrients.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Planting Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Planting Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Rabin Shahi',
               //   experience: '8 years of experience',

@@ -81,14 +81,14 @@ class CabinetInstallationPage extends StatelessWidget {
                 description: 'Adding finishing touches for a polished look.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Cabinet Professionals',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Cabinet Professionals',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Bidhan Shrestha',
               //   experience: '7 years of experience',

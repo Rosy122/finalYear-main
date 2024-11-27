@@ -84,14 +84,14 @@ class GardenDesignPage extends StatelessWidget {
                     'Creating a lighting plan that enhances the garden’s beauty and functionality at night.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Garden Design Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Garden Design Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Radhika Gurung',
               //   experience: '10 years of experience',

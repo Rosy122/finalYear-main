@@ -104,14 +104,14 @@ class GeneralCleaningPage extends StatelessWidget {
                 description: 'Emptying trash bins and replacing liners',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top General Cleaners',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top General Cleaners',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               const SizedBox(height: 10),
             ],
           ),

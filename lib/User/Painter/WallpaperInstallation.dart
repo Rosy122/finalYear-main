@@ -87,14 +87,14 @@ class WallpaperInstallationPage extends StatelessWidget {
                     'Removing any debris and ensuring your space is clean and tidy post-installation.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Wallpaper Installation Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Wallpaper Installation Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Bishal Purja',
               //   experience: '8 years of experience',

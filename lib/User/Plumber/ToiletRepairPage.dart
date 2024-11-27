@@ -85,14 +85,14 @@ class ToiletRepairPage extends StatelessWidget {
                     'Replacing worn-out seals to prevent leaks and ensure proper toilet functioning.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Toilet Repair Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Toilet Repair Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Sanjay Karki',
               //   experience: '10 years of experience',

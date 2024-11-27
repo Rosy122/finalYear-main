@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Carpenter/CabinetInstallation.dart';
-import 'package:profix_new/User/Carpenter/CarpenterProfilePage.dart';
 import 'package:profix_new/User/Carpenter/CustomFurniture.dart';
 import 'package:profix_new/User/Carpenter/FurnitureRepair.dart';
+import 'package:profix_new/User/CarpenterProfiles/CarpenterProfilePage.dart';
 
 class CarpenterPage extends StatelessWidget {
   const CarpenterPage({super.key});

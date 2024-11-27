@@ -81,14 +81,14 @@ class InteriorPaintingPage extends StatelessWidget {
                     'Ensuring your space is clean and paint-free after the job is completed.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Interior Painting Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Interior Painting Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Ramita Thapa',
               //   experience: '8 years of experience',

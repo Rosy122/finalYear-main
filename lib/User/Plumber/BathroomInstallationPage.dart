@@ -87,14 +87,14 @@ class BathroomInstallationPage extends StatelessWidget {
                     'Installation of ventilation systems to prevent mold and ensure air circulation.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Bathroom Installation Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Bathroom Installation Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Sudip Shrestha',
               //   experience: '12 years of experience',

@@ -79,14 +79,14 @@ class CustomFurniturePage extends StatelessWidget {
                     'We ensure your furniture is safely delivered and set up in your space.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Custom Furniture Professionals',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Custom Furniture Professionals',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Sunisa Bhattarai',
               //   experience: '10 years of experience',

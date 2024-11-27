@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:profix_new/ServiceProviderDashboard.dart';
+import 'package:profix_new/ServiceProvider/ServiceProviderDashboard.dart';
 import 'package:profix_new/SignIn/forgotPasswordPage.dart';
 import 'package:profix_new/SignUp/SignUpPage.dart';
 import 'package:profix_new/User/Home/HomePage.dart';

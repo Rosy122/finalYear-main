@@ -87,14 +87,14 @@ class ExteriorPaintingPage extends StatelessWidget {
                     'Ensuring your property is clean and paint-free after the job is completed.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Exterior Painting Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Exterior Painting Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Rasmita Thapa',
               //   experience: '12 years of experience',

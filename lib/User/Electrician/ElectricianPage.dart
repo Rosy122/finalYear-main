@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Electrician/ElectricalRepairPage.dart';
-import 'package:profix_new/User/Electrician/ElectricianProfilePage.dart'; // Replace with the actual path for the profile page
 import 'package:profix_new/User/Electrician/LightingInstallationPage.dart';
 import 'package:profix_new/User/Electrician/WiringInstallationPage.dart';
+import 'package:profix_new/User/ElectricianProfiles/ElectricianProfilePage.dart'; // Replace with the actual path for the profile page
 
 class ElectricianPage extends StatelessWidget {
   const ElectricianPage({super.key});

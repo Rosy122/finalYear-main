@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Photographer/EventPhotography.dart';
-import 'package:profix_new/User/Photographer/PhotographerProfilePage.dart';
 import 'package:profix_new/User/Photographer/Portrait.dart';
 import 'package:profix_new/User/Photographer/WeddingPhotographer.dart';
+import 'package:profix_new/User/PhotographerProfiles/PhotographerProfilePage.dart';
 
 class PhotographerPage extends StatelessWidget {
   const PhotographerPage({super.key});

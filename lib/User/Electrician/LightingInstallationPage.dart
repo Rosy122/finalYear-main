@@ -81,14 +81,14 @@ class LightingInstallationPage extends StatelessWidget {
                     'Installing LED strip lights for accent or under-cabinet lighting.',
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Top Lighting Installation Experts',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 122, 165, 160),
-                ),
-              ),
+              // const Text(
+              //   'Top Lighting Installation Experts',
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //     color: Color.fromARGB(255, 122, 165, 160),
+              //   ),
+              // ),
               // ProfessionalProfileTile(
               //   name: 'Hari Shrestha',
               //   experience: '8 years of experience',
