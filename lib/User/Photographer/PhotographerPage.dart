@@ -1,21 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Photographer/EventPhotography.dart';
+import 'package:profix_new/User/Photographer/PhotographerProfilePage.dart';
 import 'package:profix_new/User/Photographer/Portrait.dart';
 import 'package:profix_new/User/Photographer/WeddingPhotographer.dart';
-
-void main() => runApp(const PhotographerPageApp());
-
-class PhotographerPageApp extends StatelessWidget {
-  const PhotographerPageApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: PhotographerPage(),
-    );
-  }
-}
 
 class PhotographerPage extends StatelessWidget {
   const PhotographerPage({super.key});
@@ -28,198 +16,177 @@ class PhotographerPage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 213, 237, 249),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Available Services',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 122, 165, 160)),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const Text(
+              'Available Services',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 122, 165, 160),
               ),
-              SizedBox(height: 10),
-              ServiceTile(
-                icon: Icons.camera_alt,
-                service: 'Wedding Photography',
-                description: 'Capture every moment of your special day',
-                price: 'Rs. 15000/event',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const WeddingPhotographyPage()));
-                },
+            ),
+            const SizedBox(height: 10),
+            // Static Services
+            ServiceTile(
+              icon: Icons.camera_alt,
+              service: 'Wedding Photography',
+              description: 'Capture every moment of your special day',
+              price: 'Rs. 15000/event',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WeddingPhotographyPage(),
+                  ),
+                );
+              },
+            ),
+            ServiceTile(
+              icon: Icons.photo_camera,
+              service: 'Portrait Photography',
+              description: 'Professional portraits for individuals or groups',
+              price: 'Rs. 5000/session',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PortraitPhotographyPage(),
+                  ),
+                );
+              },
+            ),
+            ServiceTile(
+              icon: Icons.landscape,
+              service: 'Event Photography',
+              description: 'Photograph your events with high quality',
+              price: 'Rs. 8000/event',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EventPhotographyPage(),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 10),
+            // Dynamic Services
+            StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('Services')
+                  .where('category',
+                      isEqualTo: 'Photography') // Filter by category
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  return const Center(
+                    child: Text(
+                      'No services available.',
+                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                    ),
+                  );
+                }
+
+                final services = snapshot.data!.docs;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: services.length,
+                  itemBuilder: (context, index) {
+                    final service = services[index];
+                    final serviceData =
+                        service.data() as Map<String, dynamic>; // Cast data
+                    final serviceName = serviceData['serviceName'] ?? 'N/A';
+                    final description = serviceData['description'] ?? 'N/A';
+                    final price = serviceData['price'] ?? 'N/A';
+
+                    return ServiceTile(
+                      icon: Icons.camera, // Example dynamic icon
+                      service: serviceName,
+                      description: description,
+                      price: 'Rs. $price',
+                      onTap: () {
+                        // Navigate to a specific service page (optional)
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Top Photographers',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 122, 165, 160),
               ),
-              ServiceTile(
-                icon: Icons.photo_camera,
-                service: 'Portrait Photography',
-                description: 'Professional portraits for individuals or groups',
-                price: 'Rs. 5000/session',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const PortraitPhotographyPage()));
-                },
-              ),
-              ServiceTile(
-                icon: Icons.landscape,
-                service: 'Event Photography',
-                description: 'Photograph your events with high quality',
-                price: 'Rs. 8000/event',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const EventPhotographyPage()));
-                },
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Top Photographers',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 122, 165, 160)),
-              ),
-              // ProfessionalProfileTile(
-              //   name: 'Amit Patel',
-              //   experience: '10 years of experience',
-              //   rating: 4.9,
-              //   imagePath: 'assets/Amit.PNG',
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) =>
-              //                 const AmitPatelPhotographyService(
-              //                     name: 'Amit Patel',
-              //                     experience:
-              //                         '10 years of experience in photography services.',
-              //                     rating: 4.9,
-              //                     bio:
-              //                         'Amit Patel is a skilled photographer with over 10 years of experience, specializing in wedding, portrait, and event photography.',
-              //                     services: [
-              //                       'Wedding Photography (Rs. 15000/event)',
-              //                       'Portrait Photography (Rs. 5000/session)',
-              //                       'Event Photography (Rs. 8000/event)',
-              //                     ],
-              //                     reviews: [
-              //                       {
-              //                         'reviewerName': 'Sneha Rao',
-              //                         'reviewText':
-              //                             'Amit’s photography was amazing. Highly recommend!',
-              //                       },
-              //                       {
-              //                         'reviewerName': 'Rajiv Kumar',
-              //                         'reviewText':
-              //                             'Great quality photos. Very professional!',
-              //                       },
-              //                       {
-              //                         'reviewerName': 'Amit Patel',
-              //                         'reviewText':
-              //                             'Captured my wedding beautifully. Couldn’t be happier!',
-              //                       },
-              //                     ],
-              //                     imagePath: 'assets/Amit.PNG',
-              //                     providerId: 'Amit Patel(Photography)')));
-              //   },
-              // ),
-              // ProfessionalProfileTile(
-              //   name: 'Sneha Rao',
-              //   experience: '7 years of experience',
-              //   rating: 4.8,
-              //   imagePath: 'assets/Sneha.PNG',
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) =>
-              //                 const SnehaRaoPhotographyService(
-              //                   name: 'Sneha Rao',
-              //                   experience:
-              //                       '7 years of experience in photography services.',
-              //                   rating: 4.8,
-              //                   bio:
-              //                       'Sneha Rao is a talented photographer with 7 years of experience, specializing in wedding, portrait, and event photography.',
-              //                   services: [
-              //                     'Wedding Photography (Rs. 15000/event)',
-              //                     'Portrait Photography (Rs. 5000/session)',
-              //                     'Event Photography (Rs. 8000/event)',
-              //                   ],
-              //                   reviews: [
-              //                     {
-              //                       'reviewerName': 'Amit Patel',
-              //                       'reviewText':
-              //                           'Sneha’s photos are of the highest quality. Highly recommend!',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Rajiv Kumar',
-              //                       'reviewText':
-              //                           'Great experience with Sneha. She captured our event beautifully.',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Sneha Rao',
-              //                       'reviewText':
-              //                           'Absolutely loved the wedding photos. Thank you for your great work!',
-              //                     },
-              //                   ],
-              //                   imagePath: 'assets/Sneha.PNG',
-              //                   providerId: 'Sneha Rao(Photography)',
-              //                 )));
-              //   },
-              // ),
-              // ProfessionalProfileTile(
-              //   name: 'Rajiv Kumar',
-              //   experience: '6 years of experience',
-              //   rating: 4.7,
-              //   imagePath: 'assets/Rajiv.PNG',
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) =>
-              //                 const RajivKumarPhotographyService(
-              //                   name: 'Rajiv Kumar',
-              //                   experience:
-              //                       '6 years of experience in photography services.',
-              //                   rating: 4.7,
-              //                   bio:
-              //                       'Rajiv Kumar is a professional photographer with 6 years of experience in wedding, portrait, and event photography.',
-              //                   services: [
-              //                     'Wedding Photography (Rs. 15000/event)',
-              //                     'Portrait Photography (Rs. 5000/session)',
-              //                     'Event Photography (Rs. 8000/event)',
-              //                   ],
-              //                   reviews: [
-              //                     {
-              //                       'reviewerName': 'Sneha Rao',
-              //                       'reviewText':
-              //                           'Rajiv’s photos were amazing. Definitely recommend!',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Amit Patel',
-              //                       'reviewText':
-              //                           'Great quality work. He captured every moment perfectly!',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Sneha Rao',
-              //                       'reviewText':
-              //                           'Fantastic photographer! Made our event special.',
-              //                     },
-              //                   ],
-              //                   imagePath: 'assets/Rajiv.PNG',
-              //                   providerId: 'Rajiv Kumar(Photography)',
-              //                 )));
-              //   },
-              // ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+            // Fetching Top Photographers
+            StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('Service Providers')
+                  .where('services', arrayContains: 'Photography')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  return const Center(
+                    child: Text(
+                      'No photographers available.',
+                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                    ),
+                  );
+                }
+
+                final photographers = snapshot.data!.docs;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: photographers.length,
+                  itemBuilder: (context, index) {
+                    final photographer = photographers[index];
+                    final photographerData =
+                        photographer.data() as Map<String, dynamic>;
+                    final name = photographerData['name'] ?? 'Unknown';
+                    final experience =
+                        photographerData['years_of_experience'] ?? 0;
+                    final likes = photographerData['likes'] ?? 0;
+                    final profileImage = photographerData['profileImage'] ??
+                        'assets/default_profile.jpg';
+
+                    return ProfessionalProfileTile(
+                      name: name,
+                      experience: '$experience years of experience',
+                      rating: likes.toDouble(),
+                      imagePath: profileImage,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PhotographerProfilePage(
+                              providerId: photographer.id,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -245,6 +212,7 @@ class ServiceTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: ListTile(
         leading: Icon(
           icon,
@@ -282,16 +250,20 @@ class ProfessionalProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundImage: AssetImage(imagePath),
+          backgroundImage: imagePath.isNotEmpty
+              ? NetworkImage(imagePath)
+              : const AssetImage('assets/default_profile.jpg') as ImageProvider,
         ),
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(experience),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(Icons.star, color: Colors.yellow[700]),
+            Icon(Icons.thumb_up, color: Colors.blue[700]),
+            const SizedBox(width: 4),
             Text(
               rating.toString(),
               style: const TextStyle(fontWeight: FontWeight.bold),

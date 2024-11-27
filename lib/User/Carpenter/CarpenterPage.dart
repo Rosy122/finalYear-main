@@ -1,24 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Carpenter/CabinetInstallation.dart';
+import 'package:profix_new/User/Carpenter/CarpenterProfilePage.dart';
 import 'package:profix_new/User/Carpenter/CustomFurniture.dart';
 import 'package:profix_new/User/Carpenter/FurnitureRepair.dart';
-// import 'package:profix_new/User/CarpenterProfiles/DeepakCarpenter.dart';
-// import 'package:profix_new/User/CarpenterProfiles/MinaCarpenter.dart';
-// import 'package:profix_new/User/CarpenterProfiles/RaviCarpenter.dart';
-
-void main() => runApp(const CarpenterPageApp());
-
-class CarpenterPageApp extends StatelessWidget {
-  const CarpenterPageApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CarpenterPage(),
-    );
-  }
-}
 
 class CarpenterPage extends StatelessWidget {
   const CarpenterPage({super.key});
@@ -31,201 +16,177 @@ class CarpenterPage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 213, 237, 249),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const Text(
-                'Available Services',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 122, 165, 160)),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const Text(
+              'Available Services',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 122, 165, 160),
               ),
-              const SizedBox(height: 10),
-              ServiceTile(
-                icon: Icons.build,
-                service: 'Furniture Repair',
-                description: 'Repair and restoration of furniture',
-                price: 'Rs. 1000/hr',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FurniturerepairPage()));
-                },
+            ),
+            const SizedBox(height: 10),
+            // Static Services
+            ServiceTile(
+              icon: Icons.build,
+              service: 'Furniture Repair',
+              description: 'Repair and restoration of furniture',
+              price: 'Rs. 1000/hr',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const FurniturerepairPage(),
+                  ),
+                );
+              },
+            ),
+            ServiceTile(
+              icon: Icons.chair,
+              service: 'Custom Furniture',
+              description: 'Design and build custom furniture',
+              price: 'Rs. 2000/hr',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CustomFurniturePage(),
+                  ),
+                );
+              },
+            ),
+            ServiceTile(
+              icon: Icons.home,
+              service: 'Cabinet Installation',
+              description: 'Install kitchen and bathroom cabinets',
+              price: 'Rs. 1500/hr',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CabinetInstallationPage(),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: 10),
+            // Dynamic Services
+            StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('Services')
+                  .where('category',
+                      isEqualTo: 'Carpentry') // Filter by category
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  return const Center(
+                    child: Text(
+                      'No services available.',
+                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                    ),
+                  );
+                }
+
+                final services = snapshot.data!.docs;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: services.length,
+                  itemBuilder: (context, index) {
+                    final service = services[index];
+                    final serviceData =
+                        service.data() as Map<String, dynamic>; // Cast data
+                    final serviceName = serviceData['serviceName'] ?? 'N/A';
+                    final description = serviceData['description'] ?? 'N/A';
+                    final price = serviceData['price'] ?? 'N/A';
+
+                    return ServiceTile(
+                      icon: Icons.construction, // Example dynamic icon
+                      service: serviceName,
+                      description: description,
+                      price: 'Rs. $price/hr',
+                      onTap: () {
+                        // Navigate to a specific service page (optional)
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Top Carpenters',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 122, 165, 160),
               ),
-              ServiceTile(
-                icon: Icons.chair,
-                service: 'Custom Furniture',
-                description: 'Design and build custom furniture',
-                price: 'Rs. 2000/hr',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CustomFurniturePage()));
-                },
-              ),
-              ServiceTile(
-                icon: Icons.home,
-                service: 'Cabinet Installation',
-                description: 'Install kitchen and bathroom cabinets',
-                price: 'Rs. 1500/hr',
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const CabinetInstallationPage()));
-                },
-              ),
-              const SizedBox(height: 20),
-              const Text(
-                'Top Carpenters',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 122, 165, 160)),
-              ),
-              // ProfessionalProfileTile(
-              //   name: 'Deepak Kumar',
-              //   experience: '12 years of experience',
-              //   rating: 4.9,
-              //   imagePath: 'assets/Deepak.PNG',
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) => DeepakCarpenterService(
-              //                   name: 'Deepak Kumar',
-              //                   experience:
-              //                       '12 years of experience in carpentry services.',
-              //                   rating: 4.9,
-              //                   bio:
-              //                       'Deepak Kumar is an experienced carpenter, known for his craftsmanship and exceptional skills in furniture design and home installations.',
-              //                   services: [
-              //                     'Furniture Repair',
-              //                     'Custom Furniture',
-              //                     'Cabinet Installation',
-              //                     'Wooden Decks',
-              //                   ],
-              //                   reviews: [
-              //                     {
-              //                       'reviewerName': 'Rajesh Kumar',
-              //                       'reviewText':
-              //                           'Deepak is a true professional. His work was exceptional!',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Nisha Patel',
-              //                       'reviewText':
-              //                           'Very satisfied with the furniture repair. Great quality!',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Amit Sharma',
-              //                       'reviewText':
-              //                           'The cabinet installation was done quickly and perfectly.',
-              //                     },
-              //                   ],
-              //                   imagePath:
-              //                       'assets/Deepak.PNG', // Replace with actual image path
-              //                   providerId: 'Deepak Kumar(Carpenter)',
-              //                 )));
-              //   },
-              // ),
-              // ProfessionalProfileTile(
-              //   name: 'Mina Sharma',
-              //   experience: '8 years of experience',
-              //   rating: 4.8,
-              //   imagePath: 'assets/Mina.PNG',
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) => MinaCarpenterService(
-              //                   name: 'Mina Sharma',
-              //                   experience:
-              //                       '8 years of experience in carpentry services.',
-              //                   rating: 4.8,
-              //                   bio:
-              //                       'Mina Sharma is a highly skilled carpenter specializing in custom furniture and home improvement services. Known for her precision and attention to detail.',
-              //                   services: [
-              //                     'Furniture Repair',
-              //                     'Custom Furniture',
-              //                     'Cabinet Installation',
-              //                     'Wooden Decks',
-              //                   ],
-              //                   reviews: [
-              //                     {
-              //                       'reviewerName': 'Rajesh Kumar',
-              //                       'reviewText':
-              //                           'Mina did a fantastic job with the custom furniture. Highly recommend her!',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Sita Patel',
-              //                       'reviewText':
-              //                           'Very happy with the cabinet installation. Mina is a true professional.',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Anjali Rai',
-              //                       'reviewText':
-              //                           'Her work on the furniture repair was excellent. Will definitely hire her again.',
-              //                     },
-              //                   ],
-              //                   imagePath:
-              //                       'assets/Mina.PNG', // Replace with actual image path
-              //                   providerId: 'Mina Sharma(Carpenter)',
-              //                 )));
-              //   },
-              // ),
-              // ProfessionalProfileTile(
-              //   name: 'Ravi Patel',
-              //   experience: '10 years of experience',
-              //   rating: 4.7,
-              //   imagePath: 'assets/Ravi.PNG',
-              //   onTap: () {
-              //     Navigator.push(
-              //         context,
-              //         MaterialPageRoute(
-              //             builder: (context) => RaviCarpenterService(
-              //                   name: 'Ravi Patel',
-              //                   experience:
-              //                       '10 years of experience in carpentry services.',
-              //                   rating: 4.7,
-              //                   bio:
-              //                       'Ravi Patel is an expert carpenter with over 10 years of experience in custom woodwork and home installations. Known for quality craftsmanship and customer satisfaction.',
-              //                   services: [
-              //                     'Furniture Repair',
-              //                     'Custom Furniture',
-              //                     'Cabinet Installation',
-              //                     'Wooden Decks',
-              //                   ],
-              //                   reviews: [
-              //                     {
-              //                       'reviewerName': 'Anjali Patel',
-              //                       'reviewText':
-              //                           'Ravi did an amazing job repairing my old furniture.',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Rohan Shah',
-              //                       'reviewText':
-              //                           'Fantastic work on custom cabinetry. Highly recommend!',
-              //                     },
-              //                     {
-              //                       'reviewerName': 'Kiran Joshi',
-              //                       'reviewText':
-              //                           'Ravi’s attention to detail in the deck installation was superb.',
-              //                     },
-              //                   ],
-              //                   imagePath:
-              //                       'assets/Ravi.PNG', // Replace with actual image path
-              //                   providerId: 'Ravi Patel(Carpenter)',
-              //                 )));
-              //   },
-              // ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+            // Fetching Top Carpenters
+            StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('Service Providers')
+                  .where('services', arrayContains: 'Carpentry')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  return const Center(
+                    child: Text(
+                      'No carpenters available.',
+                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                    ),
+                  );
+                }
+
+                final carpenters = snapshot.data!.docs;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: carpenters.length,
+                  itemBuilder: (context, index) {
+                    final carpenter = carpenters[index];
+                    final carpenterData =
+                        carpenter.data() as Map<String, dynamic>;
+                    final name = carpenterData['name'] ?? 'Unknown';
+                    final experience =
+                        carpenterData['years_of_experience'] ?? 0;
+                    final likes = carpenterData['likes'] ?? 0;
+                    final profileImage = carpenterData['profileImage'] ??
+                        'assets/default_profile.jpg';
+
+                    return ProfessionalProfileTile(
+                      name: name,
+                      experience: '$experience years of experience',
+                      rating: likes.toDouble(),
+                      imagePath: profileImage,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CarpenterProfilePage(
+                              providerId: carpenter.id,
+                            ),
+                          ),
+                        ); // Navigate to technician profile (optional)
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
@@ -251,6 +212,7 @@ class ServiceTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: ListTile(
         leading: Icon(
           icon,
@@ -288,16 +250,20 @@ class ProfessionalProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundImage: AssetImage(imagePath),
+          backgroundImage: imagePath.isNotEmpty
+              ? NetworkImage(imagePath)
+              : const AssetImage('assets/default_profile.jpg') as ImageProvider,
         ),
         title: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(experience),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Icon(Icons.star, color: Colors.yellow[700]),
+            Icon(Icons.thumb_up, color: Colors.blue[700]),
+            const SizedBox(width: 4),
             Text(
               rating.toString(),
               style: const TextStyle(fontWeight: FontWeight.bold),

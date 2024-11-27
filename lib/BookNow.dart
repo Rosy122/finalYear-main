@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 class BookServicePage extends StatefulWidget {
   final String providerId;
   final String providerName;
+  final String serviceName;
 
   const BookServicePage({
     Key? key,
     required this.providerId,
     required this.providerName,
+    required this.serviceName,
   }) : super(key: key);
 
   @override
@@ -56,7 +58,7 @@ class _BookServicePageState extends State<BookServicePage> {
         'providerName': widget.providerName,
         'userId': userId,
         'userName': userName,
-        'serviceName': 'General Cleaning', // Example static service name
+        'serviceName': widget.serviceName, // Example static service name
         'status': 'Pending',
         'date': _selectedDate,
         'timeSlot': selectedTimeSlot,
@@ -108,7 +110,7 @@ class _BookServicePageState extends State<BookServicePage> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Service: General Cleaning', // Example static service name
+                      'Service: ${widget.serviceName}', // Example static service name
                       style: const TextStyle(fontSize: 16),
                     ),
                   ],

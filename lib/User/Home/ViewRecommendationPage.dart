@@ -1,12 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:profix_new/User/AC%20Repair/ACRepairProfilePage.dart';
+import 'package:profix_new/User/Carpenter/CarpenterProfilePage.dart';
+import 'package:profix_new/User/Cleaner/CleanerProfilePage.dart';
+import 'package:profix_new/User/MakeupArtist/MakrupArtistProfilePage.dart';
+import 'package:profix_new/User/Photographer/PhotographerProfilePage.dart';
+import 'package:profix_new/User/Plumber/PlumberProfilePage.dart';
 
 class ViewRecommendationPage extends StatelessWidget {
   const ViewRecommendationPage({super.key});
 
   Stream<QuerySnapshot> getTopLikedProviders() {
     return FirebaseFirestore.instance
-        .collection('service Provider')
+        .collection('Service Providers')
         .orderBy('likes', descending: true)
         .snapshots();
   }
@@ -53,25 +59,89 @@ class ViewRecommendationPage extends StatelessWidget {
                         var data = provider.data()
                             as Map<String, dynamic>; // Fetch data as a Map
 
-                        // Debugging print to check the actual fields returned
+                        // Debugging Prints
                         print(
-                            data); // This will print all the fields in the document
+                            'Provider Name: ${data['name']}, Service Type: ${data['service type']}');
 
-                        // Safe access to 'Experience' field with a null check
-                        String experience = data.containsKey('Experience')
-                            ? data['Experience']
-                            : 'No experience available';
-                        // Access 'bio' field correctly
-                        String bio = data.containsKey('bio')
-                            ? data['bio']
-                            : 'No bio available';
+                        String experience =
+                            data.containsKey('years_of_experience')
+                                ? '${data['years_of_experience']} years'
+                                : 'No experience available';
+                        String bio = data['bio'] ?? 'No bio available';
                         String name = data['name'] ?? 'No name available';
+                        String profileImage = data['profileImage'] ?? '';
+                        String serviceType = (data['service type'] ?? '')
+                            .trim()
+                            .toLowerCase(); // Make lowercase for comparison
+                        print('Navigating for Service Type: $serviceType');
 
                         return RecommendedItem(
-                          title: name, // 'name' field
-                          by: bio, // 'bio' field
-                          rating: data['likes'].toString(), // 'likes' field
+                          title: name,
+                          by: bio,
+                          rating: data['likes'].toString(),
                           experience: experience,
+                          imageUrl: profileImage,
+                          onTap: () {
+                            // Navigate to the appropriate profile page
+                            if (serviceType == "plumbing") {
+                              print('Navigating to PlumberProfilePage');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PlumberProfilePage(
+                                      providerId: provider.id),
+                                ),
+                              );
+                            } else if (serviceType == "cleaning") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CleanerProfilePage(
+                                      providerId: provider.id),
+                                ),
+                              );
+                            } else if (serviceType == "makeup artist") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MakeupArtistProfilePage(
+                                      providerId: provider.id),
+                                ),
+                              );
+                            } else if (serviceType == "ac repair") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ACRepairProfilePage(
+                                      providerId: provider.id),
+                                ),
+                              );
+                            } else if (serviceType == "carpentry") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CarpenterProfilePage(
+                                      providerId: provider.id),
+                                ),
+                              );
+                            } else if (serviceType == "photographer") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PhotographerProfilePage(
+                                      providerId: provider.id),
+                                ),
+                              );
+                            } else {
+                              // Default case if no specific profile page exists
+                              print('No matching service type found.');
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content:
+                                        Text('No profile page available!')),
+                              );
+                            }
+                          },
                         );
                       },
                     );
@@ -110,6 +180,8 @@ class RecommendedItem extends StatelessWidget {
   final String by;
   final String rating;
   final String experience;
+  final String imageUrl;
+  final VoidCallback onTap;
 
   const RecommendedItem({
     super.key,
@@ -117,45 +189,74 @@ class RecommendedItem extends StatelessWidget {
     required this.by,
     required this.rating,
     required this.experience,
+    required this.imageUrl,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Container(
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
-            ),
-          ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Profile Image
+              CircleAvatar(
+                backgroundImage: imageUrl.isNotEmpty
+                    ? NetworkImage(imageUrl)
+                    : const AssetImage('assets/default_profile.jpg')
+                        as ImageProvider,
+                radius: 30,
               ),
-            ),
-            Text('Bio: $by'),
-            Text('Experience: $experience'),
-            Row(
-              children: [
-                const Icon(Icons.favorite, color: Colors.red, size: 16),
-                Text('$rating likes'),
-              ],
-            ),
-          ],
+              const SizedBox(width: 15),
+              // Text Details
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Bio: $by',
+                      style: const TextStyle(fontSize: 14, color: Colors.grey),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Experience: $experience',
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        const Icon(Icons.favorite, color: Colors.red, size: 16),
+                        const SizedBox(width: 4),
+                        Text(
+                          '$rating likes',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

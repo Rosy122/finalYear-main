@@ -26,9 +26,13 @@ class _SignUpPageState extends State<SignUpPage> {
     "Cleaning",
     "Gardening",
     "Plumbing",
-    "Electrical Work",
+    "Electrician",
     "Painting",
-    "Carpentry"
+    "Carpentry",
+    "Catering",
+    "Photography",
+    "Makeup",
+    "Ac Repair",
   ]; // List of service options
 
   @override
@@ -301,6 +305,10 @@ class _SignUpPageState extends State<SignUpPage> {
             'email': _emailController.text,
             'role': 'Service Provider',
             'services': _selectedServices,
+            'service type': _selectedServices.isNotEmpty
+                ? _selectedServices
+                    .join(", ") // Combine services into a single string
+                : "General",
             'years_of_experience': int.parse(_experienceController.text),
             'likes': 0, // Default value
             'profileImage': '', // Default profile image URL
