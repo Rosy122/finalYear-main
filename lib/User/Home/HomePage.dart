@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
         SnackBar(
           content: Text('You are logged in as $username'),
           backgroundColor: Colors.green,
-          duration: Duration(seconds: 3),
+          duration: const Duration(seconds: 3),
         ),
       );
     });
@@ -172,8 +172,9 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  const ViewRecommendationPage()));
+                              builder: (context) => ViewRecommendationPage(
+                                    username: username,
+                                  )));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromARGB(255, 84, 150, 205),
@@ -226,7 +227,9 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const CleanerPage(),
+                          builder: (context) => CleanerPage(
+                            username: username,
+                          ),
                         ));
                   }),
                   _buildRoundCategoryCard('Plumber', Icons.plumbing, () {

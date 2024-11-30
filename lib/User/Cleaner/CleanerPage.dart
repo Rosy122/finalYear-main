@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Cleaner/BathroomCleaningPage.dart';
@@ -7,8 +9,55 @@ import 'package:profix_new/User/Cleaner/PostConstructionCleaningPage.dart';
 import 'package:profix_new/User/Cleaner/WindowCleaningPage.dart';
 import 'package:profix_new/User/CleanerProfiles/CleanerProfilePage.dart';
 
-class CleanerPage extends StatelessWidget {
-  const CleanerPage({super.key});
+class CleanerPage extends StatefulWidget {
+  final String username;
+  const CleanerPage({super.key, this.username = "Guest"});
+
+  @override
+  State<CleanerPage> createState() => _CleanerPageState();
+}
+
+class _CleanerPageState extends State<CleanerPage> {
+  Map<String, dynamic>? userData;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    log(widget.username);
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('Users') // Replace 'Users' with your collection name
+          .where('name', isEqualTo: widget.username)
+          .get();
+
+      log(querySnapshot.docs.toString());
+
+      if (querySnapshot.docs.isNotEmpty) {
+        setState(() {
+          userData = querySnapshot.docs.first.data() as Map<String, dynamic>;
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          userData = null;
+          isLoading = false;
+        });
+      }
+
+      log(userData!['location'].toString());
+    } catch (e) {
+      log('Error fetching user data: $e');
+      setState(() {
+        userData = null;
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +153,7 @@ class CleanerPage extends StatelessWidget {
             const SizedBox(height: 20),
             const Text(
               'Top Cleaners',
+              // username,
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -115,6 +165,8 @@ class CleanerPage extends StatelessWidget {
               stream: FirebaseFirestore.instance
                   .collection('Service Providers')
                   .where('services', arrayContains: 'Cleaning')
+                  .where('location',
+                      isEqualTo: userData?['location'] ?? "kathmandu")
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {

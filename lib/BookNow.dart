@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:profix_new/BookingDetailsPage.dart';
 
 //BOOKING PAGE KO LAGI
 class BookServicePage extends StatefulWidget {
@@ -32,13 +33,6 @@ class _BookServicePageState extends State<BookServicePage> {
       return;
     }
 
-    if (_detailsController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please add additional details!')),
-      );
-      return;
-    }
-
     try {
       User? user = FirebaseAuth.instance.currentUser;
 
@@ -53,12 +47,35 @@ class _BookServicePageState extends State<BookServicePage> {
       String userId = user.uid;
       String userName = user.displayName ?? user.email ?? 'Unknown User';
 
+      print('Provider ID: ${widget.providerId}');
+
+      // Fetch provider document
+      DocumentSnapshot providerDoc = await FirebaseFirestore.instance
+          .collection('Service Providers') // Corrected collection name
+          .doc(widget.providerId)
+          .get();
+
+      if (!providerDoc.exists) {
+        throw Exception('Provider document does not exist.');
+      }
+
+      // Cast data to Map<String, dynamic>
+      final data = providerDoc.data() as Map<String, dynamic>;
+
+      if (!data.containsKey('phoneNumber')) {
+        throw Exception('Phone number is missing in the provider document.');
+      }
+
+      String providerPhoneNumber = data['phoneNumber'];
+
+      // Save booking
       await FirebaseFirestore.instance.collection('Bookings').add({
         'providerId': widget.providerId,
         'providerName': widget.providerName,
+        'providerPhoneNumber': providerPhoneNumber,
         'userId': userId,
         'userName': userName,
-        'serviceName': widget.serviceName, // Example static service name
+        'serviceName': widget.serviceName,
         'status': 'Pending',
         'date': _selectedDate,
         'timeSlot': selectedTimeSlot,
@@ -70,7 +87,15 @@ class _BookServicePageState extends State<BookServicePage> {
         const SnackBar(content: Text('Booking successful!')),
       );
 
-      Navigator.pop(context);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => BookingDetailsPage(
+            providerPhoneNumber: providerPhoneNumber,
+            providerName: widget.providerName,
+          ),
+        ),
+      );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error confirming booking: $e')),

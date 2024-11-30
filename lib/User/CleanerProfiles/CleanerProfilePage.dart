@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/BookNow.dart'; // Replace with your booking page path.
+// import 'package:url_launcher/url_launcher.dart';
 
 class CleanerProfilePage extends StatefulWidget {
   final String providerId;
@@ -47,6 +48,17 @@ class _CleanerProfilePageState extends State<CleanerProfilePage> {
       });
     }
   }
+
+  // Future<void> makePhoneCall(String phoneNumber) async {
+  //   final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+  //   if (await canLaunchUrl(phoneUri)) {
+  //     await launchUrl(phoneUri);
+  //   } else {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text("Unable to call $phoneNumber")),
+  //     );
+  //   }
+  // }
 
   Future<void> incrementLikes() async {
     try {
@@ -122,6 +134,7 @@ class _CleanerProfilePageState extends State<CleanerProfilePage> {
     }
 
     final name = cleanerData?['name'] ?? 'Unknown';
+    // final phone = cleanerData?['phone'] ?? 'Unavailable'; // Fetch phone number
     final experience = cleanerData?['years_of_experience'] ?? 0;
     final likes = cleanerData?['likes'] ?? 0;
     final profileImage = cleanerData?['profileImage'] ?? '';

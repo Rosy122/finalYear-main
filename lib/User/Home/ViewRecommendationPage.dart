@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/ACRepair%20Profiles/ACRepairProfilePage.dart';
@@ -7,14 +9,76 @@ import 'package:profix_new/User/MakeupArtist/MakrupArtistProfilePage.dart';
 import 'package:profix_new/User/PhotographerProfiles/PhotographerProfilePage.dart';
 import 'package:profix_new/User/PlumberProfiles/PlumberProfilePage.dart';
 
-class ViewRecommendationPage extends StatelessWidget {
-  const ViewRecommendationPage({super.key});
+class ViewRecommendationPage extends StatefulWidget {
+  final String username;
+  const ViewRecommendationPage({super.key, this.username = 'Guest'});
 
-  Stream<QuerySnapshot> getTopLikedProviders() {
-    return FirebaseFirestore.instance
+  @override
+  State<ViewRecommendationPage> createState() => _ViewRecommendationPageState();
+}
+
+class _ViewRecommendationPageState extends State<ViewRecommendationPage> {
+  Map<String, dynamic>? userData;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    log(widget.username);
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .where('name', isEqualTo: widget.username)
+          .get();
+
+      log(querySnapshot.docs.toString());
+
+      if (querySnapshot.docs.isNotEmpty) {
+        setState(() {
+          userData = querySnapshot.docs.first.data() as Map<String, dynamic>;
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          userData = null;
+          isLoading = false;
+        });
+      }
+
+      log(userData?['location'] ?? 'No location');
+    } catch (e) {
+      log('Error fetching user data: $e');
+      setState(() {
+        userData = null;
+        isLoading = false;
+      });
+    }
+  }
+
+  Future<Map<String, List<QueryDocumentSnapshot>>>
+      getProvidersByCategory() async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection('Service Providers')
-        .orderBy('likes', descending: true)
-        .snapshots();
+        .where('location', isEqualTo: userData?['location'] ?? 'kathmandu')
+        .get();
+
+    Map<String, List<QueryDocumentSnapshot>> categorizedProviders = {};
+
+    for (var doc in querySnapshot.docs) {
+      var data = doc.data() as Map<String, dynamic>;
+      String category = data['category'] ?? 'Other';
+
+      if (!categorizedProviders.containsKey(category)) {
+        categorizedProviders[category] = [];
+      }
+      categorizedProviders[category]!.add(doc);
+    }
+
+    return categorizedProviders;
   }
 
   @override
@@ -39,109 +103,131 @@ class ViewRecommendationPage extends StatelessWidget {
               clipper: MyClipper(),
               child: Container(
                 color: const Color(0xFFEEF7FF),
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: getTopLikedProviders(),
+                child: FutureBuilder<Map<String, List<QueryDocumentSnapshot>>>(
+                  future: getProvidersByCategory(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     }
 
-                    if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    if (!snapshot.hasData || snapshot.data!.isEmpty) {
                       return const Center(
                           child: Text('No providers available.'));
                     }
 
+                    var categorizedProviders = snapshot.data!;
                     return ListView.builder(
                       padding: const EdgeInsets.all(16.0),
-                      itemCount: snapshot.data!.docs.length,
+                      itemCount: categorizedProviders.keys.length,
                       itemBuilder: (context, index) {
-                        var provider = snapshot.data!.docs[index];
-                        var data = provider.data()
-                            as Map<String, dynamic>; // Fetch data as a Map
+                        String category =
+                            categorizedProviders.keys.elementAt(index);
+                        var providers = categorizedProviders[category]!;
 
-                        // Debugging Prints
-                        print(
-                            'Provider Name: ${data['name']}, Service Type: ${data['service type']}');
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Category Header
+                            Text(
+                              category,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
 
-                        String experience =
-                            data.containsKey('years_of_experience')
-                                ? '${data['years_of_experience']} years'
-                                : 'No experience available';
-                        String bio = data['bio'] ?? 'No bio available';
-                        String name = data['name'] ?? 'No name available';
-                        String profileImage = data['profileImage'] ?? '';
-                        String serviceType = (data['service type'] ?? '')
-                            .trim()
-                            .toLowerCase(); // Make lowercase for comparison
-                        print('Navigating for Service Type: $serviceType');
+                            // List of Providers in the Category
+                            ...providers.map((provider) {
+                              var data =
+                                  provider.data() as Map<String, dynamic>;
+                              String experience =
+                                  data.containsKey('years_of_experience')
+                                      ? '${data['years_of_experience']} years'
+                                      : 'No experience available';
+                              String bio = data['bio'] ?? 'No bio available';
+                              String name = data['name'] ?? 'No name available';
+                              String profileImage = data['profileImage'] ?? '';
+                              String serviceType = (data['service type'] ?? '')
+                                  .trim()
+                                  .toLowerCase();
 
-                        return RecommendedItem(
-                          title: name,
-                          by: bio,
-                          rating: data['likes'].toString(),
-                          experience: experience,
-                          imageUrl: profileImage,
-                          onTap: () {
-                            // Navigate to the appropriate profile page
-                            if (serviceType == "plumbing") {
-                              print('Navigating to PlumberProfilePage');
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => PlumberProfilePage(
-                                      providerId: provider.id),
-                                ),
+                              return RecommendedItem(
+                                title: name,
+                                by: bio,
+                                rating: data['likes'].toString(),
+                                experience: experience,
+                                imageUrl: profileImage,
+                                onTap: () {
+                                  // Navigate to the appropriate profile page
+                                  if (serviceType == "plumbing") {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            PlumberProfilePage(
+                                                providerId: provider.id),
+                                      ),
+                                    );
+                                  } else if (serviceType == "cleaning") {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            CleanerProfilePage(
+                                                providerId: provider.id),
+                                      ),
+                                    );
+                                  } else if (serviceType == "makeup artist") {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            MakeupArtistProfilePage(
+                                                providerId: provider.id),
+                                      ),
+                                    );
+                                  } else if (serviceType == "ac repair") {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ACRepairProfilePage(
+                                                providerId: provider.id),
+                                      ),
+                                    );
+                                  } else if (serviceType == "carpentry") {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            CarpenterProfilePage(
+                                                providerId: provider.id),
+                                      ),
+                                    );
+                                  } else if (serviceType == "photographer") {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            PhotographerProfilePage(
+                                                providerId: provider.id),
+                                      ),
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              'No profile page available!')),
+                                    );
+                                  }
+                                },
                               );
-                            } else if (serviceType == "cleaning") {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CleanerProfilePage(
-                                      providerId: provider.id),
-                                ),
-                              );
-                            } else if (serviceType == "makeup artist") {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MakeupArtistProfilePage(
-                                      providerId: provider.id),
-                                ),
-                              );
-                            } else if (serviceType == "ac repair") {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ACRepairProfilePage(
-                                      providerId: provider.id),
-                                ),
-                              );
-                            } else if (serviceType == "carpentry") {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CarpenterProfilePage(
-                                      providerId: provider.id),
-                                ),
-                              );
-                            } else if (serviceType == "photographer") {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => PhotographerProfilePage(
-                                      providerId: provider.id),
-                                ),
-                              );
-                            } else {
-                              // Default case if no specific profile page exists
-                              print('No matching service type found.');
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content:
-                                        Text('No profile page available!')),
-                              );
-                            }
-                          },
+                            }).toList(),
+
+                            const SizedBox(height: 16),
+                          ],
                         );
                       },
                     );
@@ -208,7 +294,6 @@ class RecommendedItem extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Profile Image
               CircleAvatar(
                 backgroundImage: imageUrl.isNotEmpty
                     ? NetworkImage(imageUrl)
@@ -217,7 +302,6 @@ class RecommendedItem extends StatelessWidget {
                 radius: 30,
               ),
               const SizedBox(width: 15),
-              // Text Details
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

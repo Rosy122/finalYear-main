@@ -177,7 +177,7 @@ class _SignInPageState extends State<SignInPage> {
           ),
         ),
         Expanded(
-          flex: 4,
+          flex: 10,
           child: ClipPath(
             clipper: MyClipper(),
             child: Container(
@@ -201,30 +201,108 @@ class _SignInPageState extends State<SignInPage> {
                       ],
                     ),
                     const SizedBox(height: 30),
-                    TextField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        hintText: '_@gmail.com',
-                        filled: true,
-                        fillColor: Colors.grey[200],
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide.none,
+                    // TextField(
+                    //   controller: _emailController,
+                    //   decoration: InputDecoration(
+                    //     hintText: '_@gmail.com',
+                    //     filled: true,
+                    //     fillColor: Colors.grey[200],
+                    //     border: OutlineInputBorder(
+                    //       borderRadius: BorderRadius.circular(20),
+                    //       borderSide: BorderSide.none,
+                    //     ),
+                    //   ),
+                    // ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8), // Spacing between fields
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300, // Shadow color
+                            blurRadius: 6, // Soft shadow
+                            offset: Offset(3, 3), // Position of the shadow
+                          ),
+                          BoxShadow(
+                            color: Colors.white, // Light effect for 3D
+                            blurRadius: 6,
+                            offset: Offset(-3, -3),
+                          ),
+                        ],
+                      ),
+                      child: TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          prefixIcon: const Icon(Icons.email),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide.none,
+                          ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email.';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     const SizedBox(height: 20),
-                    TextField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        hintText: 'Password',
-                        filled: true,
-                        fillColor: Colors.grey[200],
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide.none,
+                    // TextField(
+                    //   controller: _passwordController,
+                    //   obscureText: true,
+                    //   decoration: InputDecoration(
+                    //     hintText: 'Password',
+                    //     filled: true,
+                    //     fillColor: Colors.white,
+                    //     border: OutlineInputBorder(
+                    //       borderRadius: BorderRadius.circular(20),
+                    //       borderSide: BorderSide.none,
+                    //     ),
+                    //   ),
+                    // ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8), // Spacing between fields
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300, // Shadow color
+                            blurRadius: 6, // Soft shadow
+                            offset: Offset(3, 3), // Position of the shadow
+                          ),
+                          BoxShadow(
+                            color: Colors.white, // Light effect for 3D
+                            blurRadius: 6,
+                            offset: Offset(-3, -3),
+                          ),
+                        ],
+                      ),
+                      child: TextFormField(
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          prefixIcon: const Icon(Icons.key),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide.none,
+                          ),
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your password.';
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     const SizedBox(height: 10),

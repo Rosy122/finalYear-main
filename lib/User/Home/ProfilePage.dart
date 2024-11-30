@@ -18,14 +18,17 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    _loadUserData();
-    _checkAndPromptForDisplayName();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkAndPromptForDisplayName();
+    });
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _loadUserData(); // Reload user data when returning to this page
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadUserData(); // Reload user data when returning to this page
+    });
   }
 
   Future<void> _loadUserData() async {
