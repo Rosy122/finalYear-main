@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profix_new/User/Home/HomePage.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class BookingDetailsPage extends StatelessWidget {
   final String providerPhoneNumber;
@@ -11,23 +11,6 @@ class BookingDetailsPage extends StatelessWidget {
     required this.providerPhoneNumber,
     required this.providerName,
   }) : super(key: key);
-
-  Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
-
-    try {
-      if (await canLaunchUrl(launchUri)) {
-        await launchUrl(launchUri);
-      } else {
-        throw 'Could not launch $phoneNumber';
-      }
-    } catch (e) {
-      print('Error launching URL: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +73,7 @@ class BookingDetailsPage extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         GestureDetector(
-                          onTap: () => _makePhoneCall(providerPhoneNumber),
+                          // onTap: () => _openDialPad(providerPhoneNumber),
                           child: Text(
                             providerPhoneNumber,
                             style: const TextStyle(
@@ -106,7 +89,15 @@ class BookingDetailsPage extends StatelessWidget {
                     const SizedBox(height: 30),
                     // Call Button
                     ElevatedButton.icon(
-                      onPressed: () => _makePhoneCall(providerPhoneNumber),
+                      onPressed: () async {
+                        const phoneNumber =
+                            "21213123123"; // Use `tel:` instead of `tel://`
+                        if (await canLaunchUrlString(phoneNumber)) {
+                          await launchUrlString(phoneNumber);
+                        } else {
+                          throw "Could not launch $phoneNumber";
+                        }
+                      },
                       icon: const Icon(Icons.call, color: Colors.white),
                       label: const Text(
                         'Call Now',
