@@ -19,6 +19,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _experienceController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  bool _isPasswordHidden = true;
 
   String _selectedRole = "User"; // Default to User
   String _verificationId = '';
@@ -174,17 +175,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
 
-// Send OTP Button
-                          // ElevatedButton(
-                          //   onPressed: _isSendingOTP
-                          //       ? null
-                          //       : () => _sendOTP(_phoneController.text.trim()),
-                          //   child: _isSendingOTP
-                          //       ? const CircularProgressIndicator()
-                          //       : const Text('Send OTP'),
-                          // ),
-
-// OTP Input (Visible After OTP Sent)
                           if (_verificationId.isNotEmpty)
                             Column(
                               children: [
@@ -207,27 +197,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                       ),
                                     ],
                                   ),
-                                  // child: TextFormField(
-                                  //   controller: _otpController,
-                                  //   decoration: InputDecoration(
-                                  //     labelText: 'Enter OTP',
-                                  //     prefixIcon: const Icon(Icons.lock),
-                                  //     border: OutlineInputBorder(
-                                  //       borderRadius: BorderRadius.circular(12),
-                                  //       borderSide: BorderSide.none,
-                                  //     ),
-                                  //   ),
-                                  // ),
                                 ),
-                                // ElevatedButton(
-                                //   onPressed: _isVerifyingOTP
-                                //       ? null
-                                //       : () =>
-                                //           _verifyOTP(_otpController.text.trim()),
-                                //   child: _isVerifyingOTP
-                                //       ? const CircularProgressIndicator()
-                                //       : const Text('Verify OTP'),
-                                // ),
                               ],
                             ),
                           SizedBox(
@@ -343,10 +313,11 @@ class _SignUpPageState extends State<SignUpPage> {
                               ],
                             ),
                             child: TextFormField(
+                              obscureText: _isPasswordHidden,
                               controller: _passwordController,
                               decoration: InputDecoration(
                                 labelText: 'Password',
-                                prefixIcon: const Icon(Icons.key_outlined),
+                                prefixIcon: const Icon(Icons.lock),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -385,10 +356,11 @@ class _SignUpPageState extends State<SignUpPage> {
                               ],
                             ),
                             child: TextFormField(
+                              obscureText: _isPasswordHidden,
                               controller: _confirmPasswordController,
                               decoration: InputDecoration(
                                 labelText: 'Confirm Password',
-                                prefixIcon: const Icon(Icons.key_outlined),
+                                prefixIcon: const Icon(Icons.lock),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -646,6 +618,7 @@ class _SignUpPageState extends State<SignUpPage> {
             'name': _nameController.text,
             'email': _emailController.text,
             'location': location,
+            'phoneNumber': '+977${_phoneController.text}', // Save phone number
             'role': 'User',
           });
         }

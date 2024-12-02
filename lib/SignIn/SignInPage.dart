@@ -21,6 +21,7 @@ class _SignInPageState extends State<SignInPage> {
   String selectedRole = "User"; // Default role
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool _isPasswordHidden = true; // To toggle password visibility
 
   Future<void> _signInWithGoogle() async {
     try {
@@ -286,10 +287,11 @@ class _SignInPageState extends State<SignInPage> {
                         ],
                       ),
                       child: TextFormField(
+                        obscureText: _isPasswordHidden,
                         controller: _passwordController,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          prefixIcon: const Icon(Icons.key),
+                          prefixIcon: const Icon(Icons.lock),
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
